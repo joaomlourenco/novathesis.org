@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get started · novathesis</title>
+<meta name="description" content="novathesis gives you compliant covers, spines and formatting for more than twenty Portuguese higher-education institutions, on a modular LaTeX codebase with bibliography and glossary automation already wired up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="index.html">Home</a><a class="" href="schools.html">Find your school</a><a class="on" href="start.html">Get started</a><a class="" href="docs.html">Docs</a><a class="" href="showcase.html">Showcase</a><a class="" href="support.html">Support</a><a class="" href="contributing.html">Contributing</a><span class="sep"></span><a class="lang" href="../pt/start.html">PT</a></nav></header>
+<main class="page">
+<div class="lede"><h1>Get started</h1><p>Four steps from a clean machine to a compiled thesis. If you would rather not install anything, use Overleaf or ScienHub.</p></div>
+<div class="steps"><div><b>01</b><h3>Install LaTeX</h3><p>TeX Live on Linux and Windows, MacTeX on macOS. MikTeX also works.</p></div><div><b>02</b><h3>Download your repository</h3><p>Take the ZIP for your school, or clone it if you want to pull updates.</p></div><div><b>03</b><h3>Set your details</h3><p>Title, author, supervisors, degree and language, all in 0-Config.</p></div><div><b>04</b><h3>Compile</h3><p>Run <code>make</code>, or <code>latexmk</code>. Bibliography and glossaries are handled for you.</p></div></div>
+<div class="three">
+<div class="box"><h3>Local build</h3><p>With <code>latexmk</code>, <code>biber</code> and <code>bib2gls</code> installed, one command builds the document, the bibliography and the glossaries. <code>bib2gls</code> ships with TeX Live but needs a Java runtime (JRE) on your machine — check with <code>bib2gls --version</code>.</p><div class="cmd">make</div></div>
+<div class="box"><h3>Overleaf</h3><span class="tag alert">Paid plan required</span><p>Open the template in the browser, no installation. Recommended for short documents and shared supervision.</p><p><strong>The template does not compile on the Overleaf Free plan</strong>, whose 20-second compilation limit is too short for <b>nova</b>thesis — a paid subscription is required.</p><p>The button below opens the current version straight from the main repository, not the outdated official Overleaf template.</p><a class="btn btn-p" style="align-self:flex-start;margin-top:6px" href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&amp;main_document=template.tex">Open in Overleaf</a></div>
+<div class="box"><h3>ScienHub</h3><span class="tag">Free</span><p>A free browser-based LaTeX editor with real-time collaboration and Git version control. Its compilation limit is generous enough to build the current template, which makes it a working alternative to a paid Overleaf plan.</p><p>There is no one-click import: download the ZIP for your school, then upload it to a new ScienHub project and set <code>template.tex</code> as the main document.</p><a class="btn btn-p" style="align-self:flex-start;margin-top:6px" href="https://scienhub.com">Open ScienHub</a></div>
+</div>
+</main>
+<footer class="ft">
+<div><a class="mark " href="index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px"><b>nova</b>thesis is not an official template issued by any of the institutions listed. Compliance is pursued from public documentation — always check your institution's current regulations before submission.</p></div>
+<div><h4>Project</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Maintained by <a href="https://docentes.fct.unl.pt/joao-lourenco">João M. Lourenço</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>
