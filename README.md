@@ -1,7 +1,7 @@
 # novathesis.org
 
 Source of the **novathesis.org** website — the public site for the
-[NOVAthesis](https://github.com/joaomlourenco/novathesis) LaTeX template for
+[**nova**thesis](https://github.com/joaomlourenco/novathesis) LaTeX template for
 theses and dissertations.
 
 Static HTML and CSS. No build step, no dependencies, no framework: the pages
@@ -99,6 +99,6 @@ actually served.
 
 ## Licence
 
-The NOVAthesis template is released under the
+The **nova**thesis template is released under the
 [LaTeX Project Public License 1.3c](https://www.latex-project.org/lppl/lppl-1-3c).
 This repository holds the website source and carries no separate licence file yet.
