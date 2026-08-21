@@ -59,21 +59,35 @@ gallery. Two details worth knowing before editing the CSS:
   they are roughly twice as wide as an A4 page. The showcase detects any image
   wider than it is tall and gives it a double-width slot.
 
-## Regenerating the showcase
+## Generated pages
 
-`en/showcase.html` and `pt/showcase.html` are **generated** — do not hand-edit
-the `<main>` element, it will be overwritten. After adding or replacing files in
-`covers/SVG/`:
+The showcase and the school grid are **generated** — do not hand-edit them, they
+will be overwritten. Both read one table, `tools/nt_schools.py`:
 
 ```bash
-python3 tools/gen_showcase.py
+python3 tools/gen_showcase.py        # <main> of en|pt/showcase.html
+python3 tools/gen_findyourschool.py  # the card grid in en|pt/schools.html
 ```
 
-It rewrites `<main>` in both languages, leaves the rest of each page untouched,
-and reports any block missing a spine. Institution names and the block order
-live in the tables at the top of the script; the English and Portuguese names
-were taken from the template's own `\SetUniversity` / `\SetSchool` strings, so
-keep them in step with the template rather than translating by hand.
+`gen_showcase.py` replaces the whole `<main>`; `gen_findyourschool.py` replaces
+only the card grid, leaving each language's lede and closing note alone. Both are
+idempotent and report what they could not find.
+
+To add a school, edit `tools/nt_schools.py` and run both. It keeps three
+identifiers deliberately separate, because they do not always agree:
+
+| field | meaning |
+|---|---|
+| `key` | the institution, and the showcase section it heads |
+| `assets` / `cover` | the stem of the files in `covers/SVG` |
+| `repo` | the repository under `github.com/novathesis` |
+
+`uminho` is one repository whose assets are named after its Engineering school;
+`ulisboa-ff` is branded FFUL while its files and repository are still named `ff`.
+
+English and Portuguese institution names come from the template's own
+`\SetUniversity` / `\SetSchool` strings — keep them in step with the template
+rather than translating by hand.
 
 ## Conventions
 
