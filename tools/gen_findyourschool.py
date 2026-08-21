@@ -8,14 +8,14 @@ School data lives in nt_schools.py -- edit there, not here.
 """
 import re, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from nt_schools import SITE, GROUPS, REPOS, ORG, overleaf, find, ratio
+from nt_schools import (SITE, GROUPS, REPOS, ORG, overleaf, find, ratio,
+                        cover_stem, check_or_exit)
 
 TAGS = {'en': ('ZIP', 'Git', 'Overleaf'), 'pt': ('ZIP', 'Git', 'Overleaf')}
 GRID_RE = re.compile(r'<div style="display:flex;flex-direction:column;gap:40px">.*?(?=\s*<div class="note">)', re.S)
 
 def card(r, lang):
-    cover = find(r['cover'], '1')
-    assert cover, f"{r['repo']}: no front cover asset ({r['cover']}-1.svg)"
+    cover = find(cover_stem(r), '1')
     url = f"{ORG}/{r['repo']}"
     zip_, git, ovl = TAGS[lang]
     # uminho's cover is a wrap-around, so it is cropped to the front face
@@ -46,6 +46,8 @@ def grid(lang):
     out.append('</div>')
     return ''.join(out)
 
+check_or_exit()
+
 for lang in ('en', 'pt'):
     p = SITE / lang / 'schools.html'
     src = p.read_text(encoding='utf-8')
@@ -56,6 +58,7 @@ for lang in ('en', 'pt'):
     if new != src:
         p.write_text(new, encoding='utf-8')
 
-wide = [r['repo'] for r in REPOS if (f := find(r['cover'], '1')) and ratio(f) > 1 and not r.get('crop')]
+wide = [r['repo'] for r in REPOS
+        if (f := find(cover_stem(r), '1')) and ratio(f) > 1 and not r.get('crop')]
 if wide:
     print('\nWrap-around covers shown uncropped (consider crop=True):', ', '.join(wide))

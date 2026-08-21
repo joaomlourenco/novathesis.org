@@ -124,27 +124,27 @@ GROUPS = [
 ]
 
 REPOS = [
- dict(group='nova',  repo='nova-fct',        label='Ciências e Tecnologia (NOVA FCT)',  cover='nova-fct-phd-en-lua'),
+ dict(group='nova',  repo='nova-fct',        label='Faculdade de Ciências e Tecnologia (NOVA FCT)',  cover='nova-fct-phd-en-lua'),
  dict(group='nova',  repo='nova-fct-cbbi',   label='NOVA FCT — CBBI',                   cover='nova-fct-cbbi-msc-en-lua'),
  dict(group='nova',  repo='nova-fct-di-adc', label='NOVA FCT — DI-ADC',                 cover='nova-fct-di-adc-bsc-en-lua'),
- dict(group='nova',  repo='nova-ensp',       label='Saúde Pública (ENSP)',              cover='nova-ensp-phd-en-lua'),
- dict(group='nova',  repo='nova-itqb',       label='Química e Biológica (ITQB)',        cover='nova-itqb-green-phd-en-lua'),
- dict(group='nova',  repo='nova-fcsh',       label='Ciências Sociais e Humanas (FCSH)', cover='nova-fcsh-phd-en-lua'),
+ dict(group='nova',  repo='nova-ensp',       label='Escola Nacional de Saúde Pública (ENSP)',              cover='nova-ensp-phd-en-lua'),
+ dict(group='nova',  repo='nova-itqb',       label='Instituto de Tecnologia Química e Biológica (ITQB)',        cover='nova-itqb-green-phd-en-lua'),
+ dict(group='nova',  repo='nova-fcsh',       label='Faculdade de Ciências Sociais e Humanas (FCSH)', cover='nova-fcsh-phd-en-lua'),
 
- dict(group='ulpm',  repo='ulisboa-fcul',    label='Faculdade de Ciências (FCUL)',      cover='ulisboa-fcul-phd-en-lua'),
- dict(group='ulpm',  repo='ulisboa-ist',     label='Instituto Superior Técnico (IST)',  cover='ulisboa-ist-phd-en-lua'),
- dict(group='ulpm',  repo='ulisboa-iseg',    label='Economia e Gestão (ISEG)',          cover='ulisboa-iseg-phd-en-lua'),
- dict(group='ulpm',  repo='ulisboa-fmv',     label='Medicina Veterinária (FMV)',        cover='ulisboa-fmv-phd-en-lua'),
- dict(group='ulpm',  repo='ulisboa-ff',      label='Farmácia (FFUL)',                   cover='ulisboa-ff-phd-en-lua'),
- dict(group='ulpm',  repo='uporto-fcup',     label='Ciências, UPorto (FCUP)',           cover='uporto-fcup-phd-en-lua'),
- dict(group='ulpm',  repo='uminho',          label='Universidade do Minho',             cover='uminho-eeng-phd-en-lua', crop=True),
+ dict(group='ulpm',  repo='ulisboa-fcul',    label='Faculdade de Ciências, ULisboa (FCUL)',      cover='ulisboa-fcul-phd-en-lua'),
+ dict(group='ulpm',  repo='ulisboa-ist',     label='Instituto Superior Técnico (IST)'),
+ dict(group='ulpm',  repo='ulisboa-iseg',    label='Instituto Superior de Economia e Gestão (ISEG)',          cover='ulisboa-iseg-phd-en-lua'),
+ dict(group='ulpm',  repo='ulisboa-fmv',     label='Faculdade de Medicina Veterinária (FMV)',        cover='ulisboa-fmv-phd-en-lua'),
+ dict(group='ulpm',  repo='ulisboa-ff',      label='Faculdade de Farmácia (FFUL)',                   cover='ulisboa-ff-phd-en-lua'),
+ dict(group='ulpm',  repo='uporto-fcup',     label='Faculdade de Ciências, UPorto (FCUP)',           cover='uporto-fcup-phd-en-lua'),
+ dict(group='ulpm',  repo='uminho',          label='Universidade do Minho', crop=True),
 
- dict(group='other', repo='ulht-deisi',      label='Lusófona — DEISI',                  cover='ulht-deisi-phd-en-lua'),
- dict(group='other', repo='ulht-mge',        label='Lusófona — MGE',                    cover='ulht-mge-phd-en-lua'),
+ dict(group='other', repo='ulht-deisi',      label='Universidade Lusófona — DEISI',                  cover='ulht-deisi-phd-en-lua'),
+ dict(group='other', repo='ulht-mge',        label='Universidade Lusófona — MGE',                    cover='ulht-mge-phd-en-lua'),
  dict(group='other', repo='iscteiul-eta',    label='ISCTE-IUL — ETA',                   cover='iscteiul-eta-phd-en-lua'),
- dict(group='other', repo='ipl-isel',        label='ISEL, IPL',                         cover='ipl-isel-msc-en-lua'),
- dict(group='other', repo='ips-ests',        label='ESTSetúbal, IPS',                   cover='ips-ests-msc-en-lua'),
- dict(group='other', repo='other-esep',      label='Enfermagem do Porto (ESEP)',        cover='other-esep-msc-en-lua'),
+ dict(group='other', repo='ipl-isel',        label='Instituto Superior de Engenharia de Lisboa (ISEL)',                         cover='ipl-isel-msc-en-lua'),
+ dict(group='other', repo='ips-ests',        label='Escola Superior de Tecnologia de Setúbal (ESTS)',                   cover='ips-ests-msc-en-lua'),
+ dict(group='other', repo='other-esep',      label='Escola Superior de Enfermagem do Porto (ESEP)',        cover='other-esep-msc-en-lua'),
 ]
 
 ORG = 'https://github.com/novathesis'
@@ -167,3 +167,53 @@ def ratio(path):
     head = path.read_text(encoding='utf-8', errors='ignore')[:600]
     m = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', head)
     return float(m.group(1)) / float(m.group(2)) if m else 0.707
+
+def cover_stem(r):
+    """The asset stem for a repository card.
+
+    'cover' is optional: when absent it is derived from the repository name, so
+    a new school usually needs only group/repo/label. uminho resolves to
+    uminho-eeng-phd-en-lua this way.
+    """
+    if r.get('cover'):
+        return r['cover']
+    found = sorted(SVG.glob(f"{r['repo']}-*-1.svg")) + sorted(SVG.glob(f"{r['repo']}-*-1-[0-9].svg"))
+    stems = [re.sub(r'-1(-\d)?\.svg$', '', f.name) for f in found]
+    if not stems:
+        return None
+    phd = [s for s in stems if '-phd-' in s]
+    return (phd or stems)[0]
+
+def validate():
+    """Check the registry against the files on disk. Returns a list of problems."""
+    problems = []
+    seen = set()
+    for r in REPOS:
+        for field in ('group', 'repo', 'label'):
+            if not r.get(field):
+                problems.append(f"REPOS entry {r!r}: missing {field!r}")
+        if r.get('repo') in seen:
+            problems.append(f"REPOS: duplicate repo {r['repo']!r}")
+        seen.add(r.get('repo'))
+        if r.get('group') not in {g for g, _ in GROUPS}:
+            problems.append(f"{r.get('repo')}: unknown group {r.get('group')!r}")
+        stem = cover_stem(r)
+        if not stem:
+            problems.append(f"{r.get('repo')}: no cover found -- set cover=, "
+                            f"or add covers/SVG/{r.get('repo')}-<degree>-en-lua-1.svg")
+        elif not find(stem, '1'):
+            problems.append(f"{r.get('repo')}: cover {stem}-1.svg not found")
+    for inst in INSTITUTIONS:
+        for stem, *_ in inst['blocks']:
+            if not any(find(stem, p) for p in ('N', '1', '2', 'L1')):
+                problems.append(f"{inst['key']}: block {stem} has no pages at all")
+    return problems
+
+def check_or_exit():
+    problems = validate()
+    if problems:
+        import sys
+        print('nt_schools.py: the registry does not match the files on disk\n', file=sys.stderr)
+        for p in problems:
+            print(f'  - {p}', file=sys.stderr)
+        sys.exit(1)
