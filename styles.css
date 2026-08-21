@@ -78,6 +78,9 @@ p{margin:0;text-wrap:pretty}
    window; only the column count does. min(100%,…) keeps them from overflowing
    narrow screens, so no media-query override is needed. */
 .show{--bw:720px}
+.credit{font-size:13px;color:var(--n700);margin-top:-6px}
+.credit a{font-weight:600}
+.credit .mono{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--n600)}
 .blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,var(--bw)),var(--bw)));gap:24px;align-items:start;justify-content:center}
 .show-ctl{display:flex;align-items:center;justify-content:flex-end;gap:8px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n600)}
 .sz{font:inherit;color:var(--text);background:transparent;border:2px solid var(--text);padding:4px 11px;cursor:pointer;letter-spacing:.04em}

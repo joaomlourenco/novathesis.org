@@ -31,6 +31,8 @@ G = {
               'Lisbon School of Economics &amp; Management', 'Instituto Superior de Economia e Gestão', 'ULISBOA ISEG'),
  'ulisboa-fmv': ('Universidade de Lisboa', 'Universidade de Lisboa',
               'Faculty of Veterinary Medicine', 'Faculdade de Medicina Veterinária', 'ULISBOA FMV'),
+ 'ulisboa-ff': ('Universidade de Lisboa', 'Universidade de Lisboa',
+              'Faculty of Pharmacy', 'Faculdade de Farmácia', 'ULISBOA FF'),
  'uminho':   ('Universidade do Minho', 'Universidade do Minho',
               'School of Engineering', 'Escola de Engenharia', 'UMINHO'),
  'iscteiul-eta': ('Iscte – University Institute of Lisbon', 'Iscte — Instituto Universitário de Lisboa',
@@ -70,6 +72,7 @@ BLOCKS = [
  ('ulisboa-fcul', 'ulisboa-fcul-phd-en-lua', *PHD),
  ('ulisboa-iseg', 'ulisboa-iseg-phd-en-lua', *PHD),
  ('ulisboa-fmv',  'ulisboa-fmv-phd-en-lua', *PHD),
+ ('ulisboa-ff',   'ulisboa-ff-phd-en-lua', *PHD),
  ('uminho',    'uminho-eeng-phd-en-lua', *PHD),
  ('iscteiul-eta', 'iscteiul-eta-phd-en-lua', *PHD),
  ('ulht-deisi','ulht-deisi-phd-en-lua', *PHD),
@@ -80,6 +83,15 @@ BLOCKS = [
  ('ips-ests',  'ips-ests-msc-en-lua', *MSC),
  ('other-esep','other-esep-msc-en-lua', *MSC),
 ]
+
+# group -> (display name, github handle)
+CREDITS = {
+ 'ulisboa-ff':  ('Afonso Nóbrega', 'nobrega8'),
+ 'uporto-fcup': ('Guilherme Borges', 'sgtpepperpt'),
+ 'ipl-isel':    ('Gonçalo N. Duarte', 'MrDuartePT'),
+}
+CREDIT_LEAD = {'en': 'Support for this school contributed by',
+               'pt': 'Suporte para esta escola contribuído por'}
 
 PAGE_ALT = {  # (en, pt)
  'N':  ('back cover', 'contracapa'),
@@ -115,6 +127,11 @@ def build(lang):
         else:
             title = f'{uni} — {school}' if school and school != uni else uni
             out.append(f'<div class="show-hd"><h2>{title}</h2><span class="tag">{tag}</span></div>')
+        if gkey in CREDITS:
+            who, gh = CREDITS[gkey]
+            lead = CREDIT_LEAD['en' if i == 0 else 'pt']
+            out.append(f'<p class="credit">{lead} <a href="https://github.com/{gh}">{who}</a> '
+                       f'(<span class="mono">{gh}</span>)</p>')
         out.append('<div class="blocks">')
         for stem, lbl_en, lbl_pt in group:
             label = lbl_en if i == 0 else lbl_pt
