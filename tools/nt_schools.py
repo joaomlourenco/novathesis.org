@@ -121,8 +121,8 @@ INSTITUTIONS = [
 # ─────────────────────────────────────────────────────────────────────────────
 GROUPS = [
  ('nova',  'Universidade NOVA de Lisboa'),
- ('ulpm',  'Universidade de Lisboa · Porto · Minho'),
- ('other', 'Lusófona · ISCTE · Politécnicos · outras'),
+ ('ul',  'Universidade de Lisboa'),
+ ('other', ' · Porto · Minho · Lusófona · ISCTE · Politécnicos · outras'),
 ]
 
 REPOS = [
@@ -133,13 +133,13 @@ REPOS = [
  dict(group='nova',  repo='nova-itqb',       label='Instituto de Tecnologia Química e Biológica (ITQB)',        cover='nova-itqb-green-phd-en-lua'),
  dict(group='nova',  repo='nova-fcsh',       label='Faculdade de Ciências Sociais e Humanas (FCSH)', cover='nova-fcsh-phd-en-lua'),
 
- dict(group='ulpm',  repo='ulisboa-fcul',    label='Faculdade de Ciências, ULisboa (FCUL)',      cover='ulisboa-fcul-phd-en-lua'),
- dict(group='ulpm',  repo='ulisboa-ist',     label='Instituto Superior Técnico (IST)'),
- dict(group='ulpm',  repo='ulisboa-iseg',    label='Instituto Superior de Economia e Gestão (ISEG)',          cover='ulisboa-iseg-phd-en-lua'),
- dict(group='ulpm',  repo='ulisboa-fmv',     label='Faculdade de Medicina Veterinária (FMV)',        cover='ulisboa-fmv-phd-en-lua'),
- dict(group='ulpm',  repo='ulisboa-ff',      label='Faculdade de Farmácia (FFUL)',                   cover='ulisboa-fful-phd-en-lua'),
- dict(group='ulpm',  repo='uporto-fcup',     label='Faculdade de Ciências, UPorto (FCUP)',           cover='uporto-fcup-phd-en-lua'),
- dict(group='ulpm',  repo='uminho',          label='Universidade do Minho', crop=True),
+ dict(group='ul',  repo='ulisboa-fcul',    label='Faculdade de Ciências, ULisboa (FCUL)',      cover='ulisboa-fcul-phd-en-lua'),
+ dict(group='ul',  repo='ulisboa-ist',     label='Instituto Superior Técnico (IST)'),
+ dict(group='ul',  repo='ulisboa-iseg',    label='Instituto Superior de Economia e Gestão (ISEG)',          cover='ulisboa-iseg-phd-en-lua'),
+ dict(group='ul',  repo='ulisboa-fmv',     label='Faculdade de Medicina Veterinária (FMV)',        cover='ulisboa-fmv-phd-en-lua'),
+ dict(group='ul',  repo='ulisboa-ff',      label='Faculdade de Farmácia (FFUL)',                   cover='ulisboa-fful-phd-en-lua'),
+ dict(group='other',  repo='uporto-fcup',     label='Faculdade de Ciências, UPorto (FCUP)',           cover='uporto-fcup-phd-en-lua'),
+ dict(group='other',  repo='uminho',          label='Universidade do Minho', crop=True),
 
  dict(group='other', repo='ulht-deisi',      label='Universidade Lusófona — DEISI',                  cover='ulht-deisi-phd-en-lua'),
  dict(group='other', repo='ulht-mge',        label='Universidade Lusófona — MGE',                    cover='ulht-mge-phd-en-lua'),
