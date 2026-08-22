@@ -13,8 +13,8 @@ Three identifiers are deliberately kept apart, because they do not always agree:
     repo    the repository under github.com/novathesis
 
 uminho is the clearest example -- one repository, assets named after the
-Engineering school. ulisboa-ff is another: the school is branded FFUL while its
-files and repository are still named ff.
+Engineering school. ulisboa-ff is another: the school is branded FFUL, its
+repository is still named ff, but its assets are named fful.
 """
 import re, pathlib
 
@@ -74,11 +74,13 @@ INSTITUTIONS = [
 
  dict(key='ulisboa-ff', uni=('Universidade de Lisboa',) * 2,
       school=('Faculty of Pharmacy', 'Faculdade de Farmácia'), tag='ULISBOA FFUL',
-      credit=('Afonso Nóbrega', 'nobrega8'), blocks=[('ulisboa-ff-phd-en-lua', *PHD)]),
+      credit=('Afonso Nóbrega', 'nobrega8'), blocks=[('ulisboa-fful-phd-en-lua', *PHD)]),
 
  dict(key='uminho', uni=('Universidade do Minho',) * 2,
       school=('School of Engineering', 'Escola de Engenharia'), tag='UMINHO',
-      credit=('Bruno Pereira', 'b-pereira'), blocks=[('uminho-eeng-phd-en-lua', *PHD)]),
+      credit=('Bruno Pereira', 'b-pereira'), blocks=[
+        ('uminho-eeng-phd-en-lua', *PHD),
+        ('uminho-eeng-msc-en-lua', *MSC)]),
 
  dict(key='iscteiul-eta', uni=('Iscte – University Institute of Lisbon',
                                'Iscte — Instituto Universitário de Lisboa'),
@@ -135,7 +137,7 @@ REPOS = [
  dict(group='ulpm',  repo='ulisboa-ist',     label='Instituto Superior Técnico (IST)'),
  dict(group='ulpm',  repo='ulisboa-iseg',    label='Instituto Superior de Economia e Gestão (ISEG)',          cover='ulisboa-iseg-phd-en-lua'),
  dict(group='ulpm',  repo='ulisboa-fmv',     label='Faculdade de Medicina Veterinária (FMV)',        cover='ulisboa-fmv-phd-en-lua'),
- dict(group='ulpm',  repo='ulisboa-ff',      label='Faculdade de Farmácia (FFUL)',                   cover='ulisboa-ff-phd-en-lua'),
+ dict(group='ulpm',  repo='ulisboa-ff',      label='Faculdade de Farmácia (FFUL)',                   cover='ulisboa-fful-phd-en-lua'),
  dict(group='ulpm',  repo='uporto-fcup',     label='Faculdade de Ciências, UPorto (FCUP)',           cover='uporto-fcup-phd-en-lua'),
  dict(group='ulpm',  repo='uminho',          label='Universidade do Minho', crop=True),
 

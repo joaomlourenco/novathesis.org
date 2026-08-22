@@ -94,7 +94,10 @@ p{margin:0;text-wrap:pretty}
    size; a page is one quarter of it, and rows centre inside it whatever the
    page count. --pw resolves against .pages, so .prow must stay full width. */
 .pages{--gap:10px;--pw:calc((100% - 3*var(--gap))/4);display:flex;flex-direction:column;align-items:center;gap:6px}
-.prow{display:flex;width:100%;gap:var(--gap);justify-content:center;align-items:start}
+/* wrap: a school whose cover AND front page are both wrap-arounds needs five
+   columns' worth of space in a four-column row (uminho), and a nowrap row
+   would bleed out of the block on both sides */
+.prow{display:flex;flex-wrap:wrap;width:100%;gap:var(--gap);justify-content:center;align-items:start}
 .pg{border:2px solid var(--n300);background:#fff;line-height:0;display:block}
 .pg img{width:100%;max-width:100%;height:auto}
 .prow .pg{flex:0 0 var(--pw)}
