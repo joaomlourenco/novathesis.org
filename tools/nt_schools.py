@@ -13,8 +13,7 @@ Three identifiers are deliberately kept apart, because they do not always agree:
     repo    the repository under github.com/novathesis
 
 uminho is the clearest example -- one repository, assets named after the
-Engineering school. ulisboa-ff is another: the school is branded FFUL, its
-repository is still named ff, but its assets are named fful.
+Engineering school.
 """
 import re, pathlib
 
@@ -72,7 +71,7 @@ INSTITUTIONS = [
       school=('Faculty of Veterinary Medicine', 'Faculdade de Medicina Veterinária'),
       tag='ULISBOA FMV', blocks=[('ulisboa-fmv-phd-en-lua', *PHD)]),
 
- dict(key='ulisboa-ff', uni=('Universidade de Lisboa',) * 2,
+ dict(key='ulisboa-fful', uni=('Universidade de Lisboa',) * 2,
       school=('Faculty of Pharmacy', 'Faculdade de Farmácia'), tag='ULISBOA FFUL',
       credit=('Afonso Nóbrega', 'nobrega8'), blocks=[('ulisboa-fful-phd-en-lua', *PHD)]),
 
@@ -112,6 +111,9 @@ INSTITUTIONS = [
 
  dict(key='other-esep', uni=('Nursing School of Porto', 'Escola Superior de Enfermagem do Porto'),
       school=('', ''), tag='ESEP', blocks=[('other-esep-msc-en-lua', *MSC)]),
+
+ dict(key='other-huberlin', uni=('Humboldt-Universität zu Berlin',) * 2,
+      school=('', ''), tag='HU BERLIN', blocks=[('other-huberlin-phd-de-lua', *PHD)]),
 ]
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -137,7 +139,7 @@ REPOS = [
  dict(group='ul',  repo='ulisboa-ist',     label='Instituto Superior Técnico (IST)'),
  dict(group='ul',  repo='ulisboa-iseg',    label='Instituto Superior de Economia e Gestão (ISEG)',          cover='ulisboa-iseg-phd-en-lua'),
  dict(group='ul',  repo='ulisboa-fmv',     label='Faculdade de Medicina Veterinária (FMV)',        cover='ulisboa-fmv-phd-en-lua'),
- dict(group='ul',  repo='ulisboa-ff',      label='Faculdade de Farmácia (FFUL)',                   cover='ulisboa-fful-phd-en-lua'),
+ dict(group='ul',  repo='ulisboa-fful',    label='Faculdade de Farmácia (FFUL)',                   cover='ulisboa-fful-phd-en-lua'),
  dict(group='other',  repo='uporto-fcup',     label='Faculdade de Ciências, UPorto (FCUP)',           cover='uporto-fcup-phd-en-lua'),
  dict(group='other',  repo='uminho',          label='Universidade do Minho', crop=True),
 
@@ -147,6 +149,7 @@ REPOS = [
  dict(group='other', repo='ipl-isel',        label='Instituto Superior de Engenharia de Lisboa (ISEL)',                         cover='ipl-isel-msc-en-lua'),
  dict(group='other', repo='ips-ests',        label='Escola Superior de Tecnologia de Setúbal (ESTS)',                   cover='ips-ests-msc-en-lua'),
  dict(group='other', repo='other-esep',      label='Escola Superior de Enfermagem do Porto (ESEP)',        cover='other-esep-msc-en-lua'),
+ dict(group='other', repo='other-huberlin', label='Humboldt-Universität zu Berlin (HU Berlin)',           cover='other-huberlin-phd-de-lua'),
 ]
 
 ORG = 'https://github.com/novathesis'
