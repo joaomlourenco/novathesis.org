@@ -41,6 +41,11 @@ p{margin:0;text-wrap:pretty}
 .stat:last-child{border-bottom:0}
 .stat b{font-size:52px;line-height:1;letter-spacing:-.03em;font-weight:800}
 .stat span{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n700)}
+.stat-follow{justify-content:center}
+.social{display:flex;flex-wrap:wrap;gap:16px}
+.social a{color:var(--text);display:inline-flex}
+.social a:hover{color:var(--accent)}
+.social svg{width:24px;height:24px;display:block}
 .cols3{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid var(--text)}
 .cols3>div{padding:48px 44px;display:flex;flex-direction:column;gap:14px;border-right:2px solid var(--text)}
 .cols3>div:last-child{border-right:0}
@@ -140,7 +145,7 @@ p{margin:0;text-wrap:pretty}
 .rows>div{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:28px 0;border-bottom:2px solid var(--n300)}
 .rows h3{font-size:20px;letter-spacing:-.01em}
 .note{padding:28px 32px;border:2px solid var(--text);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.ft{border-top:2px solid var(--text);padding:48px 56px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr;gap:40px}
+.ft{border-top:2px solid var(--text);padding:48px 56px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
 .ft .mark{font-size:22px}.ft .mark b,.ft .mark s{border-bottom-width:2px;padding-bottom:5px}
 .ft h4{margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n600)}
 .ft ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
