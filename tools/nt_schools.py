@@ -1,155 +1,152 @@
 """Single source of truth for the school data behind showcase.html and schools.html.
 
-Edit this file when a school is added, renamed, or gains a contributor; then run
-both generators:
+GENERATED FILE -- do not hand-edit. Edit tools/nt_overrides.py, then run:
 
+    python3 tools/gen_nt_schools.py
     python3 tools/gen_showcase.py
     python3 tools/gen_findyourschool.py
 
-Three identifiers are deliberately kept apart, because they do not always agree:
-
-    key     the institution, and the showcase section it heads
-    assets  the stem of the cover files in covers/SVG
-    repo    the repository under github.com/novathesis
-
-uminho is the clearest example -- one repository, assets named after the
-Engineering school.
+University/school display names and which doctypes have cover art are derived
+from the sibling novathesis repo's .Build/schools.conf and
+novathesisFiles/Schools/**/*.clo (see gen_nt_schools.py). Tag, credit, GROUPS,
+REPOS, and custom per-degree block labels come from nt_overrides.py, which has
+no mechanical source and is meant to be hand-edited.
 """
 import re, pathlib
 
 SITE = pathlib.Path(__file__).resolve().parent.parent
 SVG  = SITE / 'covers' / 'SVG'
 
-PHD = ('PhD Dissertation', 'Dissertação de Doutoramento')
-MSC = ('MSc Thesis', 'Tese de Mestrado')
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Institutions, in showcase order. blocks = (asset stem, label_en, label_pt).
-# credit = (name, github handle); the handle may be empty.
-# ─────────────────────────────────────────────────────────────────────────────
 INSTITUTIONS = [
- dict(key='manual', uni=('', ''), school=('', ''), tag='novathesis',
-      blocks=[('other-novathesis-phd-en-lua',
-               'The <b>nova</b>thesis manual', 'O manual <b>nova</b>thesis')]),
+ dict(key='manual', uni=('\\emph{University}', '\\emph{Universidade}'), school=('\\emph{School}', '\\emph{Faculdade}'),
+      tag='novathesis', blocks=[
+        ('other-novathesis-phd-en-lua', 'The <b>nova</b>thesis manual', 'O manual <b>nova</b>thesis'),
+      ]),
 
- dict(key='nova-fct', uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'),
-      school=('NOVA School of Science and Technology', 'Faculdade de Ciências e Tecnologia'),
+ dict(key='nova-fct', uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'), school=('NOVA School of Science and Technology', 'Faculdade de Ciências e Tecnologia'),
       tag='NOVA FCT', blocks=[
-        ('nova-fct-phd-en-lua', *PHD),
-        ('nova-fct-msc-en-lua', *MSC),
-        ('nova-fct-cbbi-msc-en-lua', 'MSc in Computational Biology &amp; Bioinformatics',
-                                     'Mestrado em Biologia Computacional &amp; Bioinformática'),
-        ('nova-fct-di-adc-bsc-en-lua', 'BSc in Computer Science', 'Licenciatura em Informática')]),
+        ('nova-fct-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+        ('nova-fct-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
+        ('nova-fct-cbbi-msc-en-lua', 'MSc in Computational Biology &amp; Bioinformatics', 'Mestrado em Biologia Computacional &amp; Bioinformática'),
+        ('nova-fct-di-adc-bsc-en-lua', 'BSc in Computer Science', 'Licenciatura em Informática'),
+      ]),
 
- dict(key='nova-fcsh', uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'),
-      school=('School of Social Sciences and Humanities', 'Faculdade de Ciências Sociais e Humanas'),
-      tag='NOVA FCSH', blocks=[('nova-fcsh-phd-en-lua', *PHD)]),
+ dict(key='nova-fcsh', uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'), school=('School of Social Sciences and Humanities', 'Faculdade de Ciências Sociais e Humanas'),
+      tag='NOVA FCSH', blocks=[
+        ('nova-fcsh-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='nova-itqb', uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'),
-      school=('Instituto de Tecnologia Química e Biológica António Xavier',) * 2,
+ dict(key='nova-itqb', uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'), school=('Instituto de Tecnologia Química e Biológica António Xavier',) * 2,
       tag='NOVA ITQB', blocks=[
-        ('nova-itqb-gray-phd-en-lua',  'PhD Dissertation — Gray',  'Dissertação de Doutoramento — Cinza'),
-        ('nova-itqb-green-phd-en-lua', 'PhD Dissertation — Green', 'Dissertação de Doutoramento — Verde')]),
+        ('nova-itqb-gray-phd-en-lua', 'PhD Dissertation — Gray', 'Dissertação de Doutoramento — Cinza'),
+        ('nova-itqb-green-phd-en-lua', 'PhD Dissertation — Green', 'Dissertação de Doutoramento — Verde'),
+      ]),
 
- dict(key='nova-ensp', uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'),
-      school=('National School of Public Health', 'Escola Nacional de Saúde Pública'),
-      tag='NOVA ENSP', blocks=[('nova-ensp-phd-en-lua', *PHD)]),
+ dict(key='nova-ensp', uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'), school=('National School of Public Health', 'Escola Nacional de Saúde Pública'),
+      tag='NOVA ENSP', blocks=[
+        ('nova-ensp-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='ulisboa-ist', uni=('Universidade de Lisboa',) * 2,
-      school=('Instituto Superior Técnico',) * 2,
-      tag='ULISBOA IST', blocks=[('ulisboa-ist-phd-en-lua', *PHD)]),
+ dict(key='ulisboa-ist', uni=('Universidade de Lisboa',) * 2, school=('Instituto Superior Técnico',) * 2,
+      tag='ULISBOA IST', blocks=[
+        ('ulisboa-ist-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='ulisboa-fcul', uni=('Universidade de Lisboa',) * 2,
-      school=('Faculty of Sciences', 'Faculdade de Ciências'), tag='ULISBOA FCUL',
-      credit=('Martim Costa Seco', ''), blocks=[('ulisboa-fcul-phd-en-lua', *PHD)]),
+ dict(key='ulisboa-fcul', uni=('Universidade de Lisboa',) * 2, school=('Faculty of Sciences', 'Faculdade de Ciências'),
+      tag='ULISBOA FCUL', credit=('Martim Costa Seco', ''), blocks=[
+        ('ulisboa-fcul-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='ulisboa-iseg', uni=('Universidade de Lisboa',) * 2,
-      school=('Lisbon School of Economics &amp; Management', 'Instituto Superior de Economia e Gestão'),
-      tag='ULISBOA ISEG', blocks=[('ulisboa-iseg-phd-en-lua', *PHD)]),
+ dict(key='ulisboa-iseg', uni=('Universidade de Lisboa',) * 2, school=('Lisbon School of Economics &amp; Management', 'Instituto Superior de Economia e Gestão'),
+      tag='ULISBOA ISEG', blocks=[
+        ('ulisboa-iseg-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='ulisboa-fmv', uni=('Universidade de Lisboa',) * 2,
-      school=('Faculty of Veterinary Medicine', 'Faculdade de Medicina Veterinária'),
-      tag='ULISBOA FMV', blocks=[('ulisboa-fmv-phd-en-lua', *PHD)]),
+ dict(key='ulisboa-fmv', uni=('Universidade de Lisboa',) * 2, school=('Faculty of Veterinary Medicine', 'Faculdade de Medicina Veterinária'),
+      tag='ULISBOA FMV', blocks=[
+        ('ulisboa-fmv-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='ulisboa-fful', uni=('Universidade de Lisboa',) * 2,
-      school=('Faculty of Pharmacy', 'Faculdade de Farmácia'), tag='ULISBOA FFUL',
-      credit=('Afonso Nóbrega', 'nobrega8'), blocks=[('ulisboa-fful-phd-en-lua', *PHD)]),
+ dict(key='ulisboa-fful', uni=('Universidade de Lisboa',) * 2, school=('Faculty of Pharmacy', 'Faculdade de Farmácia'),
+      tag='ULISBOA FFUL', credit=('Afonso Nóbrega', 'nobrega8'), blocks=[
+        ('ulisboa-fful-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='uminho', uni=('Universidade do Minho',) * 2,
-      school=('School of Engineering', 'Escola de Engenharia'), tag='UMINHO',
-      credit=('Bruno Pereira', 'b-pereira'), blocks=[
-        ('uminho-eeng-phd-en-lua', *PHD),
-        ('uminho-eeng-msc-en-lua', *MSC)]),
+ dict(key='uminho', uni=('Universidade do Minho',) * 2, school=('School of Engineering', 'Escola de Engenharia'),
+      tag='UMINHO', credit=('Bruno Pereira', 'b-pereira'), blocks=[
+        ('uminho-eeng-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+        ('uminho-eeng-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
+      ]),
 
- dict(key='iscteiul-eta', uni=('Iscte – University Institute of Lisbon',
-                               'Iscte — Instituto Universitário de Lisboa'),
-      school=('School of Technology and Architecture', 'Escola de Tecnologia e Arquitectura'),
-      tag='ISCTE-IUL ETA', blocks=[('iscteiul-eta-phd-en-lua', *PHD)]),
+ dict(key='iscteiul-eta', uni=('Iscte – University Institute of Lisbon', 'Iscte — Instituto Universitário de Lisboa'), school=('School of Technology and Architecture', 'Escola de Tecnologia e Arquitectura'),
+      tag='ISCTE-IUL ETA', blocks=[
+        ('iscteiul-eta-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='ulht-deisi', uni=('Universidade Lusófona de Humanidades e Tecnologias',) * 2,
-      school=('Departamento de Engenharia Informática e Sistemas de Informação',) * 2,
-      tag='ULHT DEISI', blocks=[('ulht-deisi-phd-en-lua', *PHD)]),
+ dict(key='ulht-deisi', uni=('Universidade Lusófona de Humanidades e Tecnologias',) * 2, school=('Departamento de Engenharia Informática e Sistemas de Informação',) * 2,
+      tag='ULHT DEISI', blocks=[
+        ('ulht-deisi-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='ulht-mge', uni=('Universidade Lusófona de Humanidades e Tecnologias',) * 2,
-      school=('Escola de Ciências Econômicas e das Organizações',) * 2,
-      tag='ULHT MGE', blocks=[('ulht-mge-phd-en-lua', *PHD)]),
+ dict(key='ulht-mge', uni=('Universidade Lusófona de Humanidades e Tecnologias',) * 2, school=('Escola de Ciências Econômicas e das Organizações',) * 2,
+      tag='ULHT MGE', blocks=[
+        ('ulht-mge-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='uporto-fcup', uni=('Universidade do Porto',) * 2,
-      school=('Faculdade de Ciências',) * 2, tag='UPORTO FCUP',
-      credit=('Guilherme Borges', 'sgtpepperpt'), blocks=[('uporto-fcup-phd-en-lua', *PHD)]),
+ dict(key='uporto-fcup', uni=('Universidade do Porto',) * 2, school=('Faculdade de Ciências',) * 2,
+      tag='UPORTO FCUP', credit=('Guilherme Borges', 'sgtpepperpt'), blocks=[
+        ('uporto-fcup-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 
- dict(key='ipl-isel', uni=('Instituto Politécnico de Lisboa',) * 2,
-      school=('Instituto Superior de Engenharia de Lisboa',) * 2, tag='IPL ISEL',
-      credit=('Gonçalo N. Duarte', 'MrDuartePT'), blocks=[
-        ('ipl-isel-msc-en-lua', *MSC),
-        ('ipl-isel-meb-msc-en-lua', 'MSc in Biomedical Engineering',
-                                    'Mestrado em Engenharia Biomédica')]),
+ dict(key='ipl-isel', uni=('Instituto Politécnico de Lisboa',) * 2, school=('Instituto Superior de Engenharia de Lisboa',) * 2,
+      tag='IPL ISEL', credit=('Gonçalo N. Duarte', 'MrDuartePT'), blocks=[
+        ('ipl-isel-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
+        ('ipl-isel-meb-msc-en-lua', 'MSc in Biomedical Engineering', 'Mestrado em Engenharia Biomédica'),
+      ]),
 
- dict(key='ips-ests', uni=('Polytechnic Institute of Setúbal', 'Instituto Politécnico de Setúbal'),
-      school=('Escola Superior de Tecnologia de Setúbal',) * 2,
-      tag='IPS ESTS', blocks=[('ips-ests-msc-en-lua', *MSC)]),
+ dict(key='ips-ests', uni=('Polytechnic Institute of Setúbal', 'Instituto Politécnico de Setúbal'), school=('Escola Superior de Tecnologia de Setúbal',) * 2,
+      tag='IPS ESTS', blocks=[
+        ('ips-ests-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
+      ]),
 
- dict(key='other-esep', uni=('Nursing School of Porto', 'Escola Superior de Enfermagem do Porto'),
-      school=('', ''), tag='ESEP', blocks=[('other-esep-msc-en-lua', *MSC)]),
+ dict(key='other-esep', uni=('Nursing School of Porto', 'Escola Superior de Enfermagem do Porto'), school=('Nursing School of Porto', 'Escola Superior de Enfermagem do Porto'),
+      tag='ESEP', blocks=[
+        ('other-esep-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
+      ]),
 
- dict(key='other-huberlin', uni=('Humboldt-Universität zu Berlin',) * 2,
-      school=('', ''), tag='HU BERLIN', blocks=[('other-huberlin-phd-de-lua', *PHD)]),
+ dict(key='other-huberlin', uni=('Humboldt-Universität zu Berlin',) * 2, school=('Institute of Library and Information Science',) * 2,
+      tag='HU BERLIN', blocks=[
+        ('other-huberlin-phd-de-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
+      ]),
 ]
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Repository cards for "Find your school", in page order. One card per repo, so
-# this is finer-grained than INSTITUTIONS (NOVA FCT ships three repositories).
-# label is the same in both languages. cover is the asset shown on the card.
-# ─────────────────────────────────────────────────────────────────────────────
 GROUPS = [
- ('nova',  'Universidade NOVA de Lisboa'),
- ('ul',  'Universidade de Lisboa'),
+ ('nova', 'Universidade NOVA de Lisboa'),
+ ('ul', 'Universidade de Lisboa'),
  ('other', ' · Porto · Minho · Lusófona · ISCTE · Politécnicos · outras'),
 ]
 
 REPOS = [
- dict(group='nova',  repo='nova-fct',        label='Faculdade de Ciências e Tecnologia (NOVA FCT)',  cover='nova-fct-phd-en-lua'),
- dict(group='nova',  repo='nova-fct-cbbi',   label='NOVA FCT — CBBI',                   cover='nova-fct-cbbi-msc-en-lua'),
- dict(group='nova',  repo='nova-fct-di-adc', label='NOVA FCT — DI-ADC',                 cover='nova-fct-di-adc-bsc-en-lua'),
- dict(group='nova',  repo='nova-ensp',       label='Escola Nacional de Saúde Pública (ENSP)',              cover='nova-ensp-phd-en-lua'),
- dict(group='nova',  repo='nova-itqb',       label='Instituto de Tecnologia Química e Biológica (ITQB)',        cover='nova-itqb-green-phd-en-lua'),
- dict(group='nova',  repo='nova-fcsh',       label='Faculdade de Ciências Sociais e Humanas (FCSH)', cover='nova-fcsh-phd-en-lua'),
-
- dict(group='ul',  repo='ulisboa-fcul',    label='Faculdade de Ciências, ULisboa (FCUL)',      cover='ulisboa-fcul-phd-en-lua'),
- dict(group='ul',  repo='ulisboa-ist',     label='Instituto Superior Técnico (IST)'),
- dict(group='ul',  repo='ulisboa-iseg',    label='Instituto Superior de Economia e Gestão (ISEG)',          cover='ulisboa-iseg-phd-en-lua'),
- dict(group='ul',  repo='ulisboa-fmv',     label='Faculdade de Medicina Veterinária (FMV)',        cover='ulisboa-fmv-phd-en-lua'),
- dict(group='ul',  repo='ulisboa-fful',    label='Faculdade de Farmácia (FFUL)',                   cover='ulisboa-fful-phd-en-lua'),
- dict(group='other',  repo='uporto-fcup',     label='Faculdade de Ciências, UPorto (FCUP)',           cover='uporto-fcup-phd-en-lua'),
- dict(group='other',  repo='uminho',          label='Universidade do Minho', crop=True),
-
- dict(group='other', repo='ulht-deisi',      label='Universidade Lusófona — DEISI',                  cover='ulht-deisi-phd-en-lua'),
- dict(group='other', repo='ulht-mge',        label='Universidade Lusófona — MGE',                    cover='ulht-mge-phd-en-lua'),
- dict(group='other', repo='iscteiul-eta',    label='ISCTE-IUL — ETA',                   cover='iscteiul-eta-phd-en-lua'),
- dict(group='other', repo='ipl-isel',        label='Instituto Superior de Engenharia de Lisboa (ISEL)',                         cover='ipl-isel-msc-en-lua'),
- dict(group='other', repo='ips-ests',        label='Escola Superior de Tecnologia de Setúbal (ESTS)',                   cover='ips-ests-msc-en-lua'),
- dict(group='other', repo='other-esep',      label='Escola Superior de Enfermagem do Porto (ESEP)',        cover='other-esep-msc-en-lua'),
- dict(group='other', repo='other-huberlin', label='Humboldt-Universität zu Berlin (HU Berlin)',           cover='other-huberlin-phd-de-lua'),
+ dict(group='nova', repo='nova-fct', label='Faculdade de Ciências e Tecnologia (NOVA FCT)', cover='nova-fct-phd-en-lua'),
+ dict(group='nova', repo='nova-fct-cbbi', label='NOVA FCT — CBBI', cover='nova-fct-cbbi-msc-en-lua'),
+ dict(group='nova', repo='nova-fct-di-adc', label='NOVA FCT — DI-ADC', cover='nova-fct-di-adc-bsc-en-lua'),
+ dict(group='nova', repo='nova-ensp', label='Escola Nacional de Saúde Pública (ENSP)', cover='nova-ensp-phd-en-lua'),
+ dict(group='nova', repo='nova-itqb', label='Instituto de Tecnologia Química e Biológica (ITQB)', cover='nova-itqb-green-phd-en-lua'),
+ dict(group='nova', repo='nova-fcsh', label='Faculdade de Ciências Sociais e Humanas (FCSH)', cover='nova-fcsh-phd-en-lua'),
+ dict(group='ul', repo='ulisboa-fcul', label='Faculdade de Ciências, ULisboa (FCUL)', cover='ulisboa-fcul-phd-en-lua'),
+ dict(group='ul', repo='ulisboa-ist', label='Instituto Superior Técnico (IST)'),
+ dict(group='ul', repo='ulisboa-iseg', label='Instituto Superior de Economia e Gestão (ISEG)', cover='ulisboa-iseg-phd-en-lua'),
+ dict(group='ul', repo='ulisboa-fmv', label='Faculdade de Medicina Veterinária (FMV)', cover='ulisboa-fmv-phd-en-lua'),
+ dict(group='ul', repo='ulisboa-fful', label='Faculdade de Farmácia (FFUL)', cover='ulisboa-fful-phd-en-lua'),
+ dict(group='other', repo='uporto-fcup', label='Faculdade de Ciências, UPorto (FCUP)', cover='uporto-fcup-phd-en-lua'),
+ dict(group='other', repo='uminho', label='Universidade do Minho', crop=True),
+ dict(group='other', repo='ulht-deisi', label='Universidade Lusófona — DEISI', cover='ulht-deisi-phd-en-lua'),
+ dict(group='other', repo='ulht-mge', label='Universidade Lusófona — MGE', cover='ulht-mge-phd-en-lua'),
+ dict(group='other', repo='iscteiul-eta', label='ISCTE-IUL — ETA', cover='iscteiul-eta-phd-en-lua'),
+ dict(group='other', repo='ipl-isel', label='Instituto Superior de Engenharia de Lisboa (ISEL)', cover='ipl-isel-msc-en-lua'),
+ dict(group='other', repo='ips-ests', label='Escola Superior de Tecnologia de Setúbal (ESTS)', cover='ips-ests-msc-en-lua'),
+ dict(group='other', repo='other-esep', label='Escola Superior de Enfermagem do Porto (ESEP)', cover='other-esep-msc-en-lua'),
+ dict(group='other', repo='other-huberlin', label='Humboldt-Universität zu Berlin (HU Berlin)', cover='other-huberlin-phd-de-lua'),
 ]
 
 ORG = 'https://github.com/novathesis'

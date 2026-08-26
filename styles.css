@@ -140,7 +140,7 @@ p{margin:0;text-wrap:pretty}
 .rows>div{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:28px 0;border-bottom:2px solid var(--n300)}
 .rows h3{font-size:20px;letter-spacing:-.01em}
 .note{padding:28px 32px;border:2px solid var(--text);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.ft{border-top:2px solid var(--text);padding:48px 56px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+.ft{border-top:2px solid var(--text);padding:48px 56px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr;gap:40px}
 .ft .mark{font-size:22px}.ft .mark b,.ft .mark s{border-bottom-width:2px;padding-bottom:5px}
 .ft h4{margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n600)}
 .ft ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
