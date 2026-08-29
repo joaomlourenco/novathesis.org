@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>novathesis — Blog</title>
+  <link href="https://novathesis.org/pt/blog/"/>
+  <link rel="self" href="https://novathesis.org/pt/blog/feed.xml"/>
+  <id>https://novathesis.org/pt/blog/</id>
+  <updated>2026-08-21T00:00:00Z</updated>
+  <entry>
+    <title>novathesis 8.2.0</title>
+    <link href="https://novathesis.org/pt/blog/novathesis-8-2-0"/>
+    <id>https://novathesis.org/pt/blog/novathesis-8-2-0</id>
+    <updated>2026-08-21T00:00:00Z</updated>
+    <summary>Uma nova escola — a Faculdade de Farmácia da Universidade de Lisboa — redução automática de imagens demasiado grandes, e uma correcção nos símbolos AMS em pdfLaTeX.</summary>
+  </entry>
+</feed>

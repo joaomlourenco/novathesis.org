@@ -67,7 +67,15 @@ will be overwritten. Both read one table, `tools/nt_schools.py`:
 ```bash
 python3 tools/gen_showcase.py        # <main> of en|pt/showcase.html
 python3 tools/gen_findyourschool.py  # the card grid in en|pt/schools.html
+python3 tools/gen_blog.py            # en|pt/blog/ from blog/*.md
 ```
+
+Writing a post is covered in [blog/README.md](blog/README.md): copy
+`blog/_TEMPLATE.md`, name it `YYYY-MM-DD-slug.en.md` (and `.pt.md`), write, run
+the generator. It renders the posts, the history, two Atom feeds and the social
+cards, prunes pages whose source is gone, and keeps the Blog link in every
+page's nav. Markdown rendering needs the `markdown` module — `brew install
+python-markdown` or `pip install markdown`; the script finds either.
 
 `gen_showcase.py` replaces the whole `<main>`; `gen_findyourschool.py` replaces
 only the card grid, leaving each language's lede and closing note alone. Both are

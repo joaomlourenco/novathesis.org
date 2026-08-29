@@ -158,3 +158,32 @@ p{margin:0;text-wrap:pretty}
 .ft{grid-template-columns:1fr}.rows>div{grid-template-columns:1fr;gap:10px}
 .lede h1{font-size:38px}.banner h2{font-size:38px}
 }
+
+/* ── blog ─────────────────────────────────────────────────────────────────── */
+.post-list{display:flex;flex-direction:column;border-top:2px solid var(--text)}
+.post-item{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:28px 0;
+  border-bottom:2px solid var(--n300);align-items:start}
+.post-item:last-child{border-bottom:0}
+/* without an image the text must not sit in the thumbnail column */
+.post-item.no-thumb{grid-template-columns:1fr}
+.post-item .post-thumb{border:2px solid var(--n300);background:#fff;line-height:0;display:block}
+.post-item .post-thumb img{width:100%;height:auto}
+.post-meta{display:flex;flex-direction:column;gap:9px}
+.post-meta h2{font-size:24px;letter-spacing:-.02em}
+.post-meta h2 a{color:var(--text)}
+.post-meta h2 a:hover{color:var(--accent-700)}
+.post-meta .tag{margin-left:8px;padding:2px 6px}
+.post-head{gap:12px}
+.post-hero{margin:0;border:2px solid var(--n300);background:#fff;line-height:0}
+.post-hero img{width:100%;height:auto}
+/* the post body is the one place on the site with long-form prose */
+.post{max-width:68ch;display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.6}
+.post h2{font-size:24px;letter-spacing:-.02em;margin-top:14px}
+.post h3{font-size:19px;margin-top:10px}
+.post ul,.post ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.post img{max-width:100%;height:auto;border:2px solid var(--n300)}
+.post pre{background:var(--surface);padding:14px 16px;overflow-x:auto;margin:0}
+.post pre code{background:transparent;padding:0;font-size:13.5px}
+.post blockquote{margin:0;padding-left:18px;border-left:4px solid var(--accent);color:var(--n700)}
+.post-back{padding-top:8px}
+@media (max-width:760px){.post-item{grid-template-columns:1fr;gap:14px}}

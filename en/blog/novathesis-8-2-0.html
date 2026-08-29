@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>novathesis 8.2.0 · novathesis</title>
+<meta name="description" content="A new school — Faculdade de Farmácia da Universidade de Lisboa — automatic downsampling of oversized images, and a fix for AMS symbols under pdfLaTeX.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="me" href="https://mastodon.social/@novathesis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="novathesis 8.2.0">
+<meta property="og:description" content="A new school — Faculdade de Farmácia da Universidade de Lisboa — automatic downsampling of oversized images, and a fix for AMS symbols under pdfLaTeX.">
+<meta property="og:url" content="https://novathesis.org/en/blog/novathesis-8-2-0">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Home</a><a class="" href="../schools.html">Find your school</a><a class="" href="../start.html">Get started</a><a class="" href="../docs.html">Docs</a><a class="" href="../showcase.html">Showcase</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Support</a><a class="" href="../contributing.html">Contributing</a><span class="sep"></span><a class="lang" href="../../pt/index.html">PT</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">21 August 2026 · <a href="../../pt/blog/novathesis-8-2-0.html">Ler em português</a></div><h1>novathesis 8.2.0</h1><p>A new school — Faculdade de Farmácia da Universidade de Lisboa — automatic downsampling of oversized images, and a fix for AMS symbols under pdfLaTeX.</p></div>
+<article class="post">
+<p>Version 8.2.0 is out. The headline is a new school, but there are two changes
+worth knowing about even if you are not at ULisboa.</p>
+<h2>A new school: ULisboa FFUL</h2>
+<p><strong>Faculdade de Farmácia da Universidade de Lisboa</strong> is now supported, with its
+cover, spine, statement pages and a <code>modality</code> choice between <em>dissertation</em>,
+<em>report</em> and <em>project</em>:</p>
+<pre><code class="language-latex">\ntsetup{school=ulisboa/fful}
+</code></pre>
+<p>Support for it was contributed by <a href="https://github.com/nobrega8">Afonso Nóbrega</a>.</p>
+<h2>Oversized images are downsampled for you</h2>
+<p>Submission systems often cap the size of the PDF you can upload. Images that
+are larger than they need to be are now downsampled during the build, so
+staying under a limit no longer means editing your figures by hand.</p>
+<h2>A fix worth knowing about</h2>
+<p>If you compile with <strong>pdfLaTeX</strong> and your school uses the Times font style,
+<code>\hbar</code> and other AMS symbols used to fail with <em>Undefined control sequence</em>.
+The cause was a load-order clash between <code>mathptmx</code> and <code>amssymb</code>; it is fixed.
+LuaLaTeX and XeLaTeX were never affected.</p>
+<p>The full list of changes is in the
+<a href="https://github.com/joaomlourenco/novathesis/blob/main/CHANGELOG.md">changelog</a>.</p>
+</article>
+<p class="post-back"><a href="index.html">← All posts</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px"><b>nova</b>thesis is not an official template issued by any of the institutions listed. Compliance is pursued from public documentation — always check your institution's current regulations before submission.</p></div>
+<div><h4>Project</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Maintained by <a href="https://docentes.fct.unl.pt/joao-lourenco">João M. Lourenço</a></li></ul></div>
+<div><h4>Related Packages</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>
