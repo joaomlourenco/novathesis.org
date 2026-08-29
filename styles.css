@@ -191,3 +191,12 @@ p{margin:0;text-wrap:pretty}
 .sdg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:6px;margin:4px 0}
 .sdg-grid img{width:100%;height:auto;border:0;display:block}
 @media (max-width:520px){.sdg-grid{grid-template-columns:repeat(auto-fill,minmax(60px,1fr))}}
+/* a two-page spread inside a post: A4 pages side by side, stacking when narrow */
+.post-pages{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0}
+.post-pages img{width:100%;height:auto;display:block}
+.post-pages figcaption{grid-column:1/-1;font-size:13.5px;color:var(--n700)}
+@media (max-width:520px){.post-pages{grid-template-columns:1fr}}
+/* a single page shown inside a post, at a readable but modest size */
+.post-cover{margin:4px 0;max-width:320px}
+.post-cover img{width:100%;height:auto;display:block}
+.post-cover figcaption{font-size:13.5px;color:var(--n700);margin-top:8px}
