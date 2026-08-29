@@ -197,6 +197,6 @@ p{margin:0;text-wrap:pretty}
 .post-pages figcaption{grid-column:1/-1;font-size:13.5px;color:var(--n700)}
 @media (max-width:520px){.post-pages{grid-template-columns:1fr}}
 /* a single page shown inside a post, at a readable but modest size */
-.post-cover{margin:4px 0;max-width:320px}
+.post-cover{margin:4px 0;max-width:160px}
 .post-cover img{width:100%;height:auto;display:block}
 .post-cover figcaption{font-size:13.5px;color:var(--n700);margin-top:8px}
