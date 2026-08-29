@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>novathesis 8.3.0 — Stork: Flying International · novathesis</title>
+<meta name="description" content="The template leaves Portugal for the first time, with Humboldt-Universität zu Berlin, plus appendix labels, a way to skip individual lists, and a chapter-styles showcase.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="me" href="https://mastodon.social/@novathesis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="novathesis 8.3.0 — Stork: Flying International">
+<meta property="og:description" content="The template leaves Portugal for the first time, with Humboldt-Universität zu Berlin, plus appendix labels, a way to skip individual lists, and a chapter-styles showcase.">
+<meta property="og:url" content="https://novathesis.org/en/blog/novathesis-8-3-0">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Home</a><a class="" href="../schools.html">Find your school</a><a class="" href="../start.html">Get started</a><a class="" href="../docs.html">Docs</a><a class="" href="../showcase.html">Showcase</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Support</a><a class="" href="../contributing.html">Contributing</a><span class="sep"></span><a class="lang" href="../../pt/index.html">PT</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">29 August 2026 · <a href="../../pt/blog/novathesis-8-3-0.html">Ler em português</a></div><h1>novathesis 8.3.0 — Stork: Flying International</h1><p>The template leaves Portugal for the first time, with Humboldt-Universität zu Berlin, plus appendix labels, a way to skip individual lists, and a chapter-styles showcase.</p></div>
+<article class="post">
+<p>The codename gives it away: <strong>novathesis now supports a school outside
+Portugal</strong>.</p>
+<h2>Humboldt-Universität zu Berlin</h2>
+<p><code>other/huberlin</code> brings the cover, logo and accent colour of the official
+Berlin title page, for every document type and language the template already
+knows:</p>
+<pre><code class="language-latex">\ntsetup{school=other/huberlin}
+</code></pre>
+<p>It is also the only cover that prints the author's date and place of birth, via
+the new <code>\SetAuthorBirthDate*</code> and <code>\SetAuthorBirthPlace*</code> commands. They are
+no-ops everywhere else, so nothing changes for other schools.</p>
+<h2>Three smaller additions</h2>
+<p><strong>Appendix labels in the heading.</strong> <code>\ntsetup{print/appendixname=true}</code> puts
+"Appendix" or "Annex" in front of the chapter number in the heading itself, not
+only in the PDF bookmarks. Each bundled chapter style places the label where
+its own layout wants it, so it looks native rather than bolted on.</p>
+<p><strong>Skip a list without deleting it.</strong> <code>\ntsetup{listof/skip={figures,tables}}</code>
+turns off individual <em>list of…</em> entries — figures, tables, algorithms,
+listings, or your own — without commenting out the <code>\ntaddlistof</code> line in
+<code>0-Config/6_list_of.tex</code>. <code>glossaries</code> works there too, as a friendlier
+spelling of <code>print/glossaries=false</code>.</p>
+<p><strong>See every chapter style before choosing one.</strong> A demo chapter now cycles
+through all the bundled chapter styles and the standard memoir ones, a short
+chapter each, so you can compare them side by side. It lives in
+<code>3-BackMatter/app-chapter-styles-showcase.tex</code> and is commented out in
+<code>0-Config/4_files.tex</code> — uncomment it, build, pick a <code>style/chapter</code>, comment
+it out again.</p>
+<h2>And one for school maintainers</h2>
+<p>Schools can now declare which degrees they actually offer, with
+<code>\AddValidDegree</code>. Choosing a doctype a school does not run gives a clear error
+instead of quietly producing a mismatched cover. It is wired up for the 32
+schools with a real restriction; everyone else is unaffected.</p>
+<p>The full list is in the
+<a href="https://github.com/joaomlourenco/novathesis/blob/main/CHANGELOG.md">changelog</a>.</p>
+</article>
+<p class="post-back"><a href="index.html">← All posts</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px"><b>nova</b>thesis is not an official template issued by any of the institutions listed. Compliance is pursued from public documentation — always check your institution's current regulations before submission.</p></div>
+<div><h4>Project</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Maintained by <a href="https://docentes.fct.unl.pt/joao-lourenco">João M. Lourenço</a></li></ul></div>
+<div><h4>Related Packages</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>

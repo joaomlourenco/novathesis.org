@@ -4,7 +4,14 @@
   <link href="https://novathesis.org/pt/blog/"/>
   <link rel="self" href="https://novathesis.org/pt/blog/feed.xml"/>
   <id>https://novathesis.org/pt/blog/</id>
-  <updated>2026-08-21T00:00:00Z</updated>
+  <updated>2026-08-29T00:00:00Z</updated>
+  <entry>
+    <title>novathesis 8.3.0 — Stork: Flying International</title>
+    <link href="https://novathesis.org/pt/blog/novathesis-8-3-0"/>
+    <id>https://novathesis.org/pt/blog/novathesis-8-3-0</id>
+    <updated>2026-08-29T00:00:00Z</updated>
+    <summary>O template sai de Portugal pela primeira vez, com a Humboldt-Universität zu Berlin, além de etiquetas de apêndice, uma forma de saltar listas individuais e uma demonstração dos estilos de capítulo.</summary>
+  </entry>
   <entry>
     <title>novathesis 8.2.0</title>
     <link href="https://novathesis.org/pt/blog/novathesis-8-2-0"/>
