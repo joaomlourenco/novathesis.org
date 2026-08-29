@@ -2,8 +2,8 @@
 title: novathesis 8.0.0 — Andorinha: Migration Season
 date: 2026-07-30
 summary: Glossaries move to bib2gls — a migration every existing document needs — and pdfLaTeX builds get about three times faster.
-image:
-image_alt:
+image: flying-swallow.png
+image_alt: A swallow in flight
 ---
 
 Andorinha is the release where glossaries changed engine. It makes builds much
