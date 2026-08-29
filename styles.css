@@ -193,6 +193,7 @@ p{margin:0;text-wrap:pretty}
 @media (max-width:520px){.sdg-grid{grid-template-columns:repeat(auto-fill,minmax(60px,1fr))}}
 /* a two-page spread inside a post: A4 pages side by side, stacking when narrow */
 .post-pages{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0}
+.post-pages a,.post-cover a{display:block;line-height:0}
 .post-pages img{width:100%;height:auto;display:block}
 .post-pages figcaption{grid-column:1/-1;font-size:13.5px;color:var(--n700)}
 @media (max-width:520px){.post-pages{grid-template-columns:1fr}}
