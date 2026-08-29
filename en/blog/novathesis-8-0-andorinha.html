@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>novathesis 8.0 — Andorinha · novathesis</title>
+<meta name="description" content="Glossaries move to bib2gls — a migration every existing document needs — and pdfLaTeX builds get about three times faster.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="me" href="https://mastodon.social/@novathesis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="novathesis 8.0 — Andorinha">
+<meta property="og:description" content="Glossaries move to bib2gls — a migration every existing document needs — and pdfLaTeX builds get about three times faster.">
+<meta property="og:url" content="https://novathesis.org/en/blog/novathesis-8-0-andorinha">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Home</a><a class="" href="../schools.html">Find your school</a><a class="" href="../start.html">Get started</a><a class="" href="../docs.html">Docs</a><a class="" href="../showcase.html">Showcase</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Support</a><a class="" href="../contributing.html">Contributing</a><span class="sep"></span><a class="lang" href="../../pt/index.html">PT</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">30 July 2026 · <a href="../../pt/blog/novathesis-8-0-andorinha.html">Ler em português</a></div><h1>novathesis 8.0 — Andorinha</h1><p>Glossaries move to bib2gls — a migration every existing document needs — and pdfLaTeX builds get about three times faster.</p></div>
+<article class="post">
+<p>Andorinha is the release where glossaries changed engine. It makes builds much
+faster, and it asks something of you first.</p>
+<h2>Breaking: glossaries now use <code>bib2gls</code></h2>
+<p>Acronyms, glossary terms and symbols are defined in <strong><code>.bib</code> files</strong> processed
+by <code>bib2gls</code>, instead of <code>.tex</code> files processed by <code>makeglossaries</code>. Existing
+documents must be migrated:</p>
+<pre><code class="language-bash">make glsbib     # converts 1-FrontMatter/*.tex entry files to .bib
+</code></pre>
+<p>Then, before you delete the old files:</p>
+<ul>
+<li><strong>Re-add any <code>sort</code> keys.</strong> <code>convertgls2bib</code> drops them silently, and without
+  them symbols come out in the wrong order. <code>make glsbib</code> counts them and warns
+  you per file.</li>
+<li>Change symbol entries from <code>@entry</code> to <code>@symbol</code>.</li>
+<li>Delete <code>\glsaddall</code> if you call it — <code>bib2gls</code> has no equivalent.</li>
+</ul>
+<p>You cannot miss the migration by accident: a leftover <code>.tex</code> entry file now
+<strong>stops the build</strong> with an error naming the cause and the fix. The full
+procedure is the <em>Migrating from 7.10.x</em> appendix of the manual.</p>
+<p><strong>One new requirement:</strong> <code>bib2gls</code> needs a Java runtime. It ships with TeX Live
+and Overleaf provides one; check locally with <code>bib2gls --version</code>.</p>
+<h2>In exchange: much faster builds</h2>
+<p>Glossaries no longer consume any of pdfTeX's 16 write registers, so the
+<code>morewrites</code> package — which made every pass about nine times slower — is no
+longer loaded by default. A full pdfLaTeX build of the manual went from <strong>109
+seconds to 36</strong>. Glossaries no longer need <code>-shell-escape</code> either.</p>
+<h2>Also new</h2>
+<p><strong>Command-line overrides.</strong> Set any <code>\ntsetup</code> option at build time, without
+touching a configuration file:</p>
+<pre><code class="language-bash">make NT=&quot;doctype=msc,lang=pt&quot;
+</code></pre>
+<p><strong>A rebuilt build system.</strong> The <code>Makefile</code> is now a thin wrapper over
+<code>latexmk</code>, with all LaTeX settings in <code>latexmkrc</code>. There is a new <em>Build
+System</em> appendix in the manual.</p>
+<p>Several fixes came with it, including PDF bookmarks for bracketless
+<code>\ntindex</code> entries and the stacked-name covers used by UMinho and ISEL-MEB.
+The full list is in the
+<a href="https://github.com/joaomlourenco/novathesis/blob/main/CHANGELOG.md">changelog</a>.</p>
+</article>
+<p class="post-back"><a href="index.html">← All posts</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px"><b>nova</b>thesis is not an official template issued by any of the institutions listed. Compliance is pursued from public documentation — always check your institution's current regulations before submission.</p></div>
+<div><h4>Project</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Maintained by <a href="https://docentes.fct.unl.pt/joao-lourenco">João M. Lourenço</a></li></ul></div>
+<div><h4>Related Packages</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>

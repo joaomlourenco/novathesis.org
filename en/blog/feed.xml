@@ -19,4 +19,18 @@
     <updated>2026-08-21T00:00:00Z</updated>
     <summary>A new school — Faculdade de Farmácia da Universidade de Lisboa — a build option to cap the PDF size, and a fix for AMS symbols under pdfLaTeX.</summary>
   </entry>
+  <entry>
+    <title>novathesis 8.1.0</title>
+    <link href="https://novathesis.org/en/blog/novathesis-8-1-0"/>
+    <id>https://novathesis.org/en/blog/novathesis-8-1-0</id>
+    <updated>2026-08-19T00:00:00Z</updated>
+    <summary>The template is renamed to novathesis, gains a proper colophon page, and drops its last external dependency.</summary>
+  </entry>
+  <entry>
+    <title>novathesis 8.0 — Andorinha</title>
+    <link href="https://novathesis.org/en/blog/novathesis-8-0-andorinha"/>
+    <id>https://novathesis.org/en/blog/novathesis-8-0-andorinha</id>
+    <updated>2026-07-30T00:00:00Z</updated>
+    <summary>Glossaries move to bib2gls — a migration every existing document needs — and pdfLaTeX builds get about three times faster.</summary>
+  </entry>
 </feed>

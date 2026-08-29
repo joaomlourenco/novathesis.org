@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>novathesis 8.1.0 · novathesis</title>
+<meta name="description" content="The template is renamed to novathesis, gains a proper colophon page, and drops its last external dependency.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="me" href="https://mastodon.social/@novathesis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="novathesis 8.1.0">
+<meta property="og:description" content="The template is renamed to novathesis, gains a proper colophon page, and drops its last external dependency.">
+<meta property="og:url" content="https://novathesis.org/en/blog/novathesis-8-1-0">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Home</a><a class="" href="../schools.html">Find your school</a><a class="" href="../start.html">Get started</a><a class="" href="../docs.html">Docs</a><a class="" href="../showcase.html">Showcase</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Support</a><a class="" href="../contributing.html">Contributing</a><span class="sep"></span><a class="lang" href="../../pt/index.html">PT</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">19 August 2026 · <a href="../../pt/blog/novathesis-8-1-0.html">Ler em português</a></div><h1>novathesis 8.1.0</h1><p>The template is renamed to novathesis, gains a proper colophon page, and drops its last external dependency.</p></div>
+<article class="post">
+<p>This is the release where the template got its new name and lost its last
+external dependency.</p>
+<h2>The name is now <strong>nova</strong>thesis</h2>
+<p>Written with <code>nova</code> in semibold and <code>thesis</code> in light, and shipped as insignia
+and wordmark SVGs that need no font installed. In a document, <code>\novathesis</code>
+renders the logo under LuaLaTeX and XeLaTeX, and the wordmark otherwise.</p>
+<h2>Breaking: <code>NOVAthesisFiles</code> is now <code>novathesisFiles</code></h2>
+<p>The support directory was renamed to lower case. macOS and Windows will not
+notice — <strong>Linux, Overleaf and CI are case-sensitive</strong>, and there any local
+customization, script or <code>.gitignore</code> rule that still spells the old name will
+stop resolving. Search your project for <code>NOVAthesisFiles</code> and lower-case the
+<code>NOVA</code>.</p>
+<h2>A real Colophon page</h2>
+<p>Replacing the old mini-colophon: multilingual, with the template logo, the full
+citation, the font in use, the PDF/A status and a build id, shown according to
+your <code>docstatus</code>.</p>
+<h2>Citing the template</h2>
+<p>The reference now goes into your document's own bibliography, <code>CITATION.cff</code>
+makes GitHub show a <em>Cite this repository</em> button, the entry has a DOI, and the
+build tells you at the end that the reference was added. The old hidden white
+0.01pt citation is gone, and so is the opt-out.</p>
+<h2>One fewer dependency</h2>
+<p>The external <code>options</code> package has been replaced by an internal <code>l3keys</code>
+engine. Every registry — persons, files, lists, print order, languages — moved
+across, and the old code was deleted. <strong><code>\ntsetup</code> is unchanged</strong>: this is one
+fewer thing to install and one fewer source of surprises.</p>
+<p>Also new: SDG icons download on demand, the Jost font style, optional per-type
+glossary group headings, and a declaration of AI usage for UMinho. The full
+list is in the
+<a href="https://github.com/joaomlourenco/novathesis/blob/main/CHANGELOG.md">changelog</a>.</p>
+</article>
+<p class="post-back"><a href="index.html">← All posts</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px"><b>nova</b>thesis is not an official template issued by any of the institutions listed. Compliance is pursued from public documentation — always check your institution's current regulations before submission.</p></div>
+<div><h4>Project</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Maintained by <a href="https://docentes.fct.unl.pt/joao-lourenco">João M. Lourenço</a></li></ul></div>
+<div><h4>Related Packages</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>

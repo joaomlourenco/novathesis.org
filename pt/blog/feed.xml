@@ -19,4 +19,18 @@
     <updated>2026-08-21T00:00:00Z</updated>
     <summary>Uma nova escola — a Faculdade de Farmácia da Universidade de Lisboa — uma opção para limitar o tamanho do PDF, e uma correcção nos símbolos AMS em pdfLaTeX.</summary>
   </entry>
+  <entry>
+    <title>novathesis 8.1.0</title>
+    <link href="https://novathesis.org/pt/blog/novathesis-8-1-0"/>
+    <id>https://novathesis.org/pt/blog/novathesis-8-1-0</id>
+    <updated>2026-08-19T00:00:00Z</updated>
+    <summary>O template passa a chamar-se novathesis, ganha uma página de colofão a sério e perde a última dependência externa.</summary>
+  </entry>
+  <entry>
+    <title>novathesis 8.0 — Andorinha</title>
+    <link href="https://novathesis.org/pt/blog/novathesis-8-0-andorinha"/>
+    <id>https://novathesis.org/pt/blog/novathesis-8-0-andorinha</id>
+    <updated>2026-07-30T00:00:00Z</updated>
+    <summary>Os glossários passam para o bib2gls — uma migração que todos os documentos existentes têm de fazer — e as compilações em pdfLaTeX ficam cerca de três vezes mais rápidas.</summary>
+  </entry>
 </feed>

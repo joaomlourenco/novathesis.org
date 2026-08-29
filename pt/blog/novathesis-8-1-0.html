@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>novathesis 8.1.0 · novathesis</title>
+<meta name="description" content="O template passa a chamar-se novathesis, ganha uma página de colofão a sério e perde a última dependência externa.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="me" href="https://mastodon.social/@novathesis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="novathesis 8.1.0">
+<meta property="og:description" content="O template passa a chamar-se novathesis, ganha uma página de colofão a sério e perde a última dependência externa.">
+<meta property="og:url" content="https://novathesis.org/pt/blog/novathesis-8-1-0">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Início</a><a class="" href="../schools.html">A tua escola</a><a class="" href="../start.html">Começar</a><a class="" href="../docs.html">Documentação</a><a class="" href="../showcase.html">Galeria</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Apoio</a><a class="" href="../contributing.html">Contribuir</a><span class="sep"></span><a class="lang" href="../../en/index.html">EN</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">19 de Agosto de 2026 · <a href="../../en/blog/novathesis-8-1-0.html">Read in English</a></div><h1>novathesis 8.1.0</h1><p>O template passa a chamar-se novathesis, ganha uma página de colofão a sério e perde a última dependência externa.</p></div>
+<article class="post">
+<p>Esta é a versão em que o template ganhou o nome novo e perdeu a última
+dependência externa.</p>
+<h2>O nome passa a ser <strong>nova</strong>thesis</h2>
+<p>Escrito com <code>nova</code> em semibold e <code>thesis</code> em light, e distribuído como imagens
+SVG da insígnia e do logótipo que não precisam de nenhuma fonte instalada. Num
+documento, o <code>\novathesis</code> mostra o logótipo em LuaLaTeX e XeLaTeX, e a palavra
+composta nos restantes motores.</p>
+<h2>Alteração incompatível: <code>NOVAthesisFiles</code> passa a <code>novathesisFiles</code></h2>
+<p>A pasta de suporte passou a minúsculas. O macOS e o Windows não dão por isso —
+mas o <strong>Linux, o Overleaf e a integração contínua distinguem maiúsculas</strong>, e aí
+qualquer personalização, script ou regra de <code>.gitignore</code> que ainda escreva o
+nome antigo deixa de funcionar. Procura <code>NOVAthesisFiles</code> no teu projecto e põe
+o <code>NOVA</code> em minúsculas.</p>
+<h2>Uma página de colofão a sério</h2>
+<p>Substitui o mini-colofão anterior: multilingue, com o logótipo do template, a
+citação completa, a fonte em uso, o estado de PDF/A e um identificador de
+compilação, apresentada conforme o teu <code>docstatus</code>.</p>
+<h2>Citar o template</h2>
+<p>A referência passa a entrar na bibliografia do teu próprio documento, o
+<code>CITATION.cff</code> faz o GitHub mostrar o botão <em>Cite this repository</em>, a entrada
+tem DOI e, no fim da compilação, o template avisa-te de que a referência foi
+acrescentada. A antiga citação escondida a branco com 0,01pt desapareceu, tal
+como a opção de a desligar.</p>
+<h2>Menos uma dependência</h2>
+<p>O pacote externo <code>options</code> foi substituído por um motor <code>l3keys</code> interno. Todos
+os registos — pessoas, ficheiros, listas, ordem de impressão, línguas —
+passaram para o novo motor e o código antigo foi apagado. <strong>O <code>\ntsetup</code> não
+muda</strong>: é menos uma coisa para instalar e menos uma fonte de surpresas.</p>
+<p>Também é novo: os ícones dos ODS passam a ser descarregados quando são
+precisos, o estilo de letra Jost, títulos de grupo opcionais por tipo de
+glossário e uma declaração de uso de IA para a UMinho. A lista completa está no
+<a href="https://github.com/joaomlourenco/novathesis/blob/main/CHANGELOG.md">changelog</a>.</p>
+</article>
+<p class="post-back"><a href="index.html">← Todos os artigos</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px">O <b>nova</b>thesis não é um template oficial de nenhuma das instituições listadas. A conformidade é procurada a partir de documentação pública — confirma sempre os regulamentos actuais da tua instituição antes da entrega.</p></div>
+<div><h4>Projecto</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Mantido por João M. Lourenço</li></ul></div>
+<div><h4>Pacotes relacionados</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>
