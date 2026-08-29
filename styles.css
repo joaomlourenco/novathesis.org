@@ -174,8 +174,17 @@ p{margin:0;text-wrap:pretty}
 .post-meta h2 a:hover{color:var(--accent-700)}
 .post-meta .tag{margin-left:8px;padding:2px 6px}
 .post-head{gap:12px}
+/* the head and its image share a row: text left, image top right. The image is
+   an aside, not a banner, so it is capped rather than full-bleed. */
+.post-top{display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:start}
 .post-hero{margin:0;border:2px solid var(--n300);background:#fff;line-height:0}
-.post-hero img{width:100%;height:auto}
+.post-hero a{display:block;line-height:0}
+.post-hero img{width:100%;height:auto;display:block}
+@media (max-width:760px){
+  /* stacked: the image follows the title, still small, aligned left */
+  .post-top{grid-template-columns:1fr;gap:18px}
+  .post-hero{max-width:150px}
+}
 /* the post body is the one place on the site with long-form prose */
 .post{max-width:68ch;display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.6}
 .post h2{font-size:24px;letter-spacing:-.02em;margin-top:14px}

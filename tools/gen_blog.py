@@ -138,16 +138,21 @@ def og(lang, title, desc, url, image):
 # ── rendering ─────────────────────────────────────────────────────────────────
 def post_page(p, others, lang):
     s, url = STRINGS[lang], f'https://novathesis.org/{lang}/blog/{p["slug"]}'
-    hero = (f'<figure class="post-hero"><img src="../../blog/images/{p["image"]}" '
-            f'alt="{html.escape(p["image_alt"])}"></figure>\n') if p['image'] else ''
     swap = ''
     if others:
         o = 'pt' if lang == 'en' else 'en'
         swap = f' · <a href="../../{o}/blog/{p["slug"]}.html">{STRINGS[lang]["other"]}</a>'
-    body = (f'<div class="lede post-head"><div class="kicker">{fmt_date(p["date"], lang)}{swap}</div>'
+    head = (f'<div class="lede post-head"><div class="kicker">{fmt_date(p["date"], lang)}{swap}</div>'
             f'<h1>{html.escape(p["title"])}</h1>'
-            + (f'<p>{html.escape(p["summary"])}</p>' if p['summary'] else '') + '</div>\n'
-            + hero + f'<article class="post">\n{p["body"]}\n</article>\n'
+            + (f'<p>{html.escape(p["summary"])}</p>' if p['summary'] else '') + '</div>')
+    # with an image, the head and the image share a row: text left, image top
+    # right. Without one, the head stands alone -- no empty column reserved.
+    if p['image']:
+        head = (f'<div class="post-top">\n{head}\n'
+                f'<figure class="post-hero"><a href="../../blog/images/{p["image"]}">'
+                f'<img src="../../blog/images/{p["image"]}" alt="{html.escape(p["image_alt"])}">'
+                f'</a></figure>\n</div>')
+    body = (head + '\n' + f'<article class="post">\n{p["body"]}\n</article>\n'
             f'<p class="post-back"><a href="index.html">{s["back"]}</a></p>')
     return page(lang, p['title'], p['summary'] or p['title'], body,
                 og(lang, p['title'], p['summary'] or p['title'], url, p['image']))
