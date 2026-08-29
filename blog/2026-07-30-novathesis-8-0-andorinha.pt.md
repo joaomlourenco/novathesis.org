@@ -1,5 +1,5 @@
 ---
-title: novathesis 8.0 — Andorinha
+title: novathesis 8.0.0 — Andorinha: Migration Season
 date: 2026-07-30
 summary: Os glossários passam para o bib2gls — uma migração que todos os documentos existentes têm de fazer — e as compilações em pdfLaTeX ficam cerca de três vezes mais rápidas.
 image:
