@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>novathesis 8.2.0 · novathesis</title>
-<meta name="description" content="A new school — Faculdade de Farmácia da Universidade de Lisboa — automatic downsampling of oversized images, and a fix for AMS symbols under pdfLaTeX.">
+<meta name="description" content="A new school — Faculdade de Farmácia da Universidade de Lisboa — a build option to cap the PDF size, and a fix for AMS symbols under pdfLaTeX.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="me" href="https://mastodon.social/@novathesis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="novathesis 8.2.0">
-<meta property="og:description" content="A new school — Faculdade de Farmácia da Universidade de Lisboa — automatic downsampling of oversized images, and a fix for AMS symbols under pdfLaTeX.">
+<meta property="og:description" content="A new school — Faculdade de Farmácia da Universidade de Lisboa — a build option to cap the PDF size, and a fix for AMS symbols under pdfLaTeX.">
 <meta property="og:url" content="https://novathesis.org/en/blog/novathesis-8-2-0">
 <meta property="og:site_name" content="novathesis">
 <meta property="og:locale" content="en_GB">
@@ -18,7 +18,7 @@
 <div class="wrap">
 <header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Home</a><a class="" href="../schools.html">Find your school</a><a class="" href="../start.html">Get started</a><a class="" href="../docs.html">Docs</a><a class="" href="../showcase.html">Showcase</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Support</a><a class="" href="../contributing.html">Contributing</a><span class="sep"></span><a class="lang" href="../../pt/index.html">PT</a></nav></header>
 <main class="page">
-<div class="lede post-head"><div class="kicker">21 August 2026 · <a href="../../pt/blog/novathesis-8-2-0.html">Ler em português</a></div><h1>novathesis 8.2.0</h1><p>A new school — Faculdade de Farmácia da Universidade de Lisboa — automatic downsampling of oversized images, and a fix for AMS symbols under pdfLaTeX.</p></div>
+<div class="lede post-head"><div class="kicker">21 August 2026 · <a href="../../pt/blog/novathesis-8-2-0.html">Ler em português</a></div><h1>novathesis 8.2.0</h1><p>A new school — Faculdade de Farmácia da Universidade de Lisboa — a build option to cap the PDF size, and a fix for AMS symbols under pdfLaTeX.</p></div>
 <article class="post">
 <p>Version 8.2.0 is out. The headline is a new school, but there are two changes
 worth knowing about even if you are not at ULisboa.</p>
@@ -29,10 +29,21 @@ cover, spine, statement pages and a <code>modality</code> choice between <em>dis
 <pre><code class="language-latex">\ntsetup{school=ulisboa/fful}
 </code></pre>
 <p>Support for it was contributed by <a href="https://github.com/nobrega8">Afonso Nóbrega</a>.</p>
-<h2>Oversized images are downsampled for you</h2>
-<p>Submission systems often cap the size of the PDF you can upload. Images that
-are larger than they need to be are now downsampled during the build, so
-staying under a limit no longer means editing your figures by hand.</p>
+<h2>Capping the size of your PDF</h2>
+<p>Submission systems often cap the size of the file you can upload. There is now
+a build option for that:</p>
+<pre><code class="language-bash">make SIZE=10
+</code></pre>
+<p>After the normal build, Ghostscript binary-searches the <em>highest</em> raster-image
+resolution that still keeps the PDF under 10 MB, so you give up as little
+quality as the limit allows. Text, fonts and vector graphics are never touched
+— only raster images are resampled, which means a mostly-vector document may
+not reach a very small target. When that happens the build still succeeds: it
+warns, and gives you the smallest PDF it managed.</p>
+<p>Your full-quality build is kept alongside as <code>template.pdf.orig</code>, so nothing is
+lost. It needs Ghostscript (<code>gs</code>) on your <code>PATH</code>, and if you are producing a
+PDF/A file for final submission, re-validate it afterwards — downsampling
+rewrites every image stream.</p>
 <h2>A fix worth knowing about</h2>
 <p>If you compile with <strong>pdfLaTeX</strong> and your school uses the Times font style,
 <code>\hbar</code> and other AMS symbols used to fail with <em>Undefined control sequence</em>.

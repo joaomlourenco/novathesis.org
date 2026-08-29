@@ -10,6 +10,6 @@
     <link href="https://novathesis.org/en/blog/novathesis-8-2-0"/>
     <id>https://novathesis.org/en/blog/novathesis-8-2-0</id>
     <updated>2026-08-21T00:00:00Z</updated>
-    <summary>A new school — Faculdade de Farmácia da Universidade de Lisboa — automatic downsampling of oversized images, and a fix for AMS symbols under pdfLaTeX.</summary>
+    <summary>A new school — Faculdade de Farmácia da Universidade de Lisboa — a build option to cap the PDF size, and a fix for AMS symbols under pdfLaTeX.</summary>
   </entry>
 </feed>
