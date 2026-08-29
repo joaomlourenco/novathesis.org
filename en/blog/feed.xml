@@ -33,4 +33,25 @@
     <updated>2026-07-30T00:00:00Z</updated>
     <summary>Glossaries move to bib2gls — a migration every existing document needs — and pdfLaTeX builds get about three times faster.</summary>
   </entry>
+  <entry>
+    <title>novathesis 7.10 — Chinese abstracts, and ISEL</title>
+    <link href="https://novathesis.org/en/blog/novathesis-7-10"/>
+    <id>https://novathesis.org/en/blog/novathesis-7-10</id>
+    <updated>2026-01-27T00:00:00Z</updated>
+    <summary>Abstracts in Simplified and Traditional Chinese, support for IPL/ISEL, and automated integrity statements for NOVA FCSH.</summary>
+  </entry>
+  <entry>
+    <title>novathesis 7.7 and 7.8 — Declaring AI use, and three more ULisboa schools</title>
+    <link href="https://novathesis.org/en/blog/novathesis-7-7-7-8"/>
+    <id>https://novathesis.org/en/blog/novathesis-7-7-7-8</id>
+    <updated>2025-12-22T00:00:00Z</updated>
+    <summary>A formal AI-usage declaration for your thesis, support for FCUL, IST and ISEG, and a new spine design.</summary>
+  </entry>
+  <entry>
+    <title>novathesis 7.6 — Sustainable Development Goals, and seven new languages</title>
+    <link href="https://novathesis.org/en/blog/novathesis-7-6"/>
+    <id>https://novathesis.org/en/blog/novathesis-7-6</id>
+    <updated>2025-11-26T00:00:00Z</updated>
+    <summary>SDG icons on the abstract page, seven more languages for covers and fixed strings, and the Palatino font styles.</summary>
+  </entry>
 </feed>

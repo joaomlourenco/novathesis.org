@@ -33,4 +33,25 @@
     <updated>2026-07-30T00:00:00Z</updated>
     <summary>Os glossários passam para o bib2gls — uma migração que todos os documentos existentes têm de fazer — e as compilações em pdfLaTeX ficam cerca de três vezes mais rápidas.</summary>
   </entry>
+  <entry>
+    <title>novathesis 7.10 — Resumos em chinês, e o ISEL</title>
+    <link href="https://novathesis.org/pt/blog/novathesis-7-10"/>
+    <id>https://novathesis.org/pt/blog/novathesis-7-10</id>
+    <updated>2026-01-27T00:00:00Z</updated>
+    <summary>Resumos em chinês simplificado e tradicional, suporte para o IPL/ISEL, e declarações de integridade automáticas para a NOVA FCSH.</summary>
+  </entry>
+  <entry>
+    <title>novathesis 7.7 e 7.8 — Declarar o uso de IA, e mais três escolas da ULisboa</title>
+    <link href="https://novathesis.org/pt/blog/novathesis-7-7-7-8"/>
+    <id>https://novathesis.org/pt/blog/novathesis-7-7-7-8</id>
+    <updated>2025-12-22T00:00:00Z</updated>
+    <summary>Uma declaração formal de uso de IA na tese, suporte para FCUL, IST e ISEG, e um novo desenho de lombada.</summary>
+  </entry>
+  <entry>
+    <title>novathesis 7.6 — Objectivos de Desenvolvimento Sustentável, e sete novas línguas</title>
+    <link href="https://novathesis.org/pt/blog/novathesis-7-6"/>
+    <id>https://novathesis.org/pt/blog/novathesis-7-6</id>
+    <updated>2025-11-26T00:00:00Z</updated>
+    <summary>Ícones dos ODS na página de resumo, mais sete línguas para capas e textos fixos, e os estilos de letra Palatino.</summary>
+  </entry>
 </feed>
