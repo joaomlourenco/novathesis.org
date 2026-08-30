@@ -1,5 +1,5 @@
 ---
-title: novathesis 8.0.0 — Andorinha: Migration Season
+title: novathesis 8.0.0 — Swallow: Migration Season
 date: 2026-07-30
 summary: Glossaries move to bib2gls — a migration every existing document needs — and pdfLaTeX builds get about three times faster.
 image: flying-swallow.png
