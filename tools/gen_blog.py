@@ -110,10 +110,15 @@ def chrome(lang):
         s = s.replace('href="../', 'href="@@/')          # ../styles.css -> ../../
         s = re.sub(r'href="(?!https?:|#|@@/|\.\./)([^"]+)"', r'href="../\1"', s)
         return s.replace('href="@@/', 'href="../../')
-    return head.replace('href="../', 'href="../../'), deepen(header), deepen(footer)
+    # the lifted header points the language switch at the other language's home
+    # page; each blog page substitutes its own counterpart for @@LANG@@
+    hdr = re.sub(r'(<a class="lang" href=")[^"]*(")', r'\1@@LANG@@\2', deepen(header))
+    return head.replace('href="../', 'href="../../'), hdr, deepen(footer)
 
-def page(lang, title, desc, body, extra_head=''):
+def page(lang, title, desc, body, extra_head='', lang_href=None):
     head, header, footer = CHROME[lang]
+    other = 'pt' if lang == 'en' else 'en'
+    header = header.replace('@@LANG@@', lang_href or f'../../{other}/blog/index.html')
     return (f'<!DOCTYPE html>\n<html lang="{lang}">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<title>{html.escape(title)} · novathesis</title>\n'
@@ -154,8 +159,12 @@ def post_page(p, others, lang):
                 f'</a></figure>\n</div>')
     body = (head + '\n' + f'<article class="post">\n{p["body"]}\n</article>\n'
             f'<p class="post-back"><a href="index.html">{s["back"]}</a></p>')
+    other = 'pt' if lang == 'en' else 'en'
+    counterpart = (f'../../{other}/blog/{p["slug"]}.html' if others
+                   else f'../../{other}/blog/index.html')
     return page(lang, p['title'], p['summary'] or p['title'], body,
-                og(lang, p['title'], p['summary'] or p['title'], url, p['image']))
+                og(lang, p['title'], p['summary'] or p['title'], url, p['image']),
+                lang_href=counterpart)
 
 def index_page(posts, lang):
     s = STRINGS[lang]
