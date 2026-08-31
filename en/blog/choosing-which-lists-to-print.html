@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choosing which &quot;list of…&quot; gets printed · novathesis</title>
+<meta name="description" content="One option turns off the List of Tables, Listings or Algorithms — without editing the configuration file that registers them.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="me" href="https://mastodon.social/@novathesis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Choosing which &quot;list of…&quot; gets printed">
+<meta property="og:description" content="One option turns off the List of Tables, Listings or Algorithms — without editing the configuration file that registers them.">
+<meta property="og:url" content="https://novathesis.org/en/blog/choosing-which-lists-to-print">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Home</a><a class="" href="../schools.html">Find your school</a><a class="" href="../start.html">Get started</a><a class="" href="../docs.html">Docs</a><a class="" href="../showcase.html">Showcase</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Support</a><a class="" href="../contributing.html">Contributing</a><span class="sep"></span><a class="lang" href="../../pt/blog/choosing-which-lists-to-print.html">PT</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">31 August 2026 · <a href="../../pt/blog/choosing-which-lists-to-print.html">Ler em português</a></div><h1>Choosing which &quot;list of…&quot; gets printed</h1><p>One option turns off the List of Tables, Listings or Algorithms — without editing the configuration file that registers them.</p></div>
+<article class="post">
+<p>A thesis with two tables does not need a List of Tables. Until now, leaving one
+out meant finding its line in <code>0-Config/6_list_of.tex</code> and commenting it out —
+and remembering to put it back if a supervisor disagreed.</p>
+<p>Since 8.3.0 there is an option for it:</p>
+<pre><code class="language-latex">\ntsetup{listof/skip={listoftables,listoflistings}}
+</code></pre>
+<p>That prints the List of Figures and nothing else. The lines in
+<code>6_list_of.tex</code> stay exactly as they are.</p>
+<h2>What you can name</h2>
+<p>Whatever <code>\ntaddlistof</code> registers — so the <strong>full</strong> list name, not a short
+form:</p>
+<ul>
+<li><code>listoffigures</code></li>
+<li><code>listoftables</code></li>
+<li><code>listofalgorithms</code></li>
+<li><code>listoflistings</code></li>
+<li>any custom list you added yourself</li>
+</ul>
+<p>And one extra, which is not a <code>\ntaddlistof</code> entry at all:</p>
+<ul>
+<li><code>glossaries</code> — a friendlier spelling of <code>\ntsetup{print/glossaries=false}</code></li>
+</ul>
+<pre><code class="language-latex">\ntsetup{listof/skip={listoftables,listofalgorithms,glossaries}}
+</code></pre>
+<p>The default is empty: nothing is skipped, and every list you registered is
+printed.</p>
+<h2>Why bother, when commenting out worked</h2>
+<p>Because the option lives with your other settings rather than inside the file
+that declares the lists, and because it survives a template upgrade — you are
+no longer maintaining a local edit to a shipped configuration file. It also
+composes with <code>make</code>:</p>
+<pre><code class="language-bash">make NT=&quot;listof/skip={listoftables}&quot;
+</code></pre>
+<p>which is handy when the same document has to be handed in twice, to two sets
+of rules.</p>
+</article>
+<p class="post-back"><a href="index.html">← All posts</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px"><b>nova</b>thesis is not an official template issued by any of the institutions listed. Compliance is pursued from public documentation — always check your institution's current regulations before submission.</p></div>
+<div><h4>Project</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Maintained by <a href="https://docentes.fct.unl.pt/joao-lourenco">João M. Lourenço</a></li></ul></div>
+<div><h4>Related Packages</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>

@@ -4,7 +4,14 @@
   <link href="https://novathesis.org/en/blog/"/>
   <link rel="self" href="https://novathesis.org/en/blog/feed.xml"/>
   <id>https://novathesis.org/en/blog/</id>
-  <updated>2026-08-29T00:00:00Z</updated>
+  <updated>2026-08-31T00:00:00Z</updated>
+  <entry>
+    <title>Choosing which &quot;list of…&quot; gets printed</title>
+    <link href="https://novathesis.org/en/blog/choosing-which-lists-to-print"/>
+    <id>https://novathesis.org/en/blog/choosing-which-lists-to-print</id>
+    <updated>2026-08-31T00:00:00Z</updated>
+    <summary>One option turns off the List of Tables, Listings or Algorithms — without editing the configuration file that registers them.</summary>
+  </entry>
   <entry>
     <title>novathesis 8.3.0 — Stork: Flying International</title>
     <link href="https://novathesis.org/en/blog/novathesis-8-3-0"/>

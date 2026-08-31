@@ -4,7 +4,14 @@
   <link href="https://novathesis.org/pt/blog/"/>
   <link rel="self" href="https://novathesis.org/pt/blog/feed.xml"/>
   <id>https://novathesis.org/pt/blog/</id>
-  <updated>2026-08-29T00:00:00Z</updated>
+  <updated>2026-08-31T00:00:00Z</updated>
+  <entry>
+    <title>Escolher que &quot;lista de…&quot; é impressa</title>
+    <link href="https://novathesis.org/pt/blog/choosing-which-lists-to-print"/>
+    <id>https://novathesis.org/pt/blog/choosing-which-lists-to-print</id>
+    <updated>2026-08-31T00:00:00Z</updated>
+    <summary>Uma opção desliga a Lista de Tabelas, de Listagens ou de Algoritmos — sem editar o ficheiro de configuração que as registou.</summary>
+  </entry>
   <entry>
     <title>novathesis 8.3.0 — Stork: Flying International</title>
     <link href="https://novathesis.org/pt/blog/novathesis-8-3-0"/>
