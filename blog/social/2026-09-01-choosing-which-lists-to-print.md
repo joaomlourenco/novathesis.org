@@ -14,6 +14,8 @@ Since novathesis 8.3.0 one option leaves it out, with no edit to the file that d
 
 \ntsetup{listof/skip={listoftables,listoflistings}}
 
+#LaTeX
+
 https://novathesis.org/en/blog/choosing-which-lists-to-print
 
 ## Bluesky — PT (limite 300)
@@ -23,6 +25,8 @@ Uma tese com duas tabelas não precisa de Lista de Tabelas.
 Desde o novathesis 8.3.0 há uma opção que a deixa de fora, sem tocar no ficheiro que declara as listas:
 
 \ntsetup{listof/skip={listoftables,listoflistings}}
+
+#LaTeX
 
 https://novathesis.org/pt/blog/choosing-which-lists-to-print
 
@@ -36,7 +40,7 @@ Since novathesis 8.3.0, one option leaves any list out — and the lines in 0-Co
 
 \ntsetup{listof/skip={listoftables,listoflistings}}
 
-Name the full list — listoftables, not tables. #LaTeX #PhD #thesis
+Name the full list — listoftables, not tables. #LaTeX #TeX #AcademicMastodon #PhD #OpenSource
 
 https://novathesis.org/en/blog/choosing-which-lists-to-print
 
@@ -48,7 +52,7 @@ Desde o novathesis 8.3.0, uma opção deixa de fora qualquer lista — e as linh
 
 \ntsetup{listof/skip={listoftables,listoflistings}}
 
-Indica o nome completo: listoftables, não tables. #LaTeX #tese
+Indica o nome completo: listoftables, não tables. #LaTeX #TeX #AcademicMastodon #tese #OpenSource
 
 https://novathesis.org/pt/blog/choosing-which-lists-to-print
 
@@ -62,6 +66,8 @@ novathesis 8.3.0 leaves it out with one option, no edit to the file that declare
 
 \ntsetup{listof/skip={listoftables,listoflistings}}
 
+#LaTeX #PhD
+
 https://novathesis.org/en/blog/choosing-which-lists-to-print
 
 ## X — PT (limite 280)
@@ -71,6 +77,8 @@ Uma tese com duas tabelas não precisa de Lista de Tabelas.
 O novathesis 8.3.0 deixa-a de fora com uma opção, sem tocar no ficheiro que declara as listas:
 
 \ntsetup{listof/skip={listoftables,listoflistings}}
+
+#LaTeX #PhD
 
 https://novathesis.org/pt/blog/choosing-which-lists-to-print
 
@@ -86,12 +94,13 @@ Full how-to on the blog, link in bio. 🔗
 
 PT: Uma tese com duas tabelas não precisa de Lista de Tabelas. Desde o novathesis 8.3.0, uma linha decide que listas são impressas e que listas ficam de fora. Artigo completo no blogue, link na bio.
 
-#LaTeX #novathesis #tese #thesis #PhD #MSc #dissertação #academia #phdlife
-#writingatthesis #overleaf
+#LaTeX #novathesis #tese #thesis #PhD #MSc #TCC #mestrado #doutorado
+#doutoramento #dissertação #dissertacao #ThesisWriting #PhDLife #GradSchool
+#academia #Overleaf
 
 ---
 
-## Reddit — r/LaTeX (title + body)
+## Reddit — r/LaTeX (title + body; no hashtags — Reddit uses subreddit flair)
 
 **Title:** novathesis 8.3.0: choosing which "list of…" gets printed, without editing the file that declares them
 
