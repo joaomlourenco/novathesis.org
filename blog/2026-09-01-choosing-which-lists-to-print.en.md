@@ -1,9 +1,9 @@
 ---
 title: Choosing which "list of…" gets printed
-date: 2026-08-31
+date: 2026-09-01
 summary: One option turns off the List of Tables, Listings or Algorithms — without editing the configuration file that registers them.
-image:
-image_alt:
+image: toc.png
+image_alt: A table of contents followed by a List of Figures
 ---
 
 A thesis with two tables does not need a List of Tables. Until now, leaving one

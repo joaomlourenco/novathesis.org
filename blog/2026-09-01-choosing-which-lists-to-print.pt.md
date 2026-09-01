@@ -1,9 +1,9 @@
 ---
 title: Escolher que "lista de…" é impressa
-date: 2026-08-31
+date: 2026-09-01
 summary: Uma opção desliga a Lista de Tabelas, de Listagens ou de Algoritmos — sem editar o ficheiro de configuração que as registou.
-image:
-image_alt:
+image: toc.png
+image_alt: Um índice seguido de uma Lista de Figuras
 ---
 
 Uma tese com duas tabelas não precisa de uma Lista de Tabelas. Até agora, deixar
