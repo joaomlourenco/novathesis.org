@@ -23,12 +23,23 @@ INSTITUTIONS
                 cover-language convention
     `tag` and `credit` apply to the whole row.
 
+    An entry with no `paths` is a third-party adaptation with no schools.conf
+    path to derive from (nova-ims). It must carry `uni`, `school` and `blocks`
+    itself, and they pass through verbatim, gated only on the cover art
+    existing in covers/SVG.
+
 GROUPS / REPOS
     "Find your school" cards. One GitHub repo can serve several schools.conf
     paths (uminho's repo covers 12 sub-schools; ipl-isel's covers 2), so this
     stays a flat, fully hand-curated list -- gen_nt_schools.py copies it into
     nt_schools.py unchanged. cover_stem() in nt_schools.py already derives the
     cover asset from `repo` when `cover` is omitted.
+
+    `repo` stays the site's own identifier -- it drives the cover lookup and
+    the label on the card. For a template kept outside the novathesis
+    organisation, add `org` (the owner's URL) and `slug` (the repository's real
+    name); add `zip` when the repository ships the template as a committed ZIP
+    instead of a source tree, and `branch` when its default is not `main`.
 """
 
 INSTITUTIONS = [
@@ -51,6 +62,17 @@ INSTITUTIONS = [
             'phd': ('PhD Dissertation — Gray', 'Dissertação de Doutoramento — Cinza')}),
         dict(path='nova/itqb/green', labels={
             'phd': ('PhD Dissertation — Green', 'Dissertação de Doutoramento — Verde')})]),
+
+    # NOVA IMS is not a school of the novathesis template: it is a third-party
+    # adaptation, kept in its author's own repository, so it has no
+    # schools.conf path and nothing about it can be derived. An entry with no
+    # `paths` is passed through verbatim, which is why the names and blocks
+    # that every other row derives are spelled out here.
+    dict(key='nova-ims', tag='NOVA IMS',
+         credit=('Paulo Vitor de Campos Souza', 'pdecampossouza'),
+         uni=('NOVA University Lisbon', 'Universidade NOVA de Lisboa'),
+         school=('Information Management School',) * 2,
+         blocks=[('nova-ims-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado')]),
 
     dict(key='nova-ensp', tag='NOVA ENSP', paths=[dict(path='nova/ensp')]),
 
@@ -104,6 +126,12 @@ REPOS = [
     dict(group='nova', repo='nova-ensp',       label='Escola Nacional de Saúde Pública (ENSP)',        cover='nova-ensp-phd-en-lua'),
     dict(group='nova', repo='nova-itqb',       label='Instituto de Tecnologia Química e Biológica (ITQB)', cover='nova-itqb-green-phd-en-lua'),
     dict(group='nova', repo='nova-fcsh',       label='Faculdade de Ciências Sociais e Humanas (FCSH)', cover='nova-fcsh-phd-en-lua'),
+    # Externally maintained: `org`/`slug` point at the author's repository, and
+    # `zip` at the packaged template committed inside it -- that repo holds the
+    # ZIP and a README, not a source tree, so Overleaf must import the ZIP.
+    dict(group='nova', repo='nova-ims',        label='NOVA Information Management School (NOVA IMS)', cover='nova-ims-msc-en-lua',
+         org='https://github.com/pdecampossouza', slug='nova-ims-thesis-template-2025',
+         zip='NOVAthesis 2025-2026.zip'),
 
     dict(group='ul', repo='ulisboa-fcul', label='Faculdade de Ciências, ULisboa (FCUL)',     cover='ulisboa-fcul-phd-en-lua'),
     dict(group='ul', repo='ulisboa-ist',  label='Instituto Superior Técnico (IST)'),

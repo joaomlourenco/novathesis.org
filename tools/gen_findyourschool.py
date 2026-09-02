@@ -8,7 +8,7 @@ School data lives in nt_schools.py -- edit there, not here.
 """
 import re, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from nt_schools import (SITE, GROUPS, REPOS, ORG, overleaf, find, ratio,
+from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, find, ratio,
                         cover_stem, check_or_exit)
 
 TAGS = {'en': ('ZIP', 'Git', 'Overleaf'), 'pt': ('ZIP', 'Git', 'Overleaf')}
@@ -16,7 +16,7 @@ GRID_RE = re.compile(r'<div style="display:flex;flex-direction:column;gap:40px">
 
 def card(r, lang):
     cover = find(cover_stem(r), '1')
-    url = f"{ORG}/{r['repo']}"
+    url = repo_url(r)
     zip_, git, ovl = TAGS[lang]
     # uminho's cover is a wrap-around, so it is cropped to the front face
     if r.get('crop'):
@@ -30,9 +30,9 @@ def card(r, lang):
     return (f'<div class="card"><div class="repo">{r["repo"]}</div>{frame}'
             f'<div class="school">{r["label"]}</div>'
             f'<div class="tags">'
-            f'<a class="tag" href="{url}/archive/refs/heads/main.zip">{zip_}</a>'
+            f'<a class="tag" href="{zip_url(r)}">{zip_}</a>'
             f'<a class="tag" href="{url}">{git}</a>'
-            f'<a class="tag" href="{overleaf(r["repo"])}">{ovl}</a></div></div>')
+            f'<a class="tag" href="{overleaf(r)}">{ovl}</a></div></div>')
 
 def grid(lang):
     out = ['<div style="display:flex;flex-direction:column;gap:40px">']

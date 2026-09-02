@@ -178,6 +178,21 @@ def university_and_school(path):
 def gen_institutions(conf):
     rows = []
     for inst in ov.INSTITUTIONS:
+        if not inst.get('paths'):
+            # A third-party adaptation: it has no schools.conf path, so there is
+            # nothing to derive and nt_overrides.py spells the row out in full.
+            blocks = [tuple(b) for b in inst['blocks']
+                      if (SVG / f'{b[0]}-1.svg').exists()]
+            if not blocks:
+                print(f"gen_nt_schools: external institution {inst['key']!r} has no cover "
+                      f"art in covers/SVG -- dropped entirely", file=sys.stderr)
+                continue
+            row = dict(key=inst['key'], uni=inst['uni'], school=inst['school'],
+                       tag=inst['tag'], blocks=blocks)
+            if inst.get('credit'):
+                row['credit'] = inst['credit']
+            rows.append(row)
+            continue
         uni = school = None
         blocks = []
         for p in inst['paths']:
@@ -249,6 +264,9 @@ def render_repos():
             parts.append(f"cover={r['cover']!r}")
         if r.get('crop'):
             parts.append('crop=True')
+        for field in ('org', 'slug', 'zip', 'branch'):
+            if r.get(field):
+                parts.append(f"{field}={r[field]!r}")
         out.append(f" dict({', '.join(parts)}),")
     out.append(']')
     return '\n'.join(out)
@@ -257,10 +275,31 @@ def render_repos():
 HELPERS = '''
 ORG = 'https://github.com/novathesis'
 
-def overleaf(repo):
-    """Overleaf import URL: uploads the repo's main ZIP and sets the root document."""
-    return (f'https://www.overleaf.com/docs?snip_uri={ORG}/{repo}'
-            f'/archive/refs/heads/main.zip&amp;main_document=template.tex')
+# Showcase rows that are deliberately not repository cards. The manual is not a
+# school, so it has no "Find your school" entry and must not be reported as a
+# gap. Everything else on the showcase needs a card.
+SHOWCASE_ONLY = {'manual'}
+
+def repo_url(r):
+    """The repository's GitHub page. `org` and `slug` cover a school whose
+    template lives outside the novathesis organisation, under its own name."""
+    return f"{r.get('org', ORG)}/{r.get('slug', r['repo'])}"
+
+def zip_url(r):
+    """The ZIP a reader should download, and the one Overleaf should import.
+    `zip` names a ZIP committed inside the repository, for a repo that ships the
+    template packaged instead of as a source tree: importing such a repo's own
+    archive would nest one ZIP inside another, and neither a reader nor Overleaf
+    would find template.tex at the top level."""
+    branch = r.get('branch', 'main')
+    if r.get('zip'):
+        return f"{repo_url(r)}/raw/{branch}/{urllib.parse.quote(r['zip'])}"
+    return f'{repo_url(r)}/archive/refs/heads/{branch}.zip'
+
+def overleaf(r):
+    """Overleaf import URL: uploads the template ZIP and sets the root document."""
+    return (f'https://www.overleaf.com/docs?snip_uri={zip_url(r)}'
+            f'&amp;main_document=template.tex')
 
 def find(stem, page):
     """Resolve stem-page.svg, tolerating an export-tool page suffix (-N-1.svg)."""
@@ -311,10 +350,21 @@ def validate():
                             f"or add covers/SVG/{r.get('repo')}-<degree>-en-lua-1.svg")
         elif not find(stem, '1'):
             problems.append(f"{r.get('repo')}: cover {stem}-1.svg not found")
+        for field in ('org', 'slug', 'zip', 'branch'):
+            if field in r and not r[field]:
+                problems.append(f"{r.get('repo')}: {field!r} is present but empty")
+    # A showcase row with no card is invisible on "Find your school", which is
+    # silent and easy to miss. The reverse is legitimate and not checked: one
+    # repo can serve many showcase paths (uminho's covers 12 sub-schools), and
+    # one showcase row can merge several repos (nova-fct spans three).
+    cards = {r['repo'] for r in REPOS}
     for inst in INSTITUTIONS:
         for stem, *_ in inst['blocks']:
             if not any(find(stem, p) for p in ('N', '1', '2', 'L1')):
                 problems.append(f"{inst['key']}: block {stem} has no pages at all")
+        if inst['key'] not in cards and inst['key'] not in SHOWCASE_ONLY:
+            problems.append(f"{inst['key']}: on the showcase but has no REPOS card -- "
+                            f"add one in nt_overrides.py, or list the key in SHOWCASE_ONLY")
     return problems
 
 def check_or_exit():
@@ -341,7 +391,7 @@ novathesisFiles/Schools/**/*.clo (see gen_nt_schools.py). Tag, credit, GROUPS,
 REPOS, and custom per-degree block labels come from nt_overrides.py, which has
 no mechanical source and is meant to be hand-edited.
 """
-import re, pathlib
+import re, pathlib, urllib.parse
 
 SITE = pathlib.Path(__file__).resolve().parent.parent
 SVG  = SITE / 'covers' / 'SVG'
