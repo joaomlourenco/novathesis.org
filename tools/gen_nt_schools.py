@@ -280,6 +280,15 @@ ORG = 'https://github.com/novathesis'
 # gap. Everything else on the showcase needs a card.
 SHOWCASE_ONLY = {'manual'}
 
+def external(key):
+    """The REPOS entry for a showcase row whose repository lives outside the
+    novathesis organisation, or None. Derived from `org`, so the showcase and
+    the "Find your school" card cannot disagree about what is external."""
+    for r in REPOS:
+        if r['repo'] == key and r.get('org'):
+            return r
+    return None
+
 def repo_url(r):
     """The repository's GitHub page. `org` and `slug` cover a school whose
     template lives outside the novathesis organisation, under its own name."""

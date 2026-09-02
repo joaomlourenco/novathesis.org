@@ -8,7 +8,7 @@ School data lives in nt_schools.py -- edit there, not here.
 """
 import re, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from nt_schools import SITE, INSTITUTIONS, find, ratio
+from nt_schools import SITE, INSTITUTIONS, external, find, ratio
 
 PAGE_ALT = {'N':  ('back cover', 'contracapa'),
             '1':  ('front cover', 'capa'),
@@ -18,6 +18,12 @@ PAGE_ALT = {'N':  ('back cover', 'contracapa'),
 
 CREDIT_LEAD = {'en': 'Support for this school contributed by',
                'pt': 'Suporte para esta escola contribuído por'}
+
+# The same marker as the "Find your school" cards, from the same `org` field
+EXT = {'en': ('External', 'Available in an external repository, maintained '
+              'outside the novathesis organisation'),
+       'pt': ('Externo', 'Disponível num repositório externo, mantido fora '
+              'da organização novathesis')}
 
 LEDE = {
  'en': ('<h1>Showcase</h1>'
@@ -73,7 +79,12 @@ def build(lang):
         else:
             uni, school = inst['uni'][i], inst['school'][i]
             head = f'{uni} — {school}' if school and school != uni else uni
-        out.append(f'<div class="show-hd"><h2>{head}</h2><span class="tag">{inst["tag"]}</span></div>')
+        chips = f'<span class="tag">{inst["tag"]}</span>'
+        if external(inst['key']):
+            label, tip = EXT[lang]
+            chips += f'<span class="tag ext" title="{tip}">{label}</span>'
+        out.append(f'<div class="show-hd"><h2>{head}</h2>'
+                   f'<span class="show-tags">{chips}</span></div>')
         if inst.get('credit'):
             out.append(credit_line(inst, i, lang))
         out.append('<div class="blocks">')

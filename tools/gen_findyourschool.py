@@ -37,7 +37,7 @@ def card(r, lang):
                  f'alt="{r["repo"]} cover"></span>')
     if r.get('org'):
         label, tip = EXT[lang]
-        cls, mark = 'card ext', f' <span class="tag" title="{tip}">{label}</span>'
+        cls, mark = 'card ext', f' <span class="tag ext" title="{tip}">{label}</span>'
     else:
         cls, mark = 'card', ''
     return (f'<div class="{cls}"><div class="repo">{r["repo"]}{mark}</div>{frame}'
