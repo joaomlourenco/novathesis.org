@@ -12,6 +12,14 @@ from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, find, 
                         cover_stem, check_or_exit)
 
 TAGS = {'en': ('ZIP', 'Git', 'Overleaf'), 'pt': ('ZIP', 'Git', 'Overleaf')}
+
+# A card is marked external when the entry names its own `org`: that is exactly
+# what "kept outside the novathesis organisation" means, so no separate flag can
+# fall out of step with the URLs.
+EXT = {'en': ('External', 'Maintained outside the novathesis organisation, '
+              'on its own release cycle'),
+       'pt': ('Externo', 'Mantido fora da organização novathesis, '
+              'com o seu próprio ciclo de lançamentos')}
 GRID_RE = re.compile(r'<div style="display:flex;flex-direction:column;gap:40px">.*?(?=\s*<div class="note">)', re.S)
 
 def card(r, lang):
@@ -27,7 +35,12 @@ def card(r, lang):
     else:
         frame = (f'<span class="frame"><img src="../covers/SVG/{cover.name}" '
                  f'alt="{r["repo"]} cover"></span>')
-    return (f'<div class="card"><div class="repo">{r["repo"]}</div>{frame}'
+    if r.get('org'):
+        label, tip = EXT[lang]
+        cls, mark = 'card ext', f' <span class="tag" title="{tip}">{label}</span>'
+    else:
+        cls, mark = 'card', ''
+    return (f'<div class="{cls}"><div class="repo">{r["repo"]}{mark}</div>{frame}'
             f'<div class="school">{r["label"]}</div>'
             f'<div class="tags">'
             f'<a class="tag" href="{zip_url(r)}">{zip_}</a>'
