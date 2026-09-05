@@ -4,7 +4,14 @@
   <link href="https://novathesis.org/pt/blog/"/>
   <link rel="self" href="https://novathesis.org/pt/blog/feed.xml"/>
   <id>https://novathesis.org/pt/blog/</id>
-  <updated>2026-09-01T00:00:00Z</updated>
+  <updated>2026-09-05T00:00:00Z</updated>
+  <entry>
+    <title>Mil estrelas</title>
+    <link href="https://novathesis.org/pt/blog/a-thousand-stars"/>
+    <id>https://novathesis.org/pt/blog/a-thousand-stars</id>
+    <updated>2026-09-05T00:00:00Z</updated>
+    <summary>O repositório do novathesis passou as mil estrelas no GitHub — boa altura para olhar para aquilo de que o número é realmente feito.</summary>
+  </entry>
   <entry>
     <title>Escolher que &quot;lista de…&quot; é impressa</title>
     <link href="https://novathesis.org/pt/blog/choosing-which-lists-to-print"/>
