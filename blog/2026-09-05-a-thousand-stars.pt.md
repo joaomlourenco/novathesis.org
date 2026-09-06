@@ -2,8 +2,8 @@
 title: Mil estrelas
 date: 2026-09-05
 summary: O repositório do novathesis passou as mil estrelas no GitHub — boa altura para olhar para aquilo de que o número é realmente feito.
-image:
-image_alt:
+image: github-1k-stars-small.jpg
+image_alt: github-1k-stars-small.jpg
 ---
 
 O [repositório do **nova**thesis](https://github.com/joaomlourenco/novathesis)

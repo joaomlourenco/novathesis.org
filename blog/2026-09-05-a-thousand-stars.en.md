@@ -2,8 +2,8 @@
 title: A thousand stars
 date: 2026-09-05
 summary: The novathesis repository has passed a thousand stars on GitHub — a good moment to look at what the number is actually made of.
-image:
-image_alt:
+image: github-1k-stars-small.jpg
+image_alt: github-1k-stars-small.jpg
 ---
 
 The [**nova**thesis repository](https://github.com/joaomlourenco/novathesis)
