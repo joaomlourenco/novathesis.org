@@ -78,6 +78,8 @@ https://novathesis.org/pt/blog/a-thousand-stars
 
 ## LinkedIn (limit 3000)
 
+Account: https://www.linkedin.com/in/novathesis-latex-template-31a3b6431/
+
 Plain text only: LinkedIn has no bold, and the Unicode-bold trick reads as
 gibberish to screen readers — so the brand stays lowercase "novathesis" here,
 with no attempt at the two-weight lockup.
