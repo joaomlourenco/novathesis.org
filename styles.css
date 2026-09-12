@@ -207,6 +207,20 @@ p{margin:0;text-wrap:pretty}
 .sdg-grid img{width:100%;height:auto;border:0;display:block}
 @media (max-width:520px){.sdg-grid{grid-template-columns:repeat(auto-fill,minmax(60px,1fr))}}
 /* a two-page spread inside a post: A4 pages side by side, stacking when narrow */
+/* Figures in the body: the browser default inset (margin 1em 40px) would hold a
+   chart 80px narrower than the text above it. :not(.post-hero) leaves the
+   header figure, which sets its own margin, alone. */
+.post figure:not(.post-hero){margin:22px 0}
+.post figure:not(.post-hero) img{display:block;width:100%;height:auto}
+
+/* Tables in a post: the site is flat blocks and rules, so a browser-default
+   table would read as a rendering fault. Numerals get tabular figures, which
+   is what makes a column of numbers comparable at a glance. */
+.post table{border-collapse:collapse;margin:22px 0;font-size:14px;width:auto;min-width:min(100%,420px)}
+.post th,.post td{padding:7px 18px 7px 0;border-bottom:1px solid var(--n300);font-variant-numeric:tabular-nums}
+.post th{text-align:left;font-weight:600;border-bottom:2px solid var(--text);white-space:nowrap}
+.post tbody tr:last-child td{border-bottom:2px solid var(--text)}
+.post .table-wrap{overflow-x:auto}
 .post-pages{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0}
 .post-pages a,.post-cover a{display:block;line-height:0}
 .post-pages img{width:100%;height:auto;display:block}
