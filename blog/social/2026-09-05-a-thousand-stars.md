@@ -111,9 +111,9 @@ https://novathesis.org/en/blog/a-thousand-stars
 
 O novathesis passou as mil estrelas no GitHub esta semana — mil e uma, quando fui ver.
 
-É um número de vaidade e, por si só, diz muito pouco. O que está por baixo dele vale mais: o primeiro commit do repositório é de Março de 2010, quatro anos antes de o projecto chegar ao GitHub. Desde então cresceu para 3142 commits e 49 pessoas no seu histórico, e hoje traz 67 configurações de escola em 10 universidades e escreve teses em 16 línguas — do português e do inglês ao grego, ao ucraniano e às duas formas escritas do chinês.
+É um número de vaidade e, por si só, diz muito pouco. O que está por baixo dele vale mais: o primeiro commit do repositório é de Março de 2010, quatro anos antes de o projeto chegar ao GitHub. Desde então cresceu para 3142 commits e 49 pessoas no seu histórico, e hoje traz 67 configurações de escola em 10 universidades e escreve teses em 16 línguas — do português e do inglês ao grego, ao ucraniano e às duas formas escritas do chinês.
 
-Aqueles 49 nomes são a parte que vale a pena celebrar. Quase todas as escolas do template lá estão porque um estudante que tinha a sua própria dissertação para acabar se sentou com o regulamento de formatação da sua faculdade e o transformou numa configuração que todos os que vieram a seguir puderam reutilizar. Uns contribuíram com uma escola inteira, outros com uma capa corrigida, outros com um relatório de erro suficientemente preciso para tornar a correcção óbvia.
+Aqueles 49 nomes são a parte que vale a pena celebrar. Quase todas as escolas do template lá estão porque um estudante que tinha a sua própria dissertação para acabar se sentou com o regulamento de formatação da sua faculdade e o transformou numa configuração que todos os que vieram a seguir puderam reutilizar. Uns contribuíram com uma escola inteira, outros com uma capa corrigida, outros com um relatório de erro suficientemente preciso para tornar a correção óbvia.
 
 Se a tua instituição não está na lista, essa é a coisa mais útil que se pode fazer com este post: abrir um issue "New school" com o regulamento de formatação e o media kit da faculdade, e o template passa a estar disponível para todos os estudantes de lá. Foi assim que chegaram quase todas as 67.
 

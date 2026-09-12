@@ -54,12 +54,12 @@ STRINGS = {
  'en': dict(nav='Blog', title='Blog', lede='Release notes, new schools and notes from the project.',
             back='← All posts', empty='No posts yet.', only='Only available in English',
             other='Ler em português', readmore='Read'),
- 'pt': dict(nav='Blog', title='Blog', lede='Notas de versão, novas escolas e notas do projecto.',
+ 'pt': dict(nav='Blog', title='Blog', lede='Notas de versão, novas escolas e notas do projeto.',
             back='← Todos os artigos', empty='Ainda não há artigos.', only='Só disponível em português',
             other='Read in English', readmore='Ler'),
 }
 MONTHS = {'en': 'January February March April May June July August September October November December'.split(),
-          'pt': 'Janeiro Fevereiro Março Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro'.split()}
+          'pt': 'janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro'.split()}
 
 def fmt_date(d, lang):
     return f'{d.day} {MONTHS[lang][d.month-1]} {d.year}' if lang == 'en' \

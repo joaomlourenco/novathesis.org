@@ -48,7 +48,7 @@ https://novathesis.org/en/blog/choosing-which-lists-to-print
 
 Uma tese com duas tabelas não precisa de Lista de Tabelas.
 
-Desde o novathesis 8.3.0, uma opção deixa de fora qualquer lista — e as linhas do 0-Config/6_list_of.tex ficam como estão, pelo que a definição sobrevive a uma actualização do template:
+Desde o novathesis 8.3.0, uma opção deixa de fora qualquer lista — e as linhas do 0-Config/6_list_of.tex ficam como estão, pelo que a definição sobrevive a uma atualização do template:
 
 \ntsetup{listof/skip={listoftables,listoflistings}}
 

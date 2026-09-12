@@ -6,7 +6,7 @@ image:
 image_alt:
 ---
 
-Este texto saiu em Dezembro de 2016 no [blogue antigo do **nova**thesis](https://novathesis.blogspot.com/2016/12/grafico-ou-tabela-o-objetivo-principal.html).
+Este texto saiu em dezembro de 2016 no [blogue antigo do **nova**thesis](https://novathesis.blogspot.com/2016/12/grafico-ou-tabela-o-objetivo-principal.html).
 Dez anos depois continua a responder à pergunta que mais vezes me fazem sobre
 apresentação de resultados, por isso trago-o para aqui — com os gráficos
 redesenhados e, no fim, o que a experiência entretanto acrescentou.
@@ -15,22 +15,22 @@ redesenhados e, no fim, o que a experiência entretanto acrescentou.
 
 **Devo apresentar os meus dados na forma de gráfico ou de tabela?**
 
-A escolha depende do objectivo. Mas de que forma? Ao longo dos anos vi
+A escolha depende do objetivo. Mas de que forma? Ao longo dos anos vi
 inúmeras vezes resultados apresentados em tabelas que deviam estar em
 gráficos. Raras vezes aconteceu o contrário.
 
 Se o que se pretende mostrar é uma **ordem de grandeza, uma variação, uma
 tendência**, então a melhor escolha é um gráfico. Um bom gráfico omite os
 detalhes e ilustra com clareza a mensagem. Se, pelo contrário, **os valores
-exactos são mesmo importantes**, então a tabela é a solução.
+exatos são mesmo importantes**, então a tabela é a solução.
 
 > **Sugestão:** tenta sempre apresentar os resultados em gráfico. Bem feitos,
 > são normalmente mais fáceis de ler e de entender do que as tabelas.
 
 ## Dez segundos com uma tabela
 
-A tabela seguinte apresenta a distribuição da população activa portuguesa por
-sector de actividade, em milhares de trabalhadores. **Que informação
+A tabela seguinte apresenta a distribuição da população ativa portuguesa por
+setor de atividade, em milhares de trabalhadores. **Que informação
 consegues extrair dela em dez segundos?**
 
 | Ano | Primário | Secundário | Terciário |
@@ -44,18 +44,18 @@ Provavelmente muito pouca.
 
 ## A mesma informação em gráfico
 
-<figure><a href="../../blog/images/sectores-pie-pt.svg"><img src="../../blog/images/sectores-pie-pt.svg" alt="Quatro gráficos circulares, um por década, com a repartição entre os sectores primário, secundário e terciário"></a></figure>
+<figure><a href="../../blog/images/setores-pie-pt.svg"><img src="../../blog/images/setores-pie-pt.svg" alt="Quatro gráficos circulares, um por década, com a repartição entre os setores primário, secundário e terciário"></a></figure>
 
 Agora já se lê alguma coisa:
 
-* Em 1980 a distribuição estava equilibrada pelos três sectores.
-* Entre 1980 e 2010 o peso dos sectores primário e secundário diminuiu a
+* Em 1980 a distribuição estava equilibrada pelos três setores.
+* Entre 1980 e 2010 o peso dos setores primário e secundário diminuiu a
   favor do terciário.
 
 Mas outras perguntas continuam difíceis, ou mesmo impossíveis:
 
 * A distribuição em 1980 não era seguramente de um terço para cada. Qual dos
-  sectores tinha mais trabalhadores, e qual tinha menos?
+  setores tinha mais trabalhadores, e qual tinha menos?
 * O terciário cresceu — mas em 2010 representa o dobro de 1980?
 * E em 1990, o secundário era o dobro do primário?
 * Em termos absolutos, havia mais ou menos gente no secundário em 1980 ou em
@@ -63,7 +63,7 @@ Mas outras perguntas continuam difíceis, ou mesmo impossíveis:
 
 ## A escolha do tipo de gráfico é que faz a diferença
 
-<figure><a href="../../blog/images/sectores-bar-pt.svg"><img src="../../blog/images/sectores-bar-pt.svg" alt="Gráfico de barras agrupadas: três sectores por década, com eixo vertical em milhares de trabalhadores"></a></figure>
+<figure><a href="../../blog/images/setores-bar-pt.svg"><img src="../../blog/images/setores-bar-pt.svg" alt="Gráfico de barras agrupadas: três setores por década, com eixo vertical em milhares de trabalhadores"></a></figure>
 
 Voltemos às perguntas:
 
@@ -80,9 +80,9 @@ Voltemos às perguntas:
 
 ## Barras ou linhas?
 
-<figure><a href="../../blog/images/sectores-line-pt.svg"><img src="../../blog/images/sectores-line-pt.svg" alt="Gráfico de linhas: evolução dos três sectores entre 1980 e 2010"></a></figure>
+<figure><a href="../../blog/images/setores-line-pt.svg"><img src="../../blog/images/setores-line-pt.svg" alt="Gráfico de linhas: evolução dos três setores entre 1980 e 2010"></a></figure>
 
-O gráfico de linhas responde exactamente às mesmas perguntas que o de barras,
+O gráfico de linhas responde exatamente às mesmas perguntas que o de barras,
 e torna as tendências mais fáceis de intuir. Mas **só se deve usar quando o
 domínio da variável no eixo horizontal é contínuo** — tempo, comprimento,
 área, volume. Quando esse domínio é discreto — cores, localidades, escolas —
@@ -108,11 +108,11 @@ recomendação não envelheceu.
 deficiência de visão cromática, e muitas teses ainda são impressas a preto e
 branco. Os gráficos aqui em cima distinguem as séries por **luminosidade** e
 não só por matiz, e cada série está identificada por legenda e por rótulo
-directo. Imprime o teu gráfico em tons de cinzento antes de o entregar: se
+direto. Imprime o teu gráfico em tons de cinzento antes de o entregar: se
 deixar de se perceber, o problema não é da impressora.
 
-**Guarda os gráficos em vectorial.** Um PDF ou SVG mantém-se nítido em
+**Guarda os gráficos em vetorial.** Um PDF ou SVG mantém-se nítido em
 qualquer ampliação e em qualquer impressão; um PNG ou JPEG fica pastoso para
 sempre. Estes gráficos são SVG — clica em qualquer um deles para veres o
 ficheiro original. Os de 2016 eram JPEG com 400 píxeis de largura, e é
-exactamente por isso que os redesenhei em vez de os copiar.
+exatamente por isso que os redesenhei em vez de os copiar.

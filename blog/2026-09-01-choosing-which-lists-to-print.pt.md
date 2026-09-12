@@ -7,7 +7,7 @@ image_alt: Um índice seguido de uma Lista de Figuras
 ---
 
 Uma tese com duas tabelas não precisa de uma Lista de Tabelas. Até agora, deixar
-uma de fora obrigava a procurar a linha respectiva em
+uma de fora obrigava a procurar a linha respetiva em
 `0-Config/6_list_of.tex`, comentá-la — e lembrar-se de a repor se o orientador
 discordasse.
 
@@ -18,7 +18,7 @@ Desde a versão 8.3.0 há uma opção para isso:
 ```
 
 Isto imprime a Lista de Figuras e mais nada. As linhas do `6_list_of.tex`
-ficam exactamente como estão.
+ficam exatamente como estão.
 
 ## O que podes indicar
 
@@ -45,7 +45,7 @@ impressas.
 ## Porquê, se comentar a linha funcionava
 
 Porque a opção fica junto das tuas outras configurações, em vez de dentro do
-ficheiro que declara as listas, e porque sobrevive a uma actualização do
+ficheiro que declara as listas, e porque sobrevive a uma atualização do
 template — deixas de manter uma alteração local a um ficheiro de configuração
 que vem com o template. Também se combina com o `make`:
 

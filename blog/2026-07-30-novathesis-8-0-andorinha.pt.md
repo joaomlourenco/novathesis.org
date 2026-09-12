@@ -28,7 +28,7 @@ Depois, antes de apagares os ficheiros antigos:
 * Muda as entradas de símbolos de `@entry` para `@symbol`.
 * Apaga o `\glsaddall` se o usares — o `bib2gls` não tem equivalente.
 
-Não é possível falhar a migração por distracção: um ficheiro `.tex` de entradas
+Não é possível falhar a migração por distração: um ficheiro `.tex` de entradas
 que fique para trás **interrompe a compilação**, com um erro que indica a causa
 e a solução. O procedimento completo está no apêndice *Migrating from 7.10.x*
 do manual.
@@ -58,7 +58,7 @@ make NT="doctype=msc,lang=pt"
 fina sobre o `latexmk`, com as definições de LaTeX no `latexmkrc`. O manual tem
 um novo apêndice *Build System*.
 
-Vieram várias correcções, entre elas os marcadores de PDF para entradas
-`\ntindex` sem parênteses rectos e as capas com nomes empilhados usadas pela
+Vieram várias correções, entre elas os marcadores de PDF para entradas
+`\ntindex` sem parênteses retos e as capas com nomes empilhados usadas pela
 UMinho e pelo ISEL-MEB. A lista completa está no
 [changelog](https://github.com/joaomlourenco/novathesis/blob/main/CHANGELOG.md).

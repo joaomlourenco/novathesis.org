@@ -83,7 +83,7 @@ INSTITUTIONS = [
         ('uminho-eeng-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
       ]),
 
- dict(key='iscteiul-eta', uni=('Iscte – University Institute of Lisbon', 'Iscte — Instituto Universitário de Lisboa'), school=('School of Technology and Architecture', 'Escola de Tecnologia e Arquitectura'),
+ dict(key='iscteiul-eta', uni=('Iscte – University Institute of Lisbon', 'Iscte — Instituto Universitário de Lisboa'), school=('School of Technology and Architecture', 'Escola de Tecnologia e Arquitetura'),
       tag='ISCTE-IUL ETA', blocks=[
         ('iscteiul-eta-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
       ]),

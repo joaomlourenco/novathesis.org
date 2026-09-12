@@ -35,7 +35,7 @@ LEDE = {
         '<p>Todas as páginas que o template produz, para cada escola e grau: contracapa, capa, '
         'página de título, um capítulo de exemplo e, em baixo, a lombada. A ausência de uma página '
         'significa que essa escola não a usa.</p>'
-        '<p>Todos os exemplos são compilados com o template actual em LuaLaTeX, em inglês.</p>'),
+        '<p>Todos os exemplos são compilados com o template atual em LuaLaTeX, em inglês.</p>'),
 }
 
 SIZES = [('560', 'S'), ('720', 'M'), ('960', 'L')]

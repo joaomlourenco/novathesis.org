@@ -11,7 +11,7 @@ passou as mil estrelas no GitHub. Mil e uma, à hora a que isto se escreve.
 
 Uma estrela não custa nada e, sozinha, diz pouco. O que justifica um post é
 aquilo que está por baixo dela. O primeiro *commit* do repositório é de
-**Março de 2010**, quatro anos antes de o projecto chegar ao GitHub. Nos
+**março de 2010**, quatro anos antes de o projeto chegar ao GitHub. Nos
 dezasseis anos que se seguiram, cresceu para **3142 commits** e **49 pessoas**
 no seu histórico, e hoje traz **67 configurações de escola em 10
 universidades** e escreve teses em **16 línguas** — do português e do inglês ao
@@ -22,7 +22,7 @@ lá estão porque alguém que tinha a sua própria tese para escrever se sentou
 com o regulamento da sua faculdade e o transformou numa configuração que todos
 os que vieram a seguir puderam usar. Uns contribuíram com uma escola inteira,
 outros com uma capa corrigida, outros com um relatório de erro suficientemente
-preciso para tornar a correcção óbvia. O template é a acumulação disso.
+preciso para tornar a correção óbvia. O template é a acumulação disso.
 
 Os **182 forks** contam uma história mais silenciosa. Alguns são contribuições
 a caminho de volta; a maioria é gente que levou o template para onde ele
@@ -38,7 +38,7 @@ A coisa mais útil que podes fazer não é uma estrela.
   com o regulamento de formatação e o *media kit* da tua faculdade. Foi assim
   que chegaram aqui quase todas as 67.
 * **Uma tradução está má?** Várias foram feitas automaticamente e nunca foram
-  revistas por um falante nativo. Correcções são muito bem-vindas.
+  revistas por um falante nativo. Correções são muito bem-vindas.
 * **Está alguma coisa partida?** Um relatório que diga qual a escola, qual o
   comando e o que dizia o log vale mais do que uma estrela.
 
