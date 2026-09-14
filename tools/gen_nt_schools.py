@@ -172,8 +172,11 @@ def university_and_school(path):
     if leaf_uni['en']:
         uni = leaf_uni
     school = extract_strings(leaf_clo, 'School')
-    fix = lambda v: ov.NAME_FIXES.get(v, v)
-    return (fix(uni['en']), fix(uni['pt'])), (fix(school['en']), fix(school['pt']))
+    # Verbatim, including spelling: these are the institutions' own names, not
+    # this site's prose. Iscte writes "Escola de Tecnologia e Arquitectura" with
+    # the c, which is a valid European spelling and theirs to choose -- do not
+    # normalise it to the form used in the site's own text.
+    return (uni['en'], uni['pt']), (school['en'], school['pt'])
 
 
 def gen_institutions(conf):
