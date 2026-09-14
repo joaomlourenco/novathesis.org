@@ -46,8 +46,9 @@ def card(r, lang):
             f'<div class="tags">'
             f'<a class="tag" href="{zip_url(r)}">{zip_}</a>'
             f'<a class="tag" href="{url}">{git}</a>'
+            f'<span class="tags-row">'
             f'<a class="tag" href="{overleaf(r)}">{ovl}</a>'
-            f'<a class="tag" href="{inscrive(r)}">{ins}</a></div></div>')
+            f'<a class="tag" href="{inscrive(r)}">{ins}</a></span></div></div>')
 
 def grid(lang):
     out = ['<div style="display:flex;flex-direction:column;gap:40px">']
