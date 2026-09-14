@@ -48,7 +48,8 @@ GROUPS / REPOS
 # in place and tagged, so `grep -rn INSCRIVE-DISABLED .` lists every piece:
 #     en/schools.html, pt/schools.html   the sentence in the page lede
 #     en/start.html,   pt/start.html     the whole option box
-#     en/support.html, pt/support.html   the acknowledgement
+# The acknowledgement on the support pages stays live: they did provide the
+# account, which is true regardless of what their compiler is doing.
 INSCRIVE_ENABLED = False
 
 INSTITUTIONS = [
