@@ -30,7 +30,7 @@ exatos são mesmo importantes**, então a tabela é a solução.
 ## Dez segundos com uma tabela
 
 A tabela seguinte apresenta a distribuição da população ativa portuguesa por
-setor de atividade, em milhares de trabalhadores. **Que informação
+sector de atividade, em milhares de trabalhadores. **Que informação
 consegues extrair dela em dez segundos?**
 
 | Ano | Primário | Secundário | Terciário |
@@ -44,18 +44,18 @@ Provavelmente muito pouca.
 
 ## A mesma informação em gráfico
 
-<figure><a href="../../blog/images/setores-pie-pt.svg"><img src="../../blog/images/setores-pie-pt.svg" alt="Quatro gráficos circulares, um por década, com a repartição entre os setores primário, secundário e terciário"></a></figure>
+<figure><a href="../../blog/images/sectores-pie-pt.svg"><img src="../../blog/images/sectores-pie-pt.svg" alt="Quatro gráficos circulares, um por década, com a repartição entre os sectores primário, secundário e terciário"></a></figure>
 
 Agora já se lê alguma coisa:
 
-* Em 1980 a distribuição estava equilibrada pelos três setores.
-* Entre 1980 e 2010 o peso dos setores primário e secundário diminuiu a
+* Em 1980 a distribuição estava equilibrada pelos três sectores.
+* Entre 1980 e 2010 o peso dos sectores primário e secundário diminuiu a
   favor do terciário.
 
 Mas outras perguntas continuam difíceis, ou mesmo impossíveis:
 
 * A distribuição em 1980 não era seguramente de um terço para cada. Qual dos
-  setores tinha mais trabalhadores, e qual tinha menos?
+  sectores tinha mais trabalhadores, e qual tinha menos?
 * O terciário cresceu — mas em 2010 representa o dobro de 1980?
 * E em 1990, o secundário era o dobro do primário?
 * Em termos absolutos, havia mais ou menos gente no secundário em 1980 ou em
@@ -63,7 +63,7 @@ Mas outras perguntas continuam difíceis, ou mesmo impossíveis:
 
 ## A escolha do tipo de gráfico é que faz a diferença
 
-<figure><a href="../../blog/images/setores-bar-pt.svg"><img src="../../blog/images/setores-bar-pt.svg" alt="Gráfico de barras agrupadas: três setores por década, com eixo vertical em milhares de trabalhadores"></a></figure>
+<figure><a href="../../blog/images/sectores-bar-pt.svg"><img src="../../blog/images/sectores-bar-pt.svg" alt="Gráfico de barras agrupadas: três sectores por década, com eixo vertical em milhares de trabalhadores"></a></figure>
 
 Voltemos às perguntas:
 
@@ -80,7 +80,7 @@ Voltemos às perguntas:
 
 ## Barras ou linhas?
 
-<figure><a href="../../blog/images/setores-line-pt.svg"><img src="../../blog/images/setores-line-pt.svg" alt="Gráfico de linhas: evolução dos três setores entre 1980 e 2010"></a></figure>
+<figure><a href="../../blog/images/sectores-line-pt.svg"><img src="../../blog/images/sectores-line-pt.svg" alt="Gráfico de linhas: evolução dos três sectores entre 1980 e 2010"></a></figure>
 
 O gráfico de linhas responde exatamente às mesmas perguntas que o de barras,
 e torna as tendências mais fáceis de intuir. Mas **só se deve usar quando o
