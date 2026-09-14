@@ -138,7 +138,11 @@ p{margin:0;text-wrap:pretty}
 .steps b{font-size:40px;line-height:1;letter-spacing:-.03em;color:var(--accent);font-weight:800}
 .steps h3{font-size:19px;letter-spacing:-.01em}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-.three{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+/* Six columns so both rows fill the width: the three free options span two
+   columns each, the two paid ones span three. */
+.options{display:grid;grid-template-columns:repeat(6,1fr);gap:32px}
+.options>.box{grid-column:span 2}
+.options>.box.wide{grid-column:span 3}
 .box{border:2px solid var(--text);padding:36px 32px;display:flex;flex-direction:column;gap:14px}
 .box h3{font-size:22px;letter-spacing:-.015em}
 .cmd{font-family:ui-monospace,monospace;font-size:14px;background:var(--text);color:var(--bg);padding:14px 16px;margin-top:6px}
@@ -164,7 +168,7 @@ p{margin:0;text-wrap:pretty}
 .ft p{font-size:14px;line-height:1.6;max-width:460px;color:var(--n700)}
 @media (max-width:1100px){
 .hero{grid-template-columns:1fr}.hero-main{border-right:0;border-bottom:2px solid var(--text);padding:56px 32px}
-.hero h1{font-size:52px}.cols3,.docs,.steps,.cards3,.two,.three{grid-template-columns:1fr}
+.hero h1{font-size:52px}.cols3,.docs,.steps,.cards3,.two,.options{grid-template-columns:1fr}.options>.box,.options>.box.wide{grid-column:auto}
 .cols3>div,.cards3>div{border-right:0;border-bottom:2px solid var(--text)}
 .hd,.page,.sec,.banner,.ft{padding-left:24px;padding-right:24px}
 .ft{grid-template-columns:1fr}.rows>div{grid-template-columns:1fr;gap:10px}
