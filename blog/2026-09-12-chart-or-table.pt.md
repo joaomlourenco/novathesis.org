@@ -29,8 +29,8 @@ exatos são mesmo importantes**, então a tabela é a solução.
 
 ## Dez segundos com uma tabela
 
-A tabela seguinte apresenta a distribuição da população ativa portuguesa por
-sector de atividade, em milhares de trabalhadores. **Que informação
+A tabela seguinte apresenta a distribuição da população activa portuguesa por
+sector de actividade, em milhares de trabalhadores. **Que informação
 consegues extrair dela em dez segundos?**
 
 | Ano | Primário | Secundário | Terciário |
@@ -111,7 +111,7 @@ não só por matiz, e cada série está identificada por legenda e por rótulo
 direto. Imprime o teu gráfico em tons de cinzento antes de o entregar: se
 deixar de se perceber, o problema não é da impressora.
 
-**Guarda os gráficos em vetorial.** Um PDF ou SVG mantém-se nítido em
+**Guarda os gráficos em vectorial.** Um PDF ou SVG mantém-se nítido em
 qualquer ampliação e em qualquer impressão; um PNG ou JPEG fica pastoso para
 sempre. Estes gráficos são SVG — clica em qualquer um deles para veres o
 ficheiro original. Os de 2016 eram JPEG com 400 píxeis de largura, e é

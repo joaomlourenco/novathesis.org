@@ -45,7 +45,7 @@ impressas.
 ## Porquê, se comentar a linha funcionava
 
 Porque a opção fica junto das tuas outras configurações, em vez de dentro do
-ficheiro que declara as listas, e porque sobrevive a uma atualização do
+ficheiro que declara as listas, e porque sobrevive a uma actualização do
 template — deixas de manter uma alteração local a um ficheiro de configuração
 que vem com o template. Também se combina com o `make`:
 
