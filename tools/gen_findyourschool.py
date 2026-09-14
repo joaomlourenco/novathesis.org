@@ -8,10 +8,11 @@ School data lives in nt_schools.py -- edit there, not here.
 """
 import re, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, find, ratio,
+from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, inscrive, find, ratio,
                         cover_stem, check_or_exit)
 
-TAGS = {'en': ('ZIP', 'Git', 'Overleaf'), 'pt': ('ZIP', 'Git', 'Overleaf')}
+TAGS = {'en': ('ZIP', 'Git', 'Overleaf', 'Inscrive'),
+        'pt': ('ZIP', 'Git', 'Overleaf', 'Inscrive')}
 
 # A card is marked external when the entry names its own `org`: that is exactly
 # what "kept outside the novathesis organisation" means, so no separate flag can
@@ -25,7 +26,7 @@ GRID_RE = re.compile(r'<div style="display:flex;flex-direction:column;gap:40px">
 def card(r, lang):
     cover = find(cover_stem(r), '1')
     url = repo_url(r)
-    zip_, git, ovl = TAGS[lang]
+    zip_, git, ovl, ins = TAGS[lang]
     # uminho's cover is a wrap-around, so it is cropped to the front face
     if r.get('crop'):
         h, w = 248, 175
@@ -45,7 +46,8 @@ def card(r, lang):
             f'<div class="tags">'
             f'<a class="tag" href="{zip_url(r)}">{zip_}</a>'
             f'<a class="tag" href="{url}">{git}</a>'
-            f'<a class="tag" href="{overleaf(r)}">{ovl}</a></div></div>')
+            f'<a class="tag" href="{overleaf(r)}">{ovl}</a>'
+            f'<a class="tag" href="{inscrive(r)}">{ins}</a></div></div>')
 
 def grid(lang):
     out = ['<div style="display:flex;flex-direction:column;gap:40px">']

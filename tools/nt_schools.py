@@ -83,7 +83,7 @@ INSTITUTIONS = [
         ('uminho-eeng-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
       ]),
 
- dict(key='iscteiul-eta', uni=('Iscte – University Institute of Lisbon', 'Iscte — Instituto Universitário de Lisboa'), school=('School of Technology and Architecture', 'Escola de Tecnologia e Arquitetura'),
+ dict(key='iscteiul-eta', uni=('Iscte – University Institute of Lisbon', 'Iscte — Instituto Universitário de Lisboa'), school=('School of Technology and Architecture', 'Escola de Tecnologia e Arquitectura'),
       tag='ISCTE-IUL ETA', blocks=[
         ('iscteiul-eta-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
       ]),
@@ -187,10 +187,19 @@ def zip_url(r):
         return f"{repo_url(r)}/raw/{branch}/{urllib.parse.quote(r['zip'])}"
     return f'{repo_url(r)}/archive/refs/heads/{branch}.zip'
 
+def _import_url(endpoint, r):
+    """An online editor's import URL: hand it the template ZIP and name the root
+    document. Inscrive implements the same query contract as Overleaf, so only
+    the endpoint differs and both stay fed by one zip_url()."""
+    return f'{endpoint}?snip_uri={zip_url(r)}&amp;main_document=template.tex'
+
 def overleaf(r):
-    """Overleaf import URL: uploads the template ZIP and sets the root document."""
-    return (f'https://www.overleaf.com/docs?snip_uri={zip_url(r)}'
-            f'&amp;main_document=template.tex')
+    """Open the template in Overleaf."""
+    return _import_url('https://www.overleaf.com/docs', r)
+
+def inscrive(r):
+    """Open the template in Inscrive."""
+    return _import_url('https://app.inscrive.io/import', r)
 
 def find(stem, page):
     """Resolve stem-page.svg, tolerating an export-tool page suffix (-N-1.svg)."""
