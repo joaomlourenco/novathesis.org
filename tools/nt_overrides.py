@@ -42,6 +42,14 @@ GROUPS / REPOS
     instead of a source tree, and `branch` when its default is not `main`.
 """
 
+# Names the template repo spells differently from this site. The LaTeX template
+# is not edited from here, so the correction lives on this side; without it the
+# .clo's spelling comes back on the next gen_nt_schools.py run. Keyed by the
+# exact string the .clo produces, per language.
+NAME_FIXES = {
+    'Escola de Tecnologia e Arquitectura': 'Escola de Tecnologia e Arquitetura',
+}
+
 INSTITUTIONS = [
     dict(key='manual', tag='novathesis', paths=[
         dict(path='other/novathesis', labels={

@@ -172,7 +172,8 @@ def university_and_school(path):
     if leaf_uni['en']:
         uni = leaf_uni
     school = extract_strings(leaf_clo, 'School')
-    return (uni['en'], uni['pt']), (school['en'], school['pt'])
+    fix = lambda v: ov.NAME_FIXES.get(v, v)
+    return (fix(uni['en']), fix(uni['pt'])), (fix(school['en']), fix(school['pt']))
 
 
 def gen_institutions(conf):
