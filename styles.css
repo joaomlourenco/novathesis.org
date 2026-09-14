@@ -148,6 +148,10 @@ p{margin:0;text-wrap:pretty}
 .options{display:grid;grid-template-columns:repeat(6,1fr);gap:32px}
 .options>.box{grid-column:span 2}
 .options>.box.wide{grid-column:span 3}
+/* When only one wide box is present -- Inscrive commented out -- it fills the
+   row rather than leaving half of it empty. This undoes itself the moment the
+   pair returns, so re-enabling Inscrive needs no CSS change. */
+.options:not(:has(.box.wide ~ .box.wide))>.box.wide{grid-column:span 6}
 .box{border:2px solid var(--text);padding:36px 32px;display:flex;flex-direction:column;gap:14px}
 .box h3{font-size:22px;letter-spacing:-.015em}
 .cmd{font-family:ui-monospace,monospace;font-size:14px;background:var(--text);color:var(--bg);padding:14px 16px;margin-top:6px}

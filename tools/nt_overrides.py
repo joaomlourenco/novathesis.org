@@ -42,6 +42,15 @@ GROUPS / REPOS
     instead of a source tree, and `branch` when its default is not `main`.
 """
 
+# Inscrive is switched off while its compiler fails on the template (2026-09).
+# Setting this back to True restores the chip on every school card. The prose
+# elsewhere is hand-written and cannot be reached from here; it is commented out
+# in place and tagged, so `grep -rn INSCRIVE-DISABLED .` lists every piece:
+#     en/schools.html, pt/schools.html   the sentence in the page lede
+#     en/start.html,   pt/start.html     the whole option box
+#     en/support.html, pt/support.html   the acknowledgement
+INSCRIVE_ENABLED = False
+
 INSTITUTIONS = [
     dict(key='manual', tag='novathesis', paths=[
         dict(path='other/novathesis', labels={

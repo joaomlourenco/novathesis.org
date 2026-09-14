@@ -8,6 +8,7 @@ School data lives in nt_schools.py -- edit there, not here.
 """
 import re, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import nt_overrides as ov
 from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, inscrive, find, ratio,
                         cover_stem, check_or_exit)
 
@@ -36,6 +37,14 @@ def card(r, lang):
     else:
         frame = (f'<span class="frame"><img src="../covers/SVG/{cover.name}" '
                  f'alt="{r["repo"]} cover"></span>')
+    # With both editors the pair shares a line of its own; with one there is no
+    # pair, so the chip joins the row above rather than sitting alone.
+    if ov.INSCRIVE_ENABLED:
+        editors = (f'<span class="tags-row">'
+                   f'<a class="tag" href="{overleaf(r)}">{ovl}</a>'
+                   f'<a class="tag" href="{inscrive(r)}">{ins}</a></span>')
+    else:
+        editors = f'<a class="tag" href="{overleaf(r)}">{ovl}</a>'
     if r.get('org'):
         label, tip = EXT[lang]
         cls, mark = 'card ext', f' <span class="tag ext" title="{tip}">{label}</span>'
@@ -46,9 +55,7 @@ def card(r, lang):
             f'<div class="tags">'
             f'<a class="tag" href="{zip_url(r)}">{zip_}</a>'
             f'<a class="tag" href="{url}">{git}</a>'
-            f'<span class="tags-row">'
-            f'<a class="tag" href="{overleaf(r)}">{ovl}</a>'
-            f'<a class="tag" href="{inscrive(r)}">{ins}</a></span></div></div>')
+            f'{editors}</div></div>')
 
 def grid(lang):
     out = ['<div style="display:flex;flex-direction:column;gap:40px">']
