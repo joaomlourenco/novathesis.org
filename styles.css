@@ -89,6 +89,10 @@ p{margin:0;text-wrap:pretty}
    narrow screens, so no media-query override is needed. */
 .show{--bw:720px}
 .credit{font-size:13px;color:var(--n700);margin-top:-6px}
+/* An acknowledgement inside an option box: the same muted, smaller type as a
+   showcase credit, set below a rule so it reads as a disclosure rather than
+   as one more instruction about using the service. */
+.box .credit{margin:6px 0 0;border-top:2px solid var(--n300);padding-top:14px}
 .credit a{font-weight:600}
 .credit .mono{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--n600)}
 .blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,var(--bw)),var(--bw)));gap:24px;align-items:start;justify-content:center}
