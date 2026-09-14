@@ -169,6 +169,10 @@ p{margin:0;text-wrap:pretty}
 .rows{display:flex;flex-direction:column;border-top:2px solid var(--text)}
 .rows>div{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:28px 0;border-bottom:2px solid var(--n300)}
 .rows h3{font-size:20px;letter-spacing:-.01em}
+/* The acknowledgements sit on their own line inside the note: as loose flex
+   items, space-between would push two of them to opposite ends. */
+.note .thanks{flex-basis:100%;margin-top:18px}
+.note .thanks p+p{margin-top:6px}
 .note{padding:28px 32px;border:2px solid var(--text);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .ft{border-top:2px solid var(--text);padding:48px 56px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
 .ft .mark{font-size:22px}.ft .mark b,.ft .mark s{border-bottom-width:2px;padding-bottom:5px}
