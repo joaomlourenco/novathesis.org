@@ -42,15 +42,13 @@ GROUPS / REPOS
     instead of a source tree, and `branch` when its default is not `main`.
 """
 
-# Inscrive is switched off while its compiler fails on the template (2026-09).
-# Setting this back to True restores the chip on every school card. The prose
-# elsewhere is hand-written and cannot be reached from here; it is commented out
-# in place and tagged, so `grep -rn INSCRIVE-DISABLED .` lists every piece:
-#     en/schools.html, pt/schools.html   the sentence in the page lede
-#     en/start.html,   pt/start.html     the whole option box
-# The acknowledgement on the support pages stays live: they did provide the
-# account, which is true regardless of what their compiler is doing.
-INSCRIVE_ENABLED = False
+# Set to False to drop the Inscrive chip from every school card, should the
+# service stop working again. The prose elsewhere is hand-written and cannot be
+# reached from here -- comment it out in place, tagged INSCRIVE-DISABLED, so one
+# grep finds every piece: the sentence in each schools.html lede and the option
+# box in each start.html. The acknowledgement on the support pages stays either
+# way: they provided the account, whatever their compiler is doing.
+INSCRIVE_ENABLED = True
 
 INSTITUTIONS = [
     dict(key='manual', tag='novathesis', paths=[
