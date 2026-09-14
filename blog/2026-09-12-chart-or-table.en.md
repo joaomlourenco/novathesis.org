@@ -45,7 +45,7 @@ Probably very little.
 
 ## The same information as a chart
 
-<figure><a href="../../blog/images/sectores-pie-en.svg"><img src="../../blog/images/sectores-pie-en.svg" alt="Four pie charts, one per decade, splitting the workforce between the primary, secondary and tertiary sectors"></a></figure>
+<figure><a href="../../blog/images/setores-pie-en.svg"><img src="../../blog/images/setores-pie-en.svg" alt="Four pie charts, one per decade, splitting the workforce between the primary, secondary and tertiary sectors"></a></figure>
 
 Now something does come through:
 
@@ -64,7 +64,7 @@ But other questions remain hard, or outright impossible:
 
 ## Choosing the right kind of chart is what matters
 
-<figure><a href="../../blog/images/sectores-bar-en.svg"><img src="../../blog/images/sectores-bar-en.svg" alt="Grouped bar chart: three sectors per decade, with a vertical axis in thousands of workers"></a></figure>
+<figure><a href="../../blog/images/setores-bar-en.svg"><img src="../../blog/images/setores-bar-en.svg" alt="Grouped bar chart: three sectors per decade, with a vertical axis in thousands of workers"></a></figure>
 
 Back to the questions:
 
@@ -82,7 +82,7 @@ Back to the questions:
 
 ## Bars or lines?
 
-<figure><a href="../../blog/images/sectores-line-en.svg"><img src="../../blog/images/sectores-line-en.svg" alt="Line chart: the three sectors between 1980 and 2010"></a></figure>
+<figure><a href="../../blog/images/setores-line-en.svg"><img src="../../blog/images/setores-line-en.svg" alt="Line chart: the three sectors between 1980 and 2010"></a></figure>
 
 The line chart answers exactly the same questions as the bar chart, and makes
 the trends easier to read off. But **use it only when the variable on the

@@ -122,11 +122,12 @@ p{margin:0;text-wrap:pretty}
    align-items, so an auto top margin pins every chip row to the bottom */
 .grid .card .tags{margin-top:auto}
 /* The two online editors share a line of their own: flex-basis:100% breaks the
-   line before them. The gap is wider than the row above because these two chips
-   are twice as wide, and 6px between two 2px borders reads as a divider rather
-   than a separation. flex:0 0 auto stops a wider system font from squeezing the
-   padding out of them, and wrap lets the pair stack instead of cramming. */
-.grid .card .tags-row{display:flex;gap:12px;flex-basis:100%;flex-wrap:wrap}
+   line before them, at the same 6px gap as the row above. Without this rule the
+   span is inline and the two chips touch, since the markup puts no whitespace
+   between them -- which is what a stale cached stylesheet shows. flex:0 0 auto
+   keeps a wider system font from squeezing their padding, and wrap lets the
+   pair stack rather than cram. */
+.grid .card .tags-row{display:flex;gap:6px;flex-basis:100%;flex-wrap:wrap}
 .grid .card .tags-row .tag{flex:0 0 auto}
 .tag{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:4px 8px;border:2px solid var(--text);white-space:nowrap}
 .tag.alert{border-color:var(--accent);color:var(--accent-700)}
