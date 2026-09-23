@@ -6,7 +6,7 @@
   --accent:#d94329;--accent-700:#9c2a17;--accent-400:#e8806c;
   --n200:#d4d2d1;--n300:#bfbcbb;--n400:#a8a5a3;--n600:#6f6b69;--n700:#524e4c;
   --paper:#fff;--on-accent:#f3f2f2;
-  --inv-bg:#201e1d;--inv-text:#f3f2f2}
+  --inv-bg:#201e1d;--inv-text:#f3f2f2;--inv-edge:#201e1d;--inv-muted:#bfbcbb}
 
 /* The dark steps, written once and applied by the media query for people who
    have not chosen, and by .theme-dark for those who have. */
@@ -15,13 +15,13 @@
     --bg:#171615;--surface:#242221;--text:#eceae9;
     --accent:#d94329;--accent-700:#f0917b;--accent-400:#b5341f;
     --n200:#2e2b2a;--n300:#3c3836;--n400:#4d4846;--n600:#a6a19e;--n700:#c2bdba;
-    --inv-bg:#282524;--inv-text:#eceae9}
+    --inv-bg:#2b2826;--inv-text:#eceae9;--inv-edge:#524d4a;--inv-muted:#b0aba8}
 }
 :root.theme-dark{color-scheme:dark;
   --bg:#171615;--surface:#242221;--text:#eceae9;
   --accent:#d94329;--accent-700:#f0917b;--accent-400:#b5341f;
   --n200:#2e2b2a;--n300:#3c3836;--n400:#4d4846;--n600:#a6a19e;--n700:#c2bdba;
-  --inv-bg:#282524;--inv-text:#eceae9}
+  --inv-bg:#2b2826;--inv-text:#eceae9;--inv-edge:#524d4a;--inv-muted:#b0aba8}
 :root.theme-light{color-scheme:light}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -193,14 +193,14 @@ p{margin:0;text-wrap:pretty}
 .options:not(:has(.box.wide ~ .box.wide))>.box.wide{grid-column:span 6}
 .box{border:2px solid var(--text);padding:36px 32px;display:flex;flex-direction:column;gap:14px}
 .box h3{font-size:22px;letter-spacing:-.015em}
-.cmd{font-family:ui-monospace,monospace;font-size:14px;background:var(--inv-bg);color:var(--inv-text);padding:14px 16px;margin-top:6px}
+.cmd{font-family:ui-monospace,monospace;font-size:14px;background:var(--inv-bg);color:var(--inv-text);border:2px solid var(--inv-edge);padding:14px 16px;margin-top:6px}
 .docs{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--text);border:2px solid var(--text)}
 .docs>div{background:var(--bg);padding:32px;display:flex;flex-direction:column;gap:12px}
 .docs .f{font-family:ui-monospace,monospace;font-size:13px;color:var(--accent-700)}
 .docs h3{font-size:20px;letter-spacing:-.01em}
-.dark{background:var(--inv-bg);color:var(--inv-text);padding:44px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.dark h2{font-size:28px;letter-spacing:-.02em;color:var(--bg)}
-.dark p{color:var(--n300);max-width:640px}
+.dark{background:var(--inv-bg);color:var(--inv-text);border:2px solid var(--inv-edge);padding:44px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.dark h2{font-size:28px;letter-spacing:-.02em;color:var(--inv-text)}
+.dark p{color:var(--inv-muted);max-width:640px}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--text)}
 .cards3>div{padding:40px 32px;display:flex;flex-direction:column;gap:12px;border-right:2px solid var(--text)}
 .cards3>div:last-child{border-right:0}
