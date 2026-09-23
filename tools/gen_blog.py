@@ -100,6 +100,11 @@ def parse(path, problems):
 def chrome(lang):
     src = (SITE / lang / 'index.html').read_text(encoding='utf-8')
     head = ''.join(re.findall(r'<link rel="(?:preconnect|stylesheet|icon|me)"[^>]*>', src))
+    # the theme machinery is lifted from the same page as everything else, so a
+    # blog post can never fall out of step with the rest of the site
+    head += ''.join(re.findall(r'<meta name="color-scheme"[^>]*>', src))
+    head += ''.join(re.findall(r'<script>try\{var t=localStorage[^<]*</script>', src))
+    head += ''.join(re.findall(r'<script src="\.\./theme\.js"></script>', src))
     header = re.search(r'<header class="hd">.*?</header>', src, re.S).group(0)
     footer = re.search(r'<footer class="ft">.*?</footer>', src, re.S).group(0)
     # the chrome comes from a page where Home is current; Blog is current here
@@ -113,7 +118,8 @@ def chrome(lang):
     # the lifted header points the language switch at the other language's home
     # page; each blog page substitutes its own counterpart for @@LANG@@
     hdr = re.sub(r'(<a class="lang" href=")[^"]*(")', r'\1@@LANG@@\2', deepen(header))
-    return head.replace('href="../', 'href="../../'), hdr, deepen(footer)
+    head = head.replace('href="../', 'href="../../').replace('src="../', 'src="../../')
+    return head, hdr, deepen(footer)
 
 def page(lang, title, desc, body, extra_head='', lang_href=None):
     head, header, footer = CHROME[lang]
