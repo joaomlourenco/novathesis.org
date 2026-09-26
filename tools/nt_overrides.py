@@ -131,7 +131,10 @@ INSTITUTIONS = [
 AMBASSADORS = {
     # Nobody goes in here until they have said yes: an entry states publicly
     # that this person holds the post, with their name and face attached.
-    'uminho': dict(name='Bruno Ferreira', github='BrunoFerreira01'),
+    'nova-fct':         dict(name='João M. Lourenço', github='joaomlourenco'),
+    'nova-fct-cbbi':    dict(name='João M. Lourenço', github='joaomlourenco'),
+    'nova-fct-di-adc':  dict(name='João M. Lourenço', github='joaomlourenco'),
+    'uminho':           dict(name='Bruno Ferreira',   github='BrunoFerreira01'),
 }
 
 GROUPS = [
