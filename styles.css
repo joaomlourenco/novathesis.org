@@ -221,6 +221,8 @@ p{margin:0;text-wrap:pretty}
    items, space-between would push two of them to opposite ends. */
 .note .thanks{flex-basis:100%;margin-top:18px}
 .note .thanks p+p{margin-top:6px}
+.note .thanks ul{margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.note .thanks li{padding-left:2px}
 /* The ambassador roll. One row per repository, the school on the left and the
    person (or the vacancy) on the right, so the eye can run down either column. */
 .amb-note{color:var(--n700);max-width:720px;margin-top:-6px}
