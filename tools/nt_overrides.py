@@ -129,7 +129,9 @@ INSTITUTIONS = [
 # GitHub avatar and has agreed to the picture being published). No entry at all
 # means the post is open, which the page says out loud.
 AMBASSADORS = {
-    'uminho': dict(name='Bruno Ferreira', github='BrunoFerreira01'),
+    # Nobody goes in here until they have said yes: an entry states publicly
+    # that this person holds the post, with their name and face attached.
+    # 'uminho': dict(name='Bruno Ferreira', github='BrunoFerreira01'),
 }
 
 GROUPS = [
