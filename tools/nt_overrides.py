@@ -137,6 +137,20 @@ AMBASSADORS = {
     'uminho':           dict(name='Bruno Ferreira',   github='BrunoFerreira01'),
 }
 
+# The alternative ambassadors page lists institutions rather than templates:
+# NOVA FCT is one place with one set of regulations, whichever of its three
+# models a student uses. Each entry names the institution and the REPOS it
+# covers; `logo` is a file in logos/. Anything not listed here is an
+# institution of its own, keyed by its repo.
+INSTITUTIONS_ALT = [
+    dict(key='nova-fct',  repos=['nova-fct', 'nova-fct-cbbi', 'nova-fct-di-adc'],
+         name=('NOVA School of Science and Technology', 'NOVA Faculdade de Ciências e Tecnologia')),
+    dict(key='ulht',      repos=['ulht-deisi', 'ulht-mge'],
+         name=('Universidade Lusófona',) * 2),
+    dict(key='iscteiul',  repos=['iscteiul-eta'], name=('Iscte — University Institute of Lisbon',
+                                                        'Iscte — Instituto Universitário de Lisboa')),
+]
+
 GROUPS = [
     ('nova',  'Universidade NOVA de Lisboa'),
     ('ul',    'Universidade de Lisboa'),
