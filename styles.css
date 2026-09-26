@@ -73,7 +73,12 @@ p{margin:0;text-wrap:pretty}
    drops the caps the other four wear. Declared after .stat span, which has
    the same specificity and would otherwise win on order alone. */
 .stat-amb span{text-transform:none;letter-spacing:.01em;font-size:13.5px;font-weight:500;color:var(--text)}
-.stat-amb a{font-weight:700}
+/* The cell's call to action wears the same filled accent as the hero's
+   primary button, at the size this cell can hold. */
+/* Number and button share a line, so this cell keeps the same height as the
+   other four instead of stretching the column. */
+.amb-line{display:flex;align-items:center;gap:16px}
+.stat-amb .btn{font-size:13px;padding:8px 13px;flex:0 0 auto}
 .stat-follow{justify-content:center}
 .social{display:flex;flex-wrap:wrap;gap:16px}
 .social a{color:var(--text);display:inline-flex}
