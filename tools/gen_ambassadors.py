@@ -126,9 +126,14 @@ def row(r, c):
                    f'<span class="amb-gh">{gh}</span>')
         body = f'{portrait(a)}<span class="amb-person">{who}</span>'
     else:
+        # Mirrors the filled row: what the name occupies above, what the handle
+        # occupies below. The boxed chip read as a separate object with no
+        # explanation; the same word, unboxed and under the action, reads as
+        # the state of the post.
         body = (f'<span class="amb-face amb-mono amb-empty" aria-hidden="true">+</span>'
-                f'<span class="amb-name"><span class="tag">{c["open_label"]}</span> '
-                f'<a href="{ISSUE}{html.escape(r["label"])}">{c["open_cta"]}</a></span>')
+                f'<span class="amb-person">'
+                f'<a href="{ISSUE}{html.escape(r["label"])}">{c["open_cta"]}</a>'
+                f'<span class="amb-state">{c["open_label"]}</span></span>')
     return (f'<div class="amb-row">'
             f'<div class="amb-id">{cover(r, c)}<div class="amb-school">{label}'
             f'<span class="repo">{html.escape(r["repo"])}</span></div></div>'
