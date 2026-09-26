@@ -52,13 +52,19 @@ LOGOS = SITE / 'logos'
 
 GRID_RE = re.compile(r'<div style="display:flex;flex-direction:column;gap:40px">.*?(?=\s*<div class="note">)', re.S)
 
-def row(r, c, lk):
+def row(r, c, lk, cont=False):
+    """`cont` marks a row whose institution is the same as the one above it: the
+    mark is shown once and the rows below keep its width as empty space, so the
+    name column stays on its line."""
     key = lk.get(r['repo'], r['repo'])
     f = LOGOS / f'{key}.svg'
     name = html.escape(r['label'])
-    mark = (f'<span class="amb-logo"><img loading="lazy" alt="" src="../logos/{f.name}"></span>'
-            if f.exists() else
-            f'<span class="amb-logo amb-logo-missing"><span>{c["logo_missing"]}</span></span>')
+    if cont:
+        mark = '<span class="amb-logo-gap" aria-hidden="true"></span>'
+    elif f.exists():
+        mark = f'<span class="amb-logo"><img loading="lazy" alt="" src="../logos/{f.name}"></span>'
+    else:
+        mark = f'<span class="amb-logo amb-logo-missing"><span>{c["logo_missing"]}</span></span>'
     stem = cover_stem(r)
     cf = find(stem, '1') if stem else None
     cls = 'amb-cover crop' if r.get('crop') else 'amb-cover'
@@ -78,7 +84,7 @@ def row(r, c, lk):
     if r.get('org'):
         label, tip = EXT[c['lang']]
         ext = f' <span class="tag ext" title="{tip}">{label}</span>'
-    return (f'<div class="sch-row">'
+    return (f'<div class="sch-row{" sch-cont" if cont else ""}">'
             f'<div class="sch-id">{mark}<div class="amb-school">{name}'
             f'<span class="repo">{html.escape(r["repo"])}{ext}</span></div></div>'
             f'<div class="sch-cover">{cover}</div>'
@@ -95,7 +101,11 @@ def grid(lang):
         if not rows:
             continue
         out.append(f'<div class="group"><div class="gh"><h2>{heading}</h2></div><div class="amb-g">')
-        out += [row(r, c, lk) for r in rows]
+        prev = None
+        for r in rows:
+            key = lk.get(r['repo'], r['repo'])
+            out.append(row(r, c, lk, cont=(key == prev)))
+            prev = key
         out.append('</div></div>')
     out.append('</div>')
     return ''.join(out)

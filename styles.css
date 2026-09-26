@@ -244,6 +244,15 @@ p{margin:0;text-wrap:pretty}
 .sch-row{display:grid;grid-template-columns:1fr 72px 344px;align-items:center;gap:22px;
   padding:14px 0;border-bottom:1px solid var(--n300)}
 .sch-row:last-child{border-bottom:0}
+/* Rows of the same institution: the mark appears once, and the rules between
+   them start where the name does, so the group reads as one block. The rule
+   moves from the row above to the continuation row, since only the latter can
+   be selected -- and :has() takes the border off the one above it. */
+.amb-logo-gap{width:100px;flex:0 0 auto}
+.sch-row:has(+ .sch-cont){border-bottom:0}
+.sch-cont{position:relative}
+.sch-cont::before{content:"";position:absolute;top:0;left:114px;right:0;
+  border-top:1px solid var(--n300)}
 .sch-id{display:flex;align-items:center;gap:14px;min-width:0}
 /* Taller rows here than on the ambassadors roll: this page is for recognising
    a cover, so the art gets the room. Scoped to .sch-row, since .amb-logo and
