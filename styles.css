@@ -239,10 +239,19 @@ p{margin:0;text-wrap:pretty}
    Three columns so each part keeps its own vertical line down the page. */
 /* 344px is what the four chips measure side by side; narrower and the last one
    drops to a line of its own. */
-.sch-row{display:grid;grid-template-columns:1fr 60px 344px;align-items:center;gap:22px;
+.sch-row{display:grid;grid-template-columns:1fr 72px 344px;align-items:center;gap:22px;
   padding:14px 0;border-bottom:1px solid var(--n300)}
 .sch-row:last-child{border-bottom:0}
 .sch-id{display:flex;align-items:center;gap:14px;min-width:0}
+/* Taller rows here than on the ambassadors roll: this page is for recognising
+   a cover, so the art gets the room. Scoped to .sch-row, since .amb-logo and
+   .amb-cover are shared with pages that want them small. */
+.sch-row .amb-logo{width:100px;height:66px}
+/* The box holds its size before the lazy-loaded art arrives, so a row does
+   not jump from a 4px sliver to a full cover as you scroll past it. */
+.sch-row .amb-cover{min-width:49px;display:flex;align-items:center;justify-content:center}
+.sch-row .amb-cover img{height:64px}
+.sch-row .amb-cover.crop{width:49px;height:68px}
 .sch-cover{display:flex;justify-content:center}
 .sch-get{display:flex;flex-wrap:wrap;gap:6px}
 /* A chip that carries an icon: the icon says what happens, the word says where. */
