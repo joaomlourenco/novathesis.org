@@ -132,7 +132,7 @@ GROUPS = [
 ]
 
 REPOS = [
- dict(group='nova', repo='nova-fct', label='Faculdade de Ciências e Tecnologia (NOVA FCT)', cover='nova-fct-phd-en-lua'),
+ dict(group='nova', repo='nova-fct', label='NOVA FCT — Faculdade de Ciências e Tecnologia', cover='nova-fct-phd-en-lua'),
  dict(group='nova', repo='nova-fct-cbbi', label='NOVA FCT — CBBI', cover='nova-fct-cbbi-msc-en-lua'),
  dict(group='nova', repo='nova-fct-di-adc', label='NOVA FCT — DI-ADC', cover='nova-fct-di-adc-bsc-en-lua'),
  dict(group='nova', repo='nova-ensp', label='Escola Nacional de Saúde Pública (ENSP)', cover='nova-ensp-phd-en-lua'),
