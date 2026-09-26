@@ -61,10 +61,19 @@ p{margin:0;text-wrap:pretty}
 .btn-p:hover{background:var(--accent-700);border-color:var(--accent-700);color:var(--on-accent)}
 .btn-w{background:var(--on-accent);border-color:var(--on-accent);color:#201e1d}
 .stats{display:flex;flex-direction:column}
-.stat{flex:1;padding:40px 44px;border-bottom:2px solid var(--text);display:flex;flex-direction:column;gap:6px}
+/* Five cells share the height the hero already has, so they give up some
+   padding and a few points of type rather than making the hero taller. */
+.stat{flex:1;padding:28px 44px;border-bottom:2px solid var(--text);display:flex;flex-direction:column;gap:6px}
 .stat:last-child{border-bottom:0}
-.stat b{font-size:52px;line-height:1;letter-spacing:-.03em;font-weight:800}
+.stat b{font-size:44px;line-height:1;letter-spacing:-.03em;font-weight:800}
+/* The one cell that asks for something: its number carries the accent. */
+.stat-amb b{color:var(--accent)}
 .stat span{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n700)}
+/* This label is an invitation, not a caption: it reads as a sentence, so it
+   drops the caps the other four wear. Declared after .stat span, which has
+   the same specificity and would otherwise win on order alone. */
+.stat-amb span{text-transform:none;letter-spacing:.01em;font-size:13.5px;font-weight:500;color:var(--text)}
+.stat-amb a{font-weight:700}
 .stat-follow{justify-content:center}
 .social{display:flex;flex-wrap:wrap;gap:16px}
 .social a{color:var(--text);display:inline-flex}

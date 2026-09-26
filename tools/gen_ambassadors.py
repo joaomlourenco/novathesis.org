@@ -151,6 +151,21 @@ def build(lang):
                    + ''.join(rows) + '</section>')
     return (duties, groups)
 
+def sync_home(filled, total):
+    """Keep the home page's open-posts figure honest. It is a claim that goes
+    stale the moment someone takes a school, so the generator that knows the
+    number owns it rather than leaving it to be remembered."""
+    import re as _re
+    for lang in ('en', 'pt'):
+        p = SITE / lang / 'index.html'
+        if not p.exists():
+            continue
+        s = p.read_text(encoding='utf-8')
+        s2, n = _re.subn(r'(<b data-amb-open>)\d+(</b>)', rf'\g<1>{total - filled}\g<2>', s)
+        if n and s2 != s:
+            p.write_text(s2, encoding='utf-8')
+            print(f'{lang}/index.html: open posts -> {total - filled}')
+
 def main():
     for lang in ('en', 'pt'):
         c = COPY[lang]
@@ -192,6 +207,7 @@ def main():
             p.write_text(out, encoding='utf-8')
             filled = sum(1 for r in REPOS if r['repo'] in ov.AMBASSADORS)
             print(f'{lang}/ambassadors.html: written  ({filled}/{len(REPOS)} preenchidos)')
+    sync_home(sum(1 for r in REPOS if r['repo'] in ov.AMBASSADORS), len(REPOS))
 
 if __name__ == '__main__':
     main()
