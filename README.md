@@ -124,3 +124,23 @@ actually served.
 The **nova**thesis template is released under the
 [LaTeX Project Public License 1.3c](https://www.latex-project.org/lppl/lppl-1-3c).
 This repository holds the website source and carries no separate licence file yet.
+
+## Rebuilding
+
+Run the generators, then the stamper — in that order, because the stamper is
+what makes a change to the stylesheet visible to anyone who has seen the site
+in the last four hours.
+
+```sh
+python3 tools/gen_nt_schools.py       # registry, from the template repo
+python3 tools/gen_showcase.py
+python3 tools/gen_findyourschool.py
+python3 tools/gen_ambassadors.py
+python3 tools/gen_blog.py
+python3 tools/stamp_assets.py         # last: ?v=<hash> on styles.css and theme.js
+```
+
+Cloudflare serves the assets with `max-age=14400` and they live at a fixed
+address, so without the stamp a browser keeps the old stylesheet for four hours
+and the new pages render against it. That failure is silent and looks exactly
+like a layout bug.

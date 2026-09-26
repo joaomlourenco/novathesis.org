@@ -128,7 +128,7 @@ INSTITUTIONS = [
 GROUPS = [
  ('nova', 'Universidade NOVA de Lisboa'),
  ('ul', 'Universidade de Lisboa'),
- ('other', ' · Porto · Minho · Lusófona · ISCTE · Politécnicos · outras'),
+ ('other', ' Porto · Minho · Lusófona · ISCTE · Politécnicos · outras'),
 ]
 
 REPOS = [
