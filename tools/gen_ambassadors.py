@@ -14,7 +14,9 @@ hand-written prose to preserve yet. Edit the COPY below, not the HTML.
 import sys, pathlib, html, re
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import nt_overrides as ov
-from nt_schools import SITE, GROUPS, REPOS, cover_stem, find
+from nt_schools import SITE, GROUPS, REPOS
+
+LOGOS = SITE / 'logos'
 
 ISSUE = ('https://github.com/joaomlourenco/novathesis/issues/new'
          '?title=%5BAMBASSADOR%5D%20')
@@ -49,7 +51,7 @@ COPY = {
    roll_h='The schools',
    roll_p='One post per repository. Open posts are not a gap to be embarrassed about: '
           'the template works without them, it just learns about changes more slowly.',
-   open_label='Open', open_cta='Take this one', cover_label='Cover of',
+   open_label='Open', open_cta='Take this one', logo_missing='logo?',
    repo_label='repository'),
  'pt': dict(
    lang='pt', other='en', title='Embaixadores', nav='Embaixadores',
@@ -81,7 +83,7 @@ COPY = {
    roll_h='As escolas',
    roll_p='Um lugar por repositório. Os lugares por preencher não são motivo de vergonha: '
           'o template funciona sem eles, apenas fica a saber das alterações mais devagar.',
-   open_label='Por preencher', open_cta='Assumir este', cover_label='Capa de',
+   open_label='Por preencher', open_cta='Assumir este', logo_missing='logótipo?',
    repo_label='repositório'),
 }
 
@@ -100,51 +102,74 @@ def portrait(a):
         return f'<img class="amb-face" loading="lazy" alt="" src="../people/{html.escape(a["photo"])}">'
     return f'<span class="amb-face amb-mono" aria-hidden="true">{initials(a["name"])}</span>'
 
-def cover(r, c):
-    """A thumbnail of the school's own front cover, linking to the full drawing.
-    The image itself stays decorative -- the school's name is right beside it --
-    so the accessible name goes on the link instead, where a screen reader needs
-    it. uminho's art is a wrap-around, clipped to the front face as the school
-    cards clip it."""
-    stem = cover_stem(r)
-    f = find(stem, '1') if stem else None
-    if not f:
-        return ''
-    cls = 'amb-cover crop' if r.get('crop') else 'amb-cover'
-    label = html.escape(f'{c["cover_label"]} {r["label"]}')
-    return (f'<a class="{cls}" href="../covers/SVG/{f.name}" aria-label="{label}" title="{label}">'
-            f'<img loading="lazy" alt="" src="../covers/SVG/{f.name}"></a>')
+def institutions():
+    """REPOS folded to one entry per institution, keeping REPOS' order. An
+    ambassador watches an institution's regulations, not a template, so NOVA
+    FCT's three models and Lusofona's two are one post each, not five."""
+    grouped = {r: g for g in ov.INSTITUTIONS_ALT for r in g['repos']}
+    out, seen = [], set()
+    for r in REPOS:
+        g = grouped.get(r['repo'])
+        key = g['key'] if g else r['repo']
+        if key in seen:
+            continue
+        seen.add(key)
+        repos = [x for x in REPOS
+                 if (grouped[x['repo']]['key'] if x['repo'] in grouped else x['repo']) == key]
+        out.append(dict(key=key, group=g, repos=repos, label=r['label'], section=r['group']))
+    return out
 
-def row(r, c):
-    a = ov.AMBASSADORS.get(r['repo'])
-    label = html.escape(r['label'])
+def title(inst, c):
+    i = 0 if c['lang'] == 'en' else 1
+    return inst['group']['name'][i] if inst['group'] else inst['label']
+
+def mark(inst, c):
+    """The institution's own logo -- what a reader scanning for their school
+    actually recognises. A missing file leaves a marked placeholder rather than
+    a hole, so it is obvious which one still needs one."""
+    f = LOGOS / f'{inst["key"]}.svg'
+    name = html.escape(title(inst, c))
+    if not f.exists():
+        return (f'<span class="amb-logo amb-logo-missing" title="{name}">'
+                f'<span>{html.escape(c["logo_missing"])}</span></span>')
+    return (f'<a class="amb-logo" href="../logos/{f.name}" aria-label="{name}" title="{name}">'
+            f'<img loading="lazy" alt="" src="../logos/{f.name}"></a>')
+
+def holder(inst):
+    for r in inst['repos']:
+        a = ov.AMBASSADORS.get(r['repo'])
+        if a:
+            return a
+    return None
+
+def row(inst, c):
+    a = holder(inst)
+    models = ' · '.join(html.escape(r['repo']) for r in inst['repos'])
     if a:
         who = html.escape(a['name'])
         if a.get('github'):
             gh = html.escape(a['github'])
-            who = (f'<a href="https://github.com/{gh}">{who}</a>'
-                   f'<span class="amb-gh">{gh}</span>')
+            who = f'<a href="https://github.com/{gh}">{who}</a><span class="amb-gh">{gh}</span>'
         body = f'{portrait(a)}<span class="amb-person">{who}</span>'
     else:
         # Mirrors the filled row: what the name occupies above, what the handle
-        # occupies below. The boxed chip read as a separate object with no
-        # explanation; the same word, unboxed and under the action, reads as
-        # the state of the post.
+        # occupies below.
         body = (f'<span class="amb-face amb-mono amb-empty" aria-hidden="true">+</span>'
                 f'<span class="amb-person">'
-                f'<a href="{ISSUE}{html.escape(r["label"])}">{c["open_cta"]}</a>'
+                f'<a href="{ISSUE}{html.escape(title(inst, c))}">{c["open_cta"]}</a>'
                 f'<span class="amb-state">{c["open_label"]}</span></span>')
     return (f'<div class="amb-row">'
-            f'<div class="amb-id">{cover(r, c)}<div class="amb-school">{label}'
-            f'<span class="repo">{html.escape(r["repo"])}</span></div></div>'
+            f'<div class="amb-id">{mark(inst, c)}<div class="amb-school">'
+            f'{html.escape(title(inst, c))}<span class="repo">{models}</span></div></div>'
             f'<div class="amb-who">{body}</div></div>')
 
 def build(lang):
     c = COPY[lang]
     duties = ''.join(f'<div><h3>{h}</h3><p>{p}</p></div>' for h, p in c['duties'])
+    insts = institutions()
     groups = ''
     for key, gname in GROUPS:
-        rows = [row(r, c) for r in REPOS if r['group'] == key]
+        rows = [row(i, c) for i in insts if i['section'] == key]
         if not rows: continue
         groups += (f'<section class="amb-g"><div class="show-hd"><h2>{html.escape(gname)}</h2>'
                    f'<span class="show-tags"><span class="tag">{len(rows)}</span></span></div>'
@@ -167,6 +192,7 @@ def sync_home(filled, total):
             print(f'{lang}/index.html: open posts -> {total - filled}')
 
 def main():
+    insts = institutions()
     for lang in ('en', 'pt'):
         c = COPY[lang]
         src = (SITE / lang / 'index.html').read_text(encoding='utf-8')
@@ -205,9 +231,9 @@ def main():
             print(f'{lang}/ambassadors.html: already up to date')
         else:
             p.write_text(out, encoding='utf-8')
-            filled = sum(1 for r in REPOS if r['repo'] in ov.AMBASSADORS)
-            print(f'{lang}/ambassadors.html: written  ({filled}/{len(REPOS)} preenchidos)')
-    sync_home(sum(1 for r in REPOS if r['repo'] in ov.AMBASSADORS), len(REPOS))
+            held = sum(1 for i in insts if holder(i))
+            print(f'{lang}/ambassadors.html: written  ({held}/{len(insts)} instituições)')
+    sync_home(sum(1 for i in insts if holder(i)), len(insts))
 
 if __name__ == '__main__':
     main()
