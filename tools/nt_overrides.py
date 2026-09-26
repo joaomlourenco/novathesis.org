@@ -121,6 +121,17 @@ INSTITUTIONS = [
          paths=[dict(path='other/huberlin', lang='de')]),
 ]
 
+# One ambassador per school: the person who checks the template against their
+# institution's current regulations and says when those regulations move. Keyed
+# by the REPOS `repo` id, so a school cannot be listed here without existing.
+# Fields: name (required), github (optional, becomes the link and the portrait),
+# photo (optional, a file in people/ -- use it only when the person has no
+# GitHub avatar and has agreed to the picture being published). No entry at all
+# means the post is open, which the page says out loud.
+AMBASSADORS = {
+    'uminho': dict(name='Bruno Ferreira', github='BrunoFerreira01'),
+}
+
 GROUPS = [
     ('nova',  'Universidade NOVA de Lisboa'),
     ('ul',    'Universidade de Lisboa'),

@@ -212,6 +212,28 @@ p{margin:0;text-wrap:pretty}
    items, space-between would push two of them to opposite ends. */
 .note .thanks{flex-basis:100%;margin-top:18px}
 .note .thanks p+p{margin-top:6px}
+/* The ambassador roll. One row per repository, the school on the left and the
+   person (or the vacancy) on the right, so the eye can run down either column. */
+.amb-note{color:var(--n700);max-width:720px;margin-top:-6px}
+.amb-g{display:flex;flex-direction:column;gap:0}
+.amb-g+.amb-g{margin-top:26px}
+.amb-row{display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:14px 0;border-bottom:1px solid var(--n300);flex-wrap:wrap}
+.amb-row:last-child{border-bottom:0}
+.amb-school{display:flex;flex-direction:column;gap:3px;font-weight:500;min-width:min(100%,260px)}
+.amb-who{display:flex;align-items:center;gap:12px;min-height:40px}
+.amb-name{font-size:15px}
+.amb-gh{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--n600)}
+/* Portraits are square and bordered like every other image on the site. The
+   monogram keeps an entry the same height when there is no picture, so a
+   vacancy reads as a held place rather than as a missing row. */
+.amb-face{width:40px;height:40px;border:2px solid var(--n300);background:var(--paper);
+  object-fit:cover;display:block;flex:0 0 auto}
+.amb-mono{display:flex;align-items:center;justify-content:center;background:var(--surface);
+  color:var(--n600);font-size:13px;font-weight:700;letter-spacing:.04em}
+.amb-empty{color:var(--n400);font-weight:400;font-size:20px;border-style:dashed}
+@media (max-width:640px){.amb-row{flex-direction:column;align-items:flex-start;gap:10px}}
+
 .note{padding:28px 32px;border:2px solid var(--text);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .ft{border-top:2px solid var(--text);padding:48px 56px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
 .ft .mark{font-size:22px}.ft .mark b,.ft .mark s{border-bottom-width:2px;padding-bottom:5px}
