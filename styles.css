@@ -217,8 +217,12 @@ p{margin:0;text-wrap:pretty}
 .amb-note{color:var(--n700);max-width:720px;margin-top:-6px}
 .amb-g{display:flex;flex-direction:column;gap:0}
 .amb-g+.amb-g{margin-top:26px}
-.amb-row{display:flex;align-items:center;justify-content:space-between;gap:24px;
-  padding:14px 0;border-bottom:1px solid var(--n300);flex-wrap:wrap}
+/* Two columns rather than space-between: with the latter the right-hand block
+   is pushed by its own width, so every name of a different length started at a
+   different place. A fixed second column puts the portraits, the names and the
+   handles each on one vertical line all the way down. */
+.amb-row{display:grid;grid-template-columns:1fr 250px;align-items:center;gap:24px;
+  padding:14px 0;border-bottom:1px solid var(--n300)}
 .amb-row:last-child{border-bottom:0}
 .amb-id{display:flex;align-items:center;gap:14px;min-width:min(100%,300px)}
 .amb-school{display:flex;flex-direction:column;gap:3px;font-weight:500}
@@ -248,7 +252,7 @@ p{margin:0;text-wrap:pretty}
 .amb-mono{display:flex;align-items:center;justify-content:center;background:var(--surface);
   color:var(--n600);font-size:13px;font-weight:700;letter-spacing:.04em}
 .amb-empty{color:var(--n400);font-weight:400;font-size:20px;border-style:dashed}
-@media (max-width:640px){.amb-row{flex-direction:column;align-items:flex-start;gap:10px}}
+@media (max-width:640px){.amb-row{grid-template-columns:1fr;gap:10px;align-items:start}}
 
 .note{padding:28px 32px;border:2px solid var(--text);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .ft{border-top:2px solid var(--text);padding:48px 56px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
