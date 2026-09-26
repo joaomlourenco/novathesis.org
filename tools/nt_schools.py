@@ -103,13 +103,13 @@ INSTITUTIONS = [
         ('uporto-fcup-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
       ]),
 
- dict(key='ipl-isel', uni=('Instituto Politécnico de Lisboa',) * 2, school=('Instituto Superior de Engenharia de Lisboa',) * 2,
+ dict(key='ipl-isel', uni=('Polytechnic University of Lisboa', 'Universidade Politécnica de Lisboa'), school=('Instituto Superior de Engenharia de Lisboa',) * 2,
       tag='IPL ISEL', credit=('Gonçalo N. Duarte', 'MrDuartePT'), blocks=[
         ('ipl-isel-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
         ('ipl-isel-meb-msc-en-lua', 'MSc in Biomedical Engineering', 'Mestrado em Engenharia Biomédica'),
       ]),
 
- dict(key='ips-ests', uni=('Polytechnic Institute of Setúbal', 'Instituto Politécnico de Setúbal'), school=('Escola Superior de Tecnologia de Setúbal',) * 2,
+ dict(key='ips-ests', uni=('Polytechnic University of Setúbal', 'Universidade Politécnica de Setúbal'), school=('Escola Superior de Tecnologia de Setúbal',) * 2,
       tag='IPS ESTS', blocks=[
         ('ips-ests-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
       ]),

@@ -69,19 +69,24 @@ def grid(lang):
     out.append('</div>')
     return ''.join(out)
 
-check_or_exit()
+def main():
+    check_or_exit()
 
-for lang in ('en', 'pt'):
-    p = SITE / lang / 'schools.html'
-    src = p.read_text(encoding='utf-8')
-    new, n = GRID_RE.subn(lambda m: grid(lang), src)
-    assert n == 1, f'{p}: card grid not found ({n} matches)'
-    print(f'{p.relative_to(SITE)}: ' + ('already up to date' if new == src else 'written')
-          + f'  ({len(REPOS)} cards)')
-    if new != src:
-        p.write_text(new, encoding='utf-8')
+    for lang in ('en', 'pt'):
+        p = SITE / lang / 'schools.html'
+        src = p.read_text(encoding='utf-8')
+        new, n = GRID_RE.subn(lambda m: grid(lang), src)
+        assert n == 1, f'{p}: card grid not found ({n} matches)'
+        print(f'{p.relative_to(SITE)}: ' + ('already up to date' if new == src else 'written')
+              + f'  ({len(REPOS)} cards)')
+        if new != src:
+            p.write_text(new, encoding='utf-8')
 
-wide = [r['repo'] for r in REPOS
-        if (f := find(cover_stem(r), '1')) and ratio(f) > 1 and not r.get('crop')]
-if wide:
-    print('\nWrap-around covers shown uncropped (consider crop=True):', ', '.join(wide))
+    wide = [r['repo'] for r in REPOS
+            if (f := find(cover_stem(r), '1')) and ratio(f) > 1 and not r.get('crop')]
+    if wide:
+        print('\nWrap-around covers shown uncropped (consider crop=True):', ', '.join(wide))
+
+
+if __name__ == '__main__':
+    main()

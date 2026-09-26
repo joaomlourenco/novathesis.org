@@ -16,6 +16,7 @@ import sys, pathlib, html, re
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import nt_overrides as ov
 from nt_schools import SITE, GROUPS, REPOS, cover_stem, find, repo_url, zip_url, overleaf, inscrive
+from gen_findyourschool import EXT
 
 LOGOS = SITE / 'logos'
 
@@ -59,9 +60,15 @@ def row(r, c, lk):
             ('git',  c['git'],  repo_url(r)),
             ('open', 'Overleaf', overleaf(r)),
             ('open', 'Inscrive', inscrive(r))))
+    # the externally maintained school keeps its marker here too: it is the same
+    # warning, and a row without it would send people off as if it were ours
+    ext = ''
+    if r.get('org'):
+        label, tip = EXT[c['lang']]
+        ext = f' <span class="tag ext" title="{tip}">{label}</span>'
     return (f'<div class="sch-row">'
             f'<div class="sch-id">{mark}<div class="amb-school">{name}'
-            f'<span class="repo">{html.escape(r["repo"])}</span></div></div>'
+            f'<span class="repo">{html.escape(r["repo"])}{ext}</span></div></div>'
             f'<div class="sch-cover">{cover}</div>'
             f'<div class="sch-get">{btns}</div></div>')
 
@@ -72,11 +79,11 @@ def lifted(lang, what):
     m = re.search(rf'<div class="{what}">(.*?)</div>\s*(?=<div|</main)', s, re.S)
     return m.group(1) if m else ''
 
-COPY = {'en': dict(other='pt', title='Find your school', zip='ZIP', git='Git',
+COPY = {'en': dict(lang='en', other='pt', title='Find your school', zip='ZIP', git='Git',
                    cover_label='Cover of', logo_missing='logo?',
                    note='Alternative layout: one row per repository instead of a card grid, '
                         'with the institution mark beside each cover.'),
-        'pt': dict(other='en', title='A tua escola', zip='ZIP', git='Git',
+        'pt': dict(lang='pt', other='en', title='A tua escola', zip='ZIP', git='Git',
                    cover_label='Capa de', logo_missing='logótipo?',
                    note='Disposição alternativa: uma linha por repositório em vez de uma '
                         'grelha de cartões, com o símbolo da instituição ao lado da capa.')}
