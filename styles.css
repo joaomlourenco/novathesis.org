@@ -225,12 +225,17 @@ p{margin:0;text-wrap:pretty}
 /* The school's own cover, at a size where the colour and the layout still
    identify it even though the type has gone. */
 .amb-cover{border:2px solid var(--n300);background:var(--paper);line-height:0;display:block;flex:0 0 auto}
+.amb-cover:hover{border-color:var(--accent)}
 .amb-cover img{height:44px;width:auto;display:block;max-width:none}
 /* box-sizing is border-box site-wide, so the clipped one needs the border in
    its size to end up the same height as the others: 44 of art plus 2+2. */
 .amb-cover.crop{width:35px;height:48px}
 .amb-who{display:flex;align-items:center;gap:12px;min-height:40px}
 .amb-name{font-size:15px}
+/* Name over handle: two facts about one person, so they stack instead of
+   running together on one line. The vacancy row keeps .amb-name, whose two
+   parts are a state and an action and do belong side by side. */
+.amb-person{display:flex;flex-direction:column;gap:1px;font-size:15px;line-height:1.25}
 .amb-gh{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--n600)}
 /* Portraits are square and bordered like every other image on the site. The
    monogram keeps an entry the same height when there is no picture, so a

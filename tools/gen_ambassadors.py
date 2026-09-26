@@ -49,7 +49,7 @@ COPY = {
    roll_h='The schools',
    roll_p='One post per repository. Open posts are not a gap to be embarrassed about: '
           'the template works without them, it just learns about changes more slowly.',
-   open_label='Open', open_cta='Take this one',
+   open_label='Open', open_cta='Take this one', cover_label='Cover of',
    repo_label='repository'),
  'pt': dict(
    lang='pt', other='en', title='Embaixadores', nav='Embaixadores',
@@ -81,7 +81,7 @@ COPY = {
    roll_h='As escolas',
    roll_p='Um lugar por repositório. Os lugares por preencher não são motivo de vergonha: '
           'o template funciona sem eles, apenas fica a saber das alterações mais devagar.',
-   open_label='Por preencher', open_cta='Assumir este',
+   open_label='Por preencher', open_cta='Assumir este', cover_label='Capa de',
    repo_label='repositório'),
 }
 
@@ -100,16 +100,20 @@ def portrait(a):
         return f'<img class="amb-face" loading="lazy" alt="" src="../people/{html.escape(a["photo"])}">'
     return f'<span class="amb-face amb-mono" aria-hidden="true">{initials(a["name"])}</span>'
 
-def cover(r):
-    """A thumbnail of the school's own front cover. Decorative -- the name sits
-    beside it -- so the alt text is empty. uminho's art is a wrap-around, so it
-    is clipped to the front face, the same way the school cards do it."""
+def cover(r, c):
+    """A thumbnail of the school's own front cover, linking to the full drawing.
+    The image itself stays decorative -- the school's name is right beside it --
+    so the accessible name goes on the link instead, where a screen reader needs
+    it. uminho's art is a wrap-around, clipped to the front face as the school
+    cards clip it."""
     stem = cover_stem(r)
     f = find(stem, '1') if stem else None
     if not f:
         return ''
     cls = 'amb-cover crop' if r.get('crop') else 'amb-cover'
-    return f'<span class="{cls}"><img loading="lazy" alt="" src="../covers/SVG/{f.name}"></span>'
+    label = html.escape(f'{c["cover_label"]} {r["label"]}')
+    return (f'<a class="{cls}" href="../covers/SVG/{f.name}" aria-label="{label}" title="{label}">'
+            f'<img loading="lazy" alt="" src="../covers/SVG/{f.name}"></a>')
 
 def row(r, c):
     a = ov.AMBASSADORS.get(r['repo'])
@@ -118,15 +122,15 @@ def row(r, c):
         who = html.escape(a['name'])
         if a.get('github'):
             gh = html.escape(a['github'])
-            who = (f'<a href="https://github.com/{gh}">{who}</a> '
+            who = (f'<a href="https://github.com/{gh}">{who}</a>'
                    f'<span class="amb-gh">{gh}</span>')
-        body = f'{portrait(a)}<span class="amb-name">{who}</span>'
+        body = f'{portrait(a)}<span class="amb-person">{who}</span>'
     else:
         body = (f'<span class="amb-face amb-mono amb-empty" aria-hidden="true">+</span>'
                 f'<span class="amb-name"><span class="tag">{c["open_label"]}</span> '
                 f'<a href="{ISSUE}{html.escape(r["label"])}">{c["open_cta"]}</a></span>')
     return (f'<div class="amb-row">'
-            f'<div class="amb-id">{cover(r)}<div class="amb-school">{label}'
+            f'<div class="amb-id">{cover(r, c)}<div class="amb-school">{label}'
             f'<span class="repo">{html.escape(r["repo"])}</span></div></div>'
             f'<div class="amb-who">{body}</div></div>')
 
