@@ -220,7 +220,15 @@ p{margin:0;text-wrap:pretty}
 .amb-row{display:flex;align-items:center;justify-content:space-between;gap:24px;
   padding:14px 0;border-bottom:1px solid var(--n300);flex-wrap:wrap}
 .amb-row:last-child{border-bottom:0}
-.amb-school{display:flex;flex-direction:column;gap:3px;font-weight:500;min-width:min(100%,260px)}
+.amb-id{display:flex;align-items:center;gap:14px;min-width:min(100%,300px)}
+.amb-school{display:flex;flex-direction:column;gap:3px;font-weight:500}
+/* The school's own cover, at a size where the colour and the layout still
+   identify it even though the type has gone. */
+.amb-cover{border:2px solid var(--n300);background:var(--paper);line-height:0;display:block;flex:0 0 auto}
+.amb-cover img{height:44px;width:auto;display:block;max-width:none}
+/* box-sizing is border-box site-wide, so the clipped one needs the border in
+   its size to end up the same height as the others: 44 of art plus 2+2. */
+.amb-cover.crop{width:35px;height:48px}
 .amb-who{display:flex;align-items:center;gap:12px;min-height:40px}
 .amb-name{font-size:15px}
 .amb-gh{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--n600)}
