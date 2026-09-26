@@ -161,8 +161,9 @@ def main():
         head += ''.join(re.findall(r'<script src="\.\./theme\.js"></script>', src))
         header = re.search(r'<header class="hd">.*?</header>', src, re.S).group(0)
         header = header.replace('class="on"', 'class=""')
-        header = header.replace(f'<a class="" href="ambassadors.html">',
-                                f'<a class="on" href="ambassadors.html">')
+        # it sits under Contributing now, so that is the item that lights up
+        header = header.replace('<a class="" href="contributing.html">',
+                                '<a class="on" href="contributing.html">')
         footer = re.search(r'<footer class="ft">.*?</footer>', src, re.S).group(0)
         header = re.sub(r'(<a class="lang" href=")[^"]*(")',
                         rf'\1../{c["other"]}/ambassadors.html\2', header)
