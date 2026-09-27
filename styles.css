@@ -270,6 +270,21 @@ p{margin:0;text-wrap:pretty}
 .sch-row .amb-cover.crop{width:49px;height:68px}
 .sch-cover{display:flex;justify-content:center}
 .sch-get{display:flex;flex-wrap:wrap;gap:6px}
+/* The instructions dialog. Flat like everything else, and wide enough for the
+   steps to stay on one line each. */
+dialog#manual{border:2px solid var(--text);background:var(--bg);color:var(--text);
+  padding:32px 34px;max-width:min(520px,calc(100vw - 32px));margin:auto}
+dialog#manual::backdrop{background:rgba(0,0,0,.55)}
+dialog#manual h3{font-size:22px;letter-spacing:-.015em;margin-bottom:12px}
+dialog#manual .manual-lead{color:var(--n700);font-size:15px}
+dialog#manual ol{margin:16px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:8px;
+  font-size:15px}
+dialog#manual .manual-do{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+/* A chip that opens instructions rather than going somewhere: same shape as its
+   neighbours, but a button, so it needs the chip's type reset. */
+.tag-steps{font-family:inherit;cursor:pointer;color:var(--text);background:none}
+.tag-steps:hover{border-color:var(--accent);color:var(--accent-700)}
+
 /* A chip that carries an icon: the icon says what happens, the word says where. */
 .tag-i{display:inline-flex;align-items:center;gap:6px;padding:4px 9px 4px 7px}
 .tag-i svg{width:14px;height:14px;flex:0 0 auto}
