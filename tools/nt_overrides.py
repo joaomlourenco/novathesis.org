@@ -134,6 +134,7 @@ AMBASSADORS = {
     'nova-fct':         dict(name='João M. Lourenço', github='joaomlourenco'),
     'nova-fct-cbbi':    dict(name='João M. Lourenço', github='joaomlourenco'),
     'nova-fct-di-adc':  dict(name='João M. Lourenço', github='joaomlourenco'),
+    'uporto-fcup':      dict(name='Guilherme Borges', github='sgtpepperpt'),
     'uminho':           dict(name='Bruno Ferreira',   github='BrunoFerreira01'),
 }
 
