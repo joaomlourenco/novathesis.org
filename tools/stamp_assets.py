@@ -16,7 +16,10 @@ the <link> tags from index.html. It is idempotent.
 import hashlib, pathlib, re, sys
 
 SITE = pathlib.Path(__file__).resolve().parent.parent
-ASSETS = ('styles.css', 'theme.js')
+# The favicon is stamped too: browsers cache tab icons hard and separately
+# from the page, and a bad or empty cached entry at a fixed address never
+# gets retried. A new address forces one fetch and fixes it for everyone.
+ASSETS = ('styles.css', 'theme.js', 'favicon.svg')
 
 def digest(name):
     return hashlib.sha256((SITE / name).read_bytes()).hexdigest()[:8]
