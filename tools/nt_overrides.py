@@ -30,7 +30,7 @@ INSTITUTIONS
 
 GROUPS / REPOS
     "Find your school" cards. One GitHub repo can serve several schools.conf
-    paths (uminho's repo covers 12 sub-schools; ipl-isel's covers 2), so this
+    paths (uminho's repo covers 12 sub-schools; upl-isel's covers 2), so this
     stays a flat, fully hand-curated list -- gen_nt_schools.py copies it into
     nt_schools.py unchanged. cover_stem() in nt_schools.py already derives the
     cover asset from `repo` when `cover` is omitted.
@@ -108,12 +108,12 @@ INSTITUTIONS = [
     dict(key='uporto-fcup', tag='UPORTO FCUP', credit=('Guilherme Borges', 'sgtpepperpt'),
          paths=[dict(path='uporto/fcup')]),
 
-    dict(key='ipl-isel', tag='IPL ISEL', credit=('Gonçalo N. Duarte', 'MrDuartePT'), paths=[
-        dict(path='ipl/isel'),
-        dict(path='ipl/isel/meb', labels={
+    dict(key='upl-isel', tag='UPL ISEL', credit=('Gonçalo N. Duarte', 'MrDuartePT'), paths=[
+        dict(path='upl/isel'),
+        dict(path='upl/isel/meb', labels={
             'msc': ('MSc in Biomedical Engineering', 'Mestrado em Engenharia Biomédica')})]),
 
-    dict(key='ips-ests', tag='IPS ESTS', paths=[dict(path='ips/ests')]),
+    dict(key='ups-ests', tag='UPS ESTS', paths=[dict(path='ups/ests')]),
 
     dict(key='other-esep', tag='ESEP', paths=[dict(path='other/esep')]),
 
@@ -185,8 +185,8 @@ REPOS = [
     dict(group='other', repo='ulht-deisi',     label='Universidade Lusófona — DEISI',               cover='ulht-deisi-phd-en-lua'),
     dict(group='other', repo='ulht-mge',       label='Universidade Lusófona — MGE',                 cover='ulht-mge-phd-en-lua'),
     dict(group='other', repo='iscteiul-eta',   label='ISCTE-IUL — ETA',                             cover='iscteiul-eta-phd-en-lua'),
-    dict(group='other', repo='ipl-isel',       label='Instituto Superior de Engenharia de Lisboa (ISEL)', cover='ipl-isel-msc-en-lua'),
-    dict(group='other', repo='ips-ests',       label='Escola Superior de Tecnologia de Setúbal (ESTS)',   cover='ips-ests-msc-en-lua'),
+    dict(group='other', repo='upl-isel',       label='Instituto Superior de Engenharia de Lisboa (ISEL)', cover='upl-isel-msc-en-lua'),
+    dict(group='other', repo='ups-ests',       label='Escola Superior de Tecnologia de Setúbal (ESTS)',   cover='ups-ests-msc-en-lua'),
     dict(group='other', repo='other-esep',     label='Escola Superior de Enfermagem do Porto (ESEP)',     cover='other-esep-msc-en-lua'),
     dict(group='other', repo='other-huberlin', label='Humboldt-Universität zu Berlin (HU Berlin)',        cover='other-huberlin-phd-de-lua'),
 ]

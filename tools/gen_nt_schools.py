@@ -102,7 +102,7 @@ _NON_NAME_PREFIX = r'(?:logo|address|neg|RGB|GRAY)'
 def _set_start_re(cmd, lang):
     # No '*' requirement: both \SetX(en)=... and \SetX*(en)=... occur. The key
     # is usually just (lang), but some schools namespace it, e.g.
-    # \SetSchool*(isel,pt)={...} (ipl/isel, shared with its meb variant) --
+    # \SetSchool*(isel,pt)={...} (upl/isel, shared with its meb variant) --
     # so allow one leading segment before the language code, as long as it's
     # not a known non-name key. Anchoring to line-start (with MULTILINE)
     # keeps this from matching a commented-out example line like

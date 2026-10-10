@@ -103,15 +103,15 @@ INSTITUTIONS = [
         ('uporto-fcup-phd-en-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
       ]),
 
- dict(key='ipl-isel', uni=('Polytechnic University of Lisboa', 'Universidade Politécnica de Lisboa'), school=('Instituto Superior de Engenharia de Lisboa',) * 2,
-      tag='IPL ISEL', credit=('Gonçalo N. Duarte', 'MrDuartePT'), blocks=[
-        ('ipl-isel-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
-        ('ipl-isel-meb-msc-en-lua', 'MSc in Biomedical Engineering', 'Mestrado em Engenharia Biomédica'),
+ dict(key='upl-isel', uni=('Polytechnic University of Lisboa', 'Universidade Politécnica de Lisboa'), school=('Instituto Superior de Engenharia de Lisboa',) * 2,
+      tag='UPL ISEL', credit=('Gonçalo N. Duarte', 'MrDuartePT'), blocks=[
+        ('upl-isel-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
+        ('upl-isel-meb-msc-en-lua', 'MSc in Biomedical Engineering', 'Mestrado em Engenharia Biomédica'),
       ]),
 
- dict(key='ips-ests', uni=('Polytechnic University of Setúbal', 'Universidade Politécnica de Setúbal'), school=('Escola Superior de Tecnologia de Setúbal',) * 2,
-      tag='IPS ESTS', blocks=[
-        ('ips-ests-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
+ dict(key='ups-ests', uni=('Polytechnic University of Setúbal', 'Universidade Politécnica de Setúbal'), school=('Escola Superior de Tecnologia de Setúbal',) * 2,
+      tag='UPS ESTS', blocks=[
+        ('ups-ests-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
       ]),
 
  dict(key='other-esep', uni=('Nursing School of Porto', 'Escola Superior de Enfermagem do Porto'), school=('Nursing School of Porto', 'Escola Superior de Enfermagem do Porto'),
@@ -149,8 +149,8 @@ REPOS = [
  dict(group='other', repo='ulht-deisi', label='Universidade Lusófona — DEISI', cover='ulht-deisi-phd-en-lua'),
  dict(group='other', repo='ulht-mge', label='Universidade Lusófona — MGE', cover='ulht-mge-phd-en-lua'),
  dict(group='other', repo='iscteiul-eta', label='ISCTE-IUL — ETA', cover='iscteiul-eta-phd-en-lua'),
- dict(group='other', repo='ipl-isel', label='Instituto Superior de Engenharia de Lisboa (ISEL)', cover='ipl-isel-msc-en-lua'),
- dict(group='other', repo='ips-ests', label='Escola Superior de Tecnologia de Setúbal (ESTS)', cover='ips-ests-msc-en-lua'),
+ dict(group='other', repo='upl-isel', label='Instituto Superior de Engenharia de Lisboa (ISEL)', cover='upl-isel-msc-en-lua'),
+ dict(group='other', repo='ups-ests', label='Escola Superior de Tecnologia de Setúbal (ESTS)', cover='ups-ests-msc-en-lua'),
  dict(group='other', repo='other-esep', label='Escola Superior de Enfermagem do Porto (ESEP)', cover='other-esep-msc-en-lua'),
  dict(group='other', repo='other-huberlin', label='Humboldt-Universität zu Berlin (HU Berlin)', cover='other-huberlin-phd-de-lua'),
 ]
