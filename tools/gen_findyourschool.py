@@ -14,8 +14,7 @@ from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, inscri
 
 # Functional icons, not brand marks: an approximation of someone's logo drawn by
 # hand is worse than an honest arrow, and these say what the button does.
-MANUAL = {'scienhub': ('ScienHub', 'https://scienhub.com'),
-          'prism':    ('Prism',    'https://prism.openai.com')}
+MANUAL = {'scienhub': ('ScienHub', 'https://scienhub.com')}
 
 ICONS = {
  'zip':  '<path d="M12 3v11M7.5 10l4.5 4 4.5-4M4 19h16"/>',
@@ -82,8 +81,8 @@ def row(r, c, lk, cont=False, last=False):
             ('git',  c['git'],  repo_url(r)),
             ('open', 'Overleaf', overleaf(r)),
             ('open', 'Inscrive', inscrive(r))))
-    # ScienHub and Prism have no import-by-URL, so their chip opens the steps
-    # rather than a page that cannot do what the others do in one click
+    # ScienHub has no import-by-URL, so its chip opens the steps rather than a
+    # page that cannot do what the others do in one click
     btns += ''.join(
         f'<button class="tag tag-i tag-steps" type="button" data-manual="{svc}" '
         f'data-service="{html.escape(sname)}" data-site="{surl}" '
