@@ -56,7 +56,7 @@ LOGOS = SITE / 'logos'
 
 GRID_RE = re.compile(r'<div style="display:flex;flex-direction:column;gap:40px">.*?(?=\s*<div class="note">)', re.S)
 
-def row(r, c, lk, cont=False):
+def row(r, c, lk, cont=False, last=False):
     """`cont` marks a row whose institution is the same as the one above it: the
     mark is shown once and the rows below keep its width as empty space, so the
     name column stays on its line."""
@@ -64,7 +64,7 @@ def row(r, c, lk, cont=False):
     f = LOGOS / f'{key}.svg'
     name = html.escape(r['label'])
     if cont:
-        mark = '<span class="amb-logo-gap" aria-hidden="true"></span>'
+        mark = f'<span class="amb-logo-gap{" is-last" if last else ""}" aria-hidden="true"></span>'
     elif f.exists():
         mark = f'<span class="amb-logo"><img loading="lazy" alt="" src="../logos/{f.name}"></span>'
     else:
@@ -165,11 +165,11 @@ def grid(lang):
         if not rows:
             continue
         out.append(f'<div class="group"><div class="gh"><h2>{heading}</h2></div><div class="amb-g">')
-        prev = None
-        for r in rows:
-            key = lk.get(r['repo'], r['repo'])
-            out.append(row(r, c, lk, cont=(key == prev)))
-            prev = key
+        keys = [lk.get(r['repo'], r['repo']) for r in rows]
+        for n, r in enumerate(rows):
+            cont = n > 0 and keys[n] == keys[n-1]
+            last = cont and (n+1 == len(rows) or keys[n+1] != keys[n])
+            out.append(row(r, c, lk, cont=cont, last=last))
         out.append('</div></div>')
     out.append('</div>')
     out.append(dialog(lang))

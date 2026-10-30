@@ -253,7 +253,25 @@ p{margin:0;text-wrap:pretty}
    them start where the name does, so the group reads as one block. The rule
    moves from the row above to the continuation row, since only the latter can
    be selected -- and :has() takes the border off the one above it. */
-.amb-logo-gap{width:100px;flex:0 0 auto}
+/* A row of the same institution gets a connector instead of an empty slot: the
+   line descends from the mark above and elbows towards the name. An absence
+   reads as something missing; a drawn line reads as belonging. */
+/* The grid centres each cell, so the connector's column has to be told to fill
+   the row before anything can be drawn down its height. */
+.sch-cont .sch-id{align-self:stretch}
+.amb-logo-gap{width:100px;flex:0 0 auto;position:relative;align-self:stretch}
+/* The spine runs past each row's padding so the segments meet, and stops at the
+   centre of the last one, where the elbow turns towards the name. */
+.amb-logo-gap::before{content:"";position:absolute;left:49px;top:-14px;bottom:-14px;
+  border-left:2px solid var(--n300)}
+.amb-logo-gap.is-last::before{bottom:50%}
+.amb-logo-gap::after{content:"";position:absolute;left:49px;top:50%;width:26px;
+  border-top:2px solid var(--n300)}
+/* ...and it descends out of the mark it belongs to, rather than appearing from
+   the row boundary above. */
+.sch-row:has(+ .sch-cont) .sch-id{align-self:stretch;position:relative}
+.sch-row:has(+ .sch-cont) .sch-id::after{content:"";position:absolute;left:49px;
+  top:calc(50% + 33px);bottom:-14px;border-left:2px solid var(--n300)}
 .sch-row:has(+ .sch-cont){border-bottom:0}
 .sch-cont{position:relative}
 .sch-cont::before{content:"";position:absolute;top:0;left:114px;right:0;
@@ -291,6 +309,14 @@ dialog#manual .manual-do{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 @media (max-width:860px){
   .sch-row{grid-template-columns:1fr auto;gap:12px}
   .sch-get{grid-column:1/-1}
+  /* The buttons drop to a row of their own here, so the identity cell no longer
+     spans the full height and a drawn spine would break across it. A rule down
+     the whole row says the same thing, and reclaims the empty logo column. */
+  .amb-logo-gap{width:0}
+  .amb-logo-gap::before,.amb-logo-gap::after,
+  .sch-row:has(+ .sch-cont) .sch-id::after{display:none}
+  .sch-cont{padding-left:16px;border-left:2px solid var(--n300)}
+  .sch-cont::before{left:16px}
 }
 
 /* Institution marks, for the alternative roll. A logo needs room around it and
