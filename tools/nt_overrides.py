@@ -117,6 +117,8 @@ INSTITUTIONS = [
 
     dict(key='other-esep', tag='ESEP', paths=[dict(path='other/esep')]),
 
+    dict(key='atlantica-cea', tag='ATLANTICA', paths=[dict(path='atlantica/cea')]),
+
     dict(key='other-huberlin', tag='HU BERLIN',
          paths=[dict(path='other/huberlin', lang='de')]),
 ]
@@ -188,5 +190,6 @@ REPOS = [
     dict(group='other', repo='upl-isel',       label='Instituto Superior de Engenharia de Lisboa (ISEL)', cover='upl-isel-msc-en-lua'),
     dict(group='other', repo='ups-ests',       label='Escola Superior de Tecnologia de Setúbal (ESTS)',   cover='ups-ests-msc-en-lua'),
     dict(group='other', repo='other-esep',     label='Escola Superior de Enfermagem do Porto (ESEP)',     cover='other-esep-msc-en-lua'),
+    dict(group='other', repo='atlantica-cea',   label='Atlântica Instituto Universitário (ATLANTICA)',   cover='atlantica-cea-bsc-en-lua'),
     dict(group='other', repo='other-huberlin', label='Humboldt-Universität zu Berlin (HU Berlin)',        cover='other-huberlin-phd-de-lua'),
 ]

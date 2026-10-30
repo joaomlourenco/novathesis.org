@@ -119,6 +119,11 @@ INSTITUTIONS = [
         ('other-esep-msc-en-lua', 'MSc Thesis', 'Tese de Mestrado'),
       ]),
 
+ dict(key='atlantica-cea', uni=('Atlântica – University Institute', 'Atlântica – Instituto Universitário'), school=('',) * 2,
+      tag='ATLANTICA', blocks=[
+        ('atlantica-cea-bsc-en-lua', 'BSc Report', 'Relatório de Licenciatura'),
+      ]),
+
  dict(key='other-huberlin', uni=('Humboldt-Universität zu Berlin',) * 2, school=('Institute of Library and Information Science',) * 2,
       tag='HU BERLIN', blocks=[
         ('other-huberlin-phd-de-lua', 'PhD Dissertation', 'Dissertação de Doutoramento'),
@@ -152,6 +157,7 @@ REPOS = [
  dict(group='other', repo='upl-isel', label='Instituto Superior de Engenharia de Lisboa (ISEL)', cover='upl-isel-msc-en-lua'),
  dict(group='other', repo='ups-ests', label='Escola Superior de Tecnologia de Setúbal (ESTS)', cover='ups-ests-msc-en-lua'),
  dict(group='other', repo='other-esep', label='Escola Superior de Enfermagem do Porto (ESEP)', cover='other-esep-msc-en-lua'),
+ dict(group='other', repo='atlantica-cea', label='Atlântica Instituto Universitário (ATLANTICA)', cover='atlantica-cea-bsc-en-lua'),
  dict(group='other', repo='other-huberlin', label='Humboldt-Universität zu Berlin (HU Berlin)', cover='other-huberlin-phd-de-lua'),
 ]
 

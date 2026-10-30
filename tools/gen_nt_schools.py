@@ -130,9 +130,12 @@ def _clean_latex(s):
 
     Only handles what's actually observed in University/School strings across
     every .clo file: an escaped ampersand (must become the HTML entity, not
-    the literal LaTeX escape) and a forced line break (rendered as a space --
-    these names are used inline, e.g. "{uni} — {school}")."""
-    return s.replace(r'\&', '&amp;').replace(r'\\', ' ').strip()
+    the literal LaTeX escape), a forced line break (rendered as a space, since
+    these names are used inline, e.g. "{uni} — {school}") and the dash
+    ligatures, which are typography in LaTeX and must not reach a page as two
+    or three hyphens."""
+    return (s.replace(r'\&', '&amp;').replace(r'\\', ' ')
+             .replace('---', '\u2014').replace('--', '\u2013').strip())
 
 
 def extract_strings(clo_path, cmd):
