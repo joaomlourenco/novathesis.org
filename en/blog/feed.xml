@@ -4,7 +4,14 @@
   <link href="https://novathesis.org/en/blog/"/>
   <link rel="self" href="https://novathesis.org/en/blog/feed.xml"/>
   <id>https://novathesis.org/en/blog/</id>
-  <updated>2026-09-12T00:00:00Z</updated>
+  <updated>2026-10-30T00:00:00Z</updated>
+  <entry>
+    <title>novathesis 8.6.0 — Albatross: Crossing the Atlantic</title>
+    <link href="https://novathesis.org/en/blog/novathesis-8-6-0"/>
+    <id>https://novathesis.org/en/blog/novathesis-8-6-0</id>
+    <updated>2026-10-30T00:00:00Z</updated>
+    <summary>Atlântica — Instituto Universitário joins the template, the student number can go on the cover, and style/font=times finally works where Times New Roman is not installed — Overleaf included.</summary>
+  </entry>
   <entry>
     <title>Chart or table?</title>
     <link href="https://novathesis.org/en/blog/chart-or-table"/>

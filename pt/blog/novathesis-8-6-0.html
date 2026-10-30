@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>novathesis 8.6.0 — Albatross: Crossing the Atlantic · novathesis</title>
+<meta name="description" content="A Atlântica — Instituto Universitário entra no template, o número de estudante pode ir para a capa, e o style/font=times passa finalmente a funcionar onde o Times New Roman não está instalado — Overleaf incluído.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css?v=6081b547"><link rel="icon" type="image/svg+xml" href="../../favicon.svg?v=e0ceef57"><link rel="me" href="https://mastodon.social/@novathesis"><meta name="color-scheme" content="light dark"><script>try{var t=localStorage.getItem("color-scheme");if(t){document.documentElement.classList.add("theme-"+t);document.querySelector('meta[name="color-scheme"]').content=t}}catch(e){}</script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="novathesis 8.6.0 — Albatross: Crossing the Atlantic">
+<meta property="og:description" content="A Atlântica — Instituto Universitário entra no template, o número de estudante pode ir para a capa, e o style/font=times passa finalmente a funcionar onde o Times New Roman não está instalado — Overleaf incluído.">
+<meta property="og:url" content="https://novathesis.org/pt/blog/novathesis-8-6-0">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Início</a><a class="" href="../showcase.html">Galeria</a><a class="" href="../schools.html">A tua escola</a><a class="" href="../start.html">Começar</a><a class="" href="../docs.html">Documentação</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Apoio</a><a class="" href="../contributing.html">Contribuir</a><button class="theme-btn" type="button" aria-label="Switch to dark theme"><svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2z"/></svg><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"/></svg></button><span class="sep"></span><a class="lang" href="../../en/blog/novathesis-8-6-0.html">EN</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">30 de outubro de 2026 · <a href="../../en/blog/novathesis-8-6-0.html">Read in English</a></div><h1>novathesis 8.6.0 — Albatross: Crossing the Atlantic</h1><p>A Atlântica — Instituto Universitário entra no template, o número de estudante pode ir para a capa, e o style/font=times passa finalmente a funcionar onde o Times New Roman não está instalado — Overleaf incluído.</p></div>
+<article class="post">
+<p>O nome de código é uma pequena piada: um albatroz a atravessar o Atlântico,
+para uma escola chamada <strong>Atlântica</strong> cujo primeiro curso suportado é de
+aeronáutica.</p>
+<h2>Atlântica — Instituto Universitário</h2>
+<p>O <code>school=atlantica/cea</code> cobre a licenciatura em Ciências da Engenharia
+Aeronáutica:</p>
+<pre><code class="language-latex">\ntsetup{school=atlantica/cea}
+</code></pre>
+<p>Segue as <em>Normas para Apresentação e Discussão do Projecto Final de
+Licenciatura</em> da escola (Fevereiro de 2019) e, onde o regulamento nada diz, a
+disposição de uma dúzia de teses reais da Atlântica. A4, frente e verso, Times
+New Roman a 12pt com espaçamento de 1,5 linhas e 12pt depois de cada parágrafo,
+notas de rodapé a 8pt, margens de 3 / 3,5 / 3,5 (interior) / 2,5 (exterior) cm,
+o cabeçalho a 1,8cm e o rodapé a 1,5cm do bordo do papel, e os capítulos a
+abrir em páginas ímpares. Todas as páginas levam o título e o nome do curso no
+cabeçalho, e o autor, a data e o número de página no rodapé.</p>
+<p>Tens a capa e a página de rosto (sem figuras), a declaração de <em>exclusiva
+responsabilidade</em> numa página ímpar só dela, uma dedicatória opcional e uma
+declaração de reprodução opcional no verso da página de rosto.</p>
+<p>Uma ressalva quanto a esta última: está <strong>desligada</strong> por omissão e o seu texto
+é um marcador genérico — a redacção oficial está na intranet da Atlântica.
+Liga-a com <code>\ntsetup{print/copyright=true}</code> no <code>0-Config/1_novathesis.tex</code> e
+substitui o texto pelo oficial antes de entregares.</p>
+<h2>O número de estudante na capa</h2>
+<p>Um comando novo para o <code>0-Config/3_cover.tex</code>:</p>
+<pre><code class="language-latex">\SetAuthorStudentNumber*()={12345}
+</code></pre>
+<p>Só as capas da Atlântica o imprimem. Em todas as outras escolas é aceite e
+ignorado, por isso não há nada a desfazer se mudares de escola, e a linha é
+simplesmente omitida quando não há número definido.</p>
+<h2>E uma correcção que vai muito para além da Atlântica</h2>
+<p>As normas da Atlântica pedem Times New Roman. O template tem um estilo de letra
+<code>times</code> há anos — e, em LuaLaTeX ou XeLaTeX, precisava que o Times New Roman, o
+Helvetica e o Courier New estivessem mesmo instalados na máquina. No Overleaf e
+na maioria dos sistemas Linux não estão, pelo que o <code>style/font=times</code> falhava
+por completo.</p>
+<p>Cada letra em falta passa a ser substituída pelo seu clone TeX Gyre compatível
+nas métricas, que vem com o TeX Live: Termes para o Times New Roman, Heros para
+o Helvetica, Cursor para o Courier New. A compatibilidade de métricas é a parte
+que interessa — a substituta ocupa exactamente o espaço que a original
+ocuparia, por isso as quebras de linha e de página não se mexem.</p>
+<p>As três são verificadas em separado, portanto uma máquina que tenha Times New
+Roman mas não tenha Courier New usa o Times verdadeiro e o clone para o
+monoespaçado. O colofão nomeia as letras que a compilação usou de facto, para
+que o PDF declare aquilo em que foi composto e não aquilo que pediu.</p>
+<p>Se tinhas desistido do <code>style/font=times</code> por não compilar no Overleaf, agora
+compila.</p>
+<h2>Desde o último artigo aqui</h2>
+<p>Passaram duas versões sem anúncio neste blogue.
+A <strong>8.4.0 — Crane: Same Flight, New Name</strong> mudou o Instituto Politécnico de
+Lisboa e o de Setúbal para Universidade Politécnica, e com eles os
+identificadores de escola: o <code>ipl/isel</code> é agora <code>upl/isel</code> e o <code>ips/ests</code> é
+agora <code>ups/ests</code>. Não há alias compatível com o passado, por isso um documento
+que ainda use o identificador antigo pára com um erro claro. A <strong>8.5.0 —
+Kingfisher: Landing Where There Is No Water</strong> fez o template registar de que
+commit foi construído, acrescentou o <code>make info</code> para relatórios de erro, deu
+alternativa às letras descarregadas e aos ícones dos ODS quando o shell escape
+está desligado e — esta quebra compatibilidade — passou a mostrar nas listas de
+glossário e de símbolos apenas as entradas efectivamente citadas, como a lista
+de acrónimos sempre fez. Para voltar ao comportamento anterior,
+<code>\ntsetup{glossaries/addall=true}</code>.</p>
+<p>A lista completa está no
+<a href="https://github.com/joaomlourenco/novathesis/blob/main/CHANGELOG.md">changelog</a>.</p>
+</article>
+<p class="post-back"><a href="index.html">← Todos os artigos</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px">O <b>nova</b>thesis não é um template oficial de nenhuma das instituições listadas. A conformidade é procurada a partir de documentação pública — confirma sempre os regulamentos actuais da tua instituição antes da entrega.</p></div>
+<div><h4>Projeto</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Mantido por João M. Lourenço</li></ul></div>
+<div><h4>Pacotes relacionados</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>
