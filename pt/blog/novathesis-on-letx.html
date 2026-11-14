@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O template já abre no letx · novathesis</title>
+<meta name="description" content="O letx aloja o novathesis e compila-o — a primeira via para o template que é gratuita e de um clique ao mesmo tempo.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css?v=a4ec7a6e"><link rel="icon" type="image/svg+xml" href="../../favicon.svg?v=e0ceef57"><link rel="me" href="https://mastodon.social/@novathesis"><meta name="color-scheme" content="light dark"><script>try{var t=localStorage.getItem("color-scheme");if(t){document.documentElement.classList.add("theme-"+t);document.querySelector('meta[name="color-scheme"]').content=t}}catch(e){}</script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="O template já abre no letx">
+<meta property="og:description" content="O letx aloja o novathesis e compila-o — a primeira via para o template que é gratuita e de um clique ao mesmo tempo.">
+<meta property="og:url" content="https://novathesis.org/pt/blog/novathesis-on-letx">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Início</a><a class="" href="../showcase.html">Galeria</a><a class="" href="../schools.html">A tua escola</a><a class="" href="../start.html">Começar</a><a class="" href="../docs.html">Documentação</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Apoio</a><a class="" href="../contributing.html">Contribuir</a><button class="theme-btn" type="button" aria-label="Switch to dark theme"><svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2z"/></svg><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"/></svg></button><span class="sep"></span><a class="lang" href="../../en/blog/novathesis-on-letx.html">EN</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">14 de novembro de 2026 · <a href="../../en/blog/novathesis-on-letx.html">Read in English</a></div><h1>O template já abre no letx</h1><p>O letx aloja o novathesis e compila-o — a primeira via para o template que é gratuita e de um clique ao mesmo tempo.</p></div>
+<article class="post">
+<p>O <a href="https://letx.app/templates/universities/novathesis/">letx</a> passou a ter o
+<strong>nova</strong>thesis, e compila-o.</p>
+<p>A frase é curta, por isso aqui fica o que justifica um post. Até agora as vias
+para abrir o template no browser eram de dois tipos, e cada uma pedia-te
+alguma coisa:</p>
+<ul>
+<li>O <strong>Overleaf</strong> e o <strong>Inscrive</strong> importam o repositório da tua escola num
+  clique — e depois não o compilam sem plano pago. O template não cabe nos 20
+  segundos que o plano gratuito do Overleaf permite.</li>
+<li>O <strong>ScienHub</strong> é gratuito, mas não consegue importar a partir de um link, por
+  isso descarregas o ZIP da tua escola e carrega-lo à mão num projeto vazio.</li>
+</ul>
+<p>O letx é o primeiro que é as <strong>duas</strong> coisas. É gratuito, abre o template num
+clique, compila, e a única coisa que te pede é uma conta.</p>
+<h2>Uma coisa que fica para ti</h2>
+<p>O projeto que o letx guarda é o template geral, não o repositório da tua
+escola. Por isso o passo que as outras vias de um clique fazem por ti é aqui
+teu: abre o <code>0-Config/1_novathesis.tex</code> e indica a tua escola.</p>
+<pre><code class="language-latex">\ntsetup{school=nova/fct}
+</code></pre>
+<p>Não tens de andar à procura do identificador. N’<a href="https://novathesis.org/pt/schools">A tua
+escola</a>, cada linha tem agora um botão
+<strong>letx</strong>, e a caixa que ele abre diz-te a linha exacta para essa escola —
+incluindo aquelas em que o identificador não é simplesmente o nome
+do repositório com os hífenes trocados por barras.</p>
+<h2>Não leves o ZIP para lá</h2>
+<p>O conselho habitual para um serviço que não importa a partir de um link —
+descarregar o ZIP, carregá-lo, definir o documento principal — é exactamente
+aquilo que não funciona no letx. O template precisou de adaptação para compilar
+no sistema deles, e o que eles adaptaram é o projeto que está por trás daquele
+link. Um ZIP carregado por ti não compila.</p>
+<p>Ou seja: a entrada é aquele link, e a cópia que está por trás dele é deles para
+manterem actualizada — pode estar atrás da versão mais recente. Se precisas de
+alguma coisa que entrou no template a semana passada, compila localmente ou
+leva o repositório da tua escola a um dos outros serviços.</p>
+<h2>Obrigado</h2>
+<p>O trabalho de adaptação foi feito no letx pelo <strong>Shihab Shahriar</strong>, que pôs o
+template a compilar no sistema deles e o mantém lá gratuitamente. Os outros
+dois nomes dos nossos
+<a href="https://novathesis.org/pt/support">agradecimentos</a> lá estão por contas que nos
+emprestaram; este está lá por trabalho.</p>
+</article>
+<p class="post-back"><a href="index.html">← Todos os artigos</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px">O <b>nova</b>thesis não é um template oficial de nenhuma das instituições listadas. A conformidade é procurada a partir de documentação pública — confirma sempre os regulamentos actuais da tua instituição antes da entrega.</p></div>
+<div><h4>Projeto</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Mantido por João M. Lourenço</li></ul></div>
+<div><h4>Pacotes relacionados</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>

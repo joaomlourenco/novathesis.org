@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The template now opens in letx · novathesis</title>
+<meta name="description" content="letx hosts novathesis and compiles it — the first route into the template that is free and one click at the same time.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="../../styles.css?v=a4ec7a6e"><link rel="icon" type="image/svg+xml" href="../../favicon.svg?v=e0ceef57"><link rel="me" href="https://mastodon.social/@novathesis"><meta name="color-scheme" content="light dark"><script>try{var t=localStorage.getItem("color-scheme");if(t){document.documentElement.classList.add("theme-"+t);document.querySelector('meta[name="color-scheme"]').content=t}}catch(e){}</script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="The template now opens in letx">
+<meta property="og:description" content="letx hosts novathesis and compiles it — the first route into the template that is free and one click at the same time.">
+<meta property="og:url" content="https://novathesis.org/en/blog/novathesis-on-letx">
+<meta property="og:site_name" content="novathesis">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap">
+<header class="hd"><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><nav class="nav"><a class="" href="../index.html">Home</a><a class="" href="../showcase.html">Showcase</a><a class="" href="../schools.html">Find your school</a><a class="" href="../start.html">Get started</a><a class="" href="../docs.html">Docs</a><a class="on" href="../blog/index.html">Blog</a><a class="" href="../support.html">Support</a><a class="" href="../contributing.html">Contributing</a><button class="theme-btn" type="button" aria-label="Switch to dark theme"><svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2z"/></svg><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"/></svg></button><span class="sep"></span><a class="lang" href="../../pt/blog/novathesis-on-letx.html">PT</a></nav></header>
+<main class="page">
+<div class="lede post-head"><div class="kicker">14 November 2026 · <a href="../../pt/blog/novathesis-on-letx.html">Ler em português</a></div><h1>The template now opens in letx</h1><p>letx hosts novathesis and compiles it — the first route into the template that is free and one click at the same time.</p></div>
+<article class="post">
+<p><a href="https://letx.app/templates/universities/novathesis/">letx</a> now carries
+<strong>nova</strong>thesis, and compiles it.</p>
+<p>That is a short sentence, so here is what makes it worth a post. Until now the
+browser routes into the template came in two kinds, and each one asked
+something of you:</p>
+<ul>
+<li><strong>Overleaf</strong> and <strong>Inscrive</strong> import a school's repository in a single
+  click — and then will not compile it without a paid plan. The template does
+  not fit in the 20 seconds Overleaf's free plan allows.</li>
+<li><strong>ScienHub</strong> is free, but cannot import from a link, so you download your
+  school's ZIP and upload it into an empty project by hand.</li>
+</ul>
+<p>letx is the first that is <strong>both</strong>. It is free, it opens the template in one
+click, it compiles, and the only thing it asks for is an account.</p>
+<h2>One thing to set yourself</h2>
+<p>The project letx keeps is the general template, not your school's repository.
+So the one step the other one-click routes do for you is yours here: open
+<code>0-Config/1_novathesis.tex</code> and name your school.</p>
+<pre><code class="language-latex">\ntsetup{school=nova/fct}
+</code></pre>
+<p>You do not have to go looking for the id. On
+<a href="https://novathesis.org/en/schools">Find your school</a>, every row now has a
+<strong>letx</strong> button, and the box it opens spells out the exact line for that
+school — including the awkward ones, where the id is not simply the repository
+name with the dashes turned into slashes.</p>
+<h2>Do not take the ZIP there</h2>
+<p>The usual advice for a service that cannot import from a link — download the
+ZIP, upload it, set the main document — is precisely the thing that does not
+work on letx. The template needed adapting to build on their system, and what
+they adapted is the project behind that one link. A ZIP you upload yourself
+will not compile.</p>
+<p>So that link is the way in, and the copy behind it is theirs to keep current:
+it can sit behind the latest release. If you need something that landed in the
+template last week, build locally or take your school's repository to one of
+the other services.</p>
+<h2>Thanks</h2>
+<p>The porting work was done at letx by <strong>Shihab Shahriar</strong>, who made the
+template build on their system and keeps it there free of charge. The other
+two names in our
+<a href="https://novathesis.org/en/support">acknowledgements</a> are there for accounts
+they lent us; this one is there for work.</p>
+</article>
+<p class="post-back"><a href="index.html">← All posts</a></p>
+</main>
+<footer class="ft">
+<div><a class="mark " href="../index.html"><b>nova</b><s>thesis</s></a><p style="margin-top:18px"><b>nova</b>thesis is not an official template issued by any of the institutions listed. Compliance is pursued from public documentation — always check your institution's current regulations before submission.</p></div>
+<div><h4>Project</h4><ul><li><a href="https://github.com/joaomlourenco/novathesis">joaomlourenco/novathesis <strong>(generic)</strong></a></li><li><a href="https://github.com/novathesis/">github.com/novathesis <strong>(school variants)</strong></a></li><li><a href="https://www.overleaf.com/docs?snip_uri=https://github.com/joaomlourenco/novathesis/archive/refs/heads/main.zip&main_document=template.tex">Overleaf <strong>(generic)</strong></a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="https://www.latex-project.org/lppl/lppl-1-3c">LaTeX Project Public License 1.3c</a></li><li>Maintained by <a href="https://docentes.fct.unl.pt/joao-lourenco">João M. Lourenço</a></li></ul></div>
+<div><h4>Related Packages</h4><ul><li><a href="https://github.com/joaomlourenco/aidisclose">aidisclose</a></li><li><a href="https://github.com/joaomlourenco/biblatex-cse">biblatex-cse</a></li><li><a href="https://github.com/joaomlourenco/biblatex-np405">biblatex-np405</a></li><li><a href="https://github.com/joaomlourenco/coloredtheorem">coloredtheorem</a></li><li><a href="https://github.com/joaomlourenco/stocksize">stocksize</a></li></ul></div>
+</footer>
+</div>
+</body>
+</html>
