@@ -258,6 +258,24 @@ def render_institutions(rows):
     return '\n'.join(out)
 
 
+def school_id(repo):
+    """The `\\ntsetup{school=...}` id for a repository, or None when the school
+    is not in this template (an externally maintained one).
+
+    The class names each school's file after the dashed form of its id, so the
+    file that defines a school both derives the id and proves it exists: the
+    directory holding it gives the path part, and whatever the repository name
+    has beyond that is the leaf. That keeps `nova/fct/cbbi` right, whose file
+    sits in `nova/fct/` rather than a directory of its own, without a table of
+    exceptions that a rename upstream would quietly invalidate."""
+    f = next(SCHOOLS_DIR.rglob(f'{repo}-defaults.clo'), None)
+    if f is None:
+        return None
+    parent = f.parent.relative_to(SCHOOLS_DIR).as_posix()
+    tail = repo[len(parent.replace('/', '-')):].lstrip('-')
+    return f'{parent}/{tail}' if tail else parent
+
+
 def render_repos():
     out = ['GROUPS = [']
     for g, label in ov.GROUPS:
@@ -265,8 +283,17 @@ def render_repos():
     out.append(']')
     out.append('')
     out.append('REPOS = [')
+    missing = []
     for r in ov.REPOS:
         parts = [f"group={r['group']!r}", f"repo={r['repo']!r}", f"label={r['label']!r}"]
+        school = school_id(r['repo'])
+        if school:
+            parts.append(f'school={school!r}')
+        elif not r.get('org'):
+            # a school of ours with no file to name it means the two repositories
+            # have drifted apart, which must stop the build rather than silently
+            # drop the id the letx dialog needs
+            missing.append(r['repo'])
         if r.get('cover'):
             parts.append(f"cover={r['cover']!r}")
         if r.get('crop'):
@@ -276,6 +303,14 @@ def render_repos():
                 parts.append(f"{field}={r[field]!r}")
         out.append(f" dict({', '.join(parts)}),")
     out.append(']')
+    if missing:
+        print(f'gen_nt_schools: no <repo>-defaults.clo under {SCHOOLS_DIR} for:',
+              file=sys.stderr)
+        for repo in missing:
+            print(f'  - {repo}', file=sys.stderr)
+        print('Either the school was renamed in the template, or the entry in '
+              'nt_overrides.py needs org= to mark it external.', file=sys.stderr)
+        sys.exit(1)
     return '\n'.join(out)
 
 

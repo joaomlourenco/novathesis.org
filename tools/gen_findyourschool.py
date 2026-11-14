@@ -6,7 +6,7 @@ exactly as they are, because they are hand-written prose.
 
 School data lives in nt_schools.py -- edit there, not here.
 """
-import re, sys, pathlib, html
+import re, sys, json, pathlib, html
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import nt_overrides as ov
 from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, inscrive, find, ratio,
@@ -14,7 +14,16 @@ from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, inscri
 
 # Functional icons, not brand marks: an approximation of someone's logo drawn by
 # hand is worse than an honest arrow, and these say what the button does.
-MANUAL = {'scienhub': ('ScienHub', 'https://scienhub.com')}
+# Services that cannot be handed a school's ZIP through a URL, each with the
+# shape of the detour it needs. `upload` takes the ZIP in by hand; `preset`
+# opens a project the service already holds, which is why it needs the school
+# id instead of the ZIP -- on letx the ZIP route is the one that does not work,
+# so offering it would teach the single thing that fails.
+MANUAL = {
+ 'scienhub': dict(name='ScienHub', site='https://scienhub.com', steps='upload'),
+ 'letx':     dict(name='letx', site='https://letx.app/open?template=novathesis',
+                  steps='preset'),
+}
 
 ICONS = {
  'zip':  '<path d="M12 3v11M7.5 10l4.5 4 4.5-4M4 19h16"/>',
@@ -81,14 +90,18 @@ def row(r, c, lk, cont=False, last=False):
             ('git',  c['git'],  repo_url(r)),
             ('open', 'Overleaf', overleaf(r)),
             ('open', 'Inscrive', inscrive(r))))
-    # ScienHub has no import-by-URL, so its chip opens the steps rather than a
-    # page that cannot do what the others do in one click
+    # these have no import-by-URL, so their chip opens the steps rather than a
+    # page that cannot do what the others do in one click. A `preset` service
+    # holds one general project, so it can only serve a school the template
+    # itself defines -- an external one has no id to type and gets no chip.
     btns += ''.join(
         f'<button class="tag tag-i tag-steps" type="button" data-manual="{svc}" '
-        f'data-service="{html.escape(sname)}" data-site="{surl}" '
-        f'data-zip="{zip_url(r)}" data-school="{name}">'
-        f'{icon("steps")}<span>{html.escape(sname)}</span></button>'
-        for svc, (sname, surl) in MANUAL.items())
+        f'data-service="{html.escape(m["name"])}" data-site="{m["site"]}" '
+        f'data-zip="{zip_url(r)}" data-school="{name}" '
+        f'data-ntschool="{html.escape(r.get("school") or "")}">'
+        f'{icon("steps")}<span>{html.escape(m["name"])}</span></button>'
+        for svc, m in MANUAL.items()
+        if m['steps'] != 'preset' or r.get('school'))
     # the externally maintained school keeps its marker here too: it is the same
     # warning, and a row without it would send people off as if it were ours
     ext = ''
@@ -104,28 +117,58 @@ def row(r, c, lk, cont=False, last=False):
 
 # One dialog per page, filled from the clicked chip. closedby="any" gives
 # light dismiss and Esc for free; Safari has neither yet, hence the fallback.
+# %s is the service, %S the school's name, %I the id to type in the template.
 STEPS = {
- 'en': dict(title='Open in', lead='%s cannot import a repository from a link, so the '
-                  'template goes in by hand. Four steps:',
-            s1='Download the ZIP for %s.', s2='Open %s and sign in.',
-            s3='Create a new, empty project and upload the ZIP.',
-            s4='Set <code>template.tex</code> as the main document.',
-            zip='Download the ZIP', go='Open %s', close='Close'),
- 'pt': dict(title='Abrir no', lead='O %s não consegue importar um repositório a partir de '
-                  'um link, por isso o template entra à mão. Quatro passos:',
-            s1='Descarrega o ZIP da %s.', s2='Abre o %s e entra na conta.',
-            s3='Cria um projeto novo, vazio, e carrega o ZIP.',
-            s4='Define <code>template.tex</code> como documento principal.',
-            zip='Descarregar o ZIP', go='Abrir o %s', close='Fechar'),
+ 'en': dict(title='Open in', zip='Download the ZIP', go='Open %s', close='Close',
+   upload=dict(
+     lead='%s cannot import a repository from a link, so the template goes in '
+          'by hand. Four steps:',
+     steps=['Download the ZIP for %S.', 'Open %s and sign in.',
+            'Create a new, empty project and upload the ZIP.',
+            'Set <code>template.tex</code> as the main document.']),
+   preset=dict(
+     lead='%s is free and opens in one click, but the project it keeps is the '
+          'general template rather than one school’s. You point it at %S '
+          'yourself. Three steps:',
+     steps=['Open the novathesis project on %s. It is free, and asks you to '
+            'sign in.',
+            'In <code>0-Config/1_novathesis.tex</code>, set '
+            '<code>\\ntsetup{school=%I}</code>.',
+            'Compile.'],
+     note='This copy is prepared and kept by %s, so it can sit behind the '
+          'current release.')),
+ 'pt': dict(title='Abrir no', zip='Descarregar o ZIP', go='Abrir o %s', close='Fechar',
+   upload=dict(
+     lead='O %s não consegue importar um repositório a partir de um link, por '
+          'isso o template entra à mão. Quatro passos:',
+     steps=['Descarrega o ZIP da %S.', 'Abre o %s e entra na conta.',
+            'Cria um projeto novo, vazio, e carrega o ZIP.',
+            'Define <code>template.tex</code> como documento principal.']),
+   preset=dict(
+     lead='O %s é gratuito e abre num clique, mas guarda o template geral e '
+          'não o de uma escola: a configuração para %S fica para ti. '
+          'Três passos:',
+     steps=['Abre o projeto novathesis no %s. É gratuito e pede-te que entres '
+            'na conta.',
+            'No <code>0-Config/1_novathesis.tex</code>, define '
+            '<code>\\ntsetup{school=%I}</code>.',
+            'Compila.'],
+     note='Esta cópia é preparada e mantida pelo %s, por isso pode estar atrás '
+          'da versão actual.')),
 }
 
 def dialog(lang):
     s = STEPS[lang]
+    kinds = json.dumps({k: m['steps'] for k, m in MANUAL.items()})
+    copy = json.dumps({k: s[k] for k in ('upload', 'preset')})
+    ext = EXT[lang][0]
     return (
       f'<dialog id="manual" closedby="any" aria-labelledby="manual-t">'
       f'<h3 id="manual-t">{s["title"]} <span data-f="service"></span></h3>'
       f'<p class="manual-lead"></p>'
-      f'<ol><li data-s="1"></li><li data-s="2"></li><li>{s["s3"]}</li><li>{s["s4"]}</li></ol>'
+      f'<ol class="manual-steps"></ol>'
+      f'<p class="manual-note" hidden><span class="tag ext">{ext}</span> '
+      f'<span data-f="note"></span></p>'
       f'<div class="manual-do">'
       f'<a class="btn btn-p" data-f="zip" href="#">{s["zip"]}</a>'
       f'<a class="btn" data-f="site" href="#" target="_blank" rel="noopener"></a>'
@@ -133,17 +176,26 @@ def dialog(lang):
       f'</dialog>'
       f'<script>(function(){{'
       f'var d=document.getElementById("manual");if(!d)return;'
-      f'var L={{lead:{s["lead"]!r},s1:{s["s1"]!r},s2:{s["s2"]!r},go:{s["go"]!r}}};'
+      f'var K={kinds},C={copy},GO={s["go"]!r};'
+      f'function fill(t,b){{return t.split("%s").join(b.dataset.service)'
+      f'.split("%S").join(b.dataset.school)'
+      f'.split("%I").join(b.dataset.ntschool||"");}}'
       f'document.addEventListener("click",function(e){{'
       f'var b=e.target.closest&&e.target.closest("[data-manual]");if(!b)return;'
-      f'var svc=b.dataset.service;'
+      f'var svc=b.dataset.service,c=C[K[b.dataset.manual]];'
       f'd.querySelector(\'[data-f="service"]\').textContent=svc;'
-      f'd.querySelector(".manual-lead").textContent=L.lead.replace("%s",svc);'
-      f'd.querySelector(\'[data-s="1"]\').textContent=L.s1.replace("%s",b.dataset.school);'
-      f'd.querySelector(\'[data-s="2"]\').textContent=L.s2.replace("%s",svc);'
-      f'var z=d.querySelector(\'[data-f="zip"]\');z.href=b.dataset.zip;'
+      f'd.querySelector(".manual-lead").textContent=fill(c.lead,b);'
+      # the steps carry <code>, so they are our own markup, not reader input
+      f'd.querySelector(".manual-steps").innerHTML='
+      f'c.steps.map(function(t){{return "<li>"+fill(t,b)+"</li>";}}).join("");'
+      f'var n=d.querySelector(".manual-note");n.hidden=!c.note;'
+      f'if(c.note)n.querySelector(\'[data-f="note"]\').textContent=fill(c.note,b);'
+      # a service that holds its own prepared project has no use for the ZIP,
+      # and on letx that route is precisely the broken one
+      f'var z=d.querySelector(\'[data-f="zip"]\');z.hidden=!c.steps.some('
+      f'function(t){{return t.indexOf("ZIP")>=0;}});z.href=b.dataset.zip;'
       f'var g=d.querySelector(\'[data-f="site"]\');g.href=b.dataset.site;'
-      f'g.textContent=L.go.replace("%s",svc);'
+      f'g.textContent=GO.replace("%s",svc);'
       f'd.showModal();}});'
       f'd.querySelector(".manual-x").addEventListener("click",function(){{d.close();}});'
       f'if(!("closedBy" in HTMLDialogElement.prototype)){{'          # Safari

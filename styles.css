@@ -196,8 +196,9 @@ p{margin:0;text-wrap:pretty}
 .steps b{font-size:40px;line-height:1;letter-spacing:-.03em;color:var(--accent);font-weight:800}
 .steps h3{font-size:19px;letter-spacing:-.01em}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-/* Six columns so both rows fill the width: the three free options span two
-   columns each, the two paid ones span three. */
+/* Six columns so both rows fill the width: the three free options -- local
+   build, letx, ScienHub -- span two columns each, the two that need a paid
+   plan span three. */
 .options{display:grid;grid-template-columns:repeat(6,1fr);gap:32px}
 .options>.box{grid-column:span 2}
 .options>.box.wide{grid-column:span 3}
@@ -297,7 +298,16 @@ dialog#manual h3{font-size:22px;letter-spacing:-.015em;margin-bottom:12px}
 dialog#manual .manual-lead{color:var(--n700);font-size:15px}
 dialog#manual ol{margin:16px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:8px;
   font-size:15px}
+/* The caveat on a service that keeps its own prepared copy: the same mark the
+   showcase puts on an externally maintained school, because it is the same
+   warning -- someone else decides when it follows a release. */
+dialog#manual .manual-note{display:flex;align-items:baseline;gap:10px;
+  margin:18px 0 0;font-size:14px;color:var(--n700)}
+dialog#manual .manual-note .tag{flex:0 0 auto}
 dialog#manual .manual-do{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+/* An author rule outranks the browser's own [hidden], so a dialog that drops a
+   button for one service has to hide it itself. */
+dialog#manual [hidden]{display:none}
 /* A chip that opens instructions rather than going somewhere: same shape as its
    neighbours, but a button, so it needs the chip's type reset. */
 .tag-steps{font-family:inherit;cursor:pointer;color:var(--text);background:none}
