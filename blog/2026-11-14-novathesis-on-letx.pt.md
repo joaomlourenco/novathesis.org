@@ -34,9 +34,10 @@ teu: abre o `0-Config/1_novathesis.tex` e indica a tua escola.
 
 Não tens de andar à procura do identificador. N’[A tua
 escola](https://novathesis.org/pt/schools), cada linha tem agora um botão
-**letx**, e a caixa que ele abre diz-te a linha exacta para essa escola —
-incluindo aquelas em que o identificador não é simplesmente o nome
-do repositório com os hífenes trocados por barras.
+**letx**, e a caixa que ele abre diz-te exactamente o que escrever para essa
+escola — incluindo aquelas em que o identificador não é simplesmente o nome do
+repositório com os hífenes trocados por barras, e as quatro que precisam de uma
+segunda linha a dizer o grau.
 
 ## Não leves o ZIP para lá
 
@@ -46,8 +47,9 @@ aquilo que não funciona no letx. O template precisou de adaptação para compil
 no sistema deles, e o que eles adaptaram é o projeto que está por trás daquele
 link. Um ZIP carregado por ti não compila.
 
-Ou seja: a entrada é aquele link, e a cópia que está por trás dele é deles para
-manterem actualizada — pode estar atrás da versão mais recente. Se precisas de
+Ou seja: a entrada é aquele link, e a cópia que está por trás dele é deles:
+actualizam-na a cada nova versão, por isso por vezes está uma atrás — mas não
+por muito tempo. Se precisas de
 alguma coisa que entrou no template a semana passada, compila localmente ou
 leva o repositório da tua escola a um dos outros serviços.
 

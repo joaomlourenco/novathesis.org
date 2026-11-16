@@ -34,9 +34,10 @@ So the one step the other one-click routes do for you is yours here: open
 
 You do not have to go looking for the id. On
 [Find your school](https://novathesis.org/en/schools), every row now has a
-**letx** button, and the box it opens spells out the exact line for that
-school — including the awkward ones, where the id is not simply the repository
-name with the dashes turned into slashes.
+**letx** button, and the box it opens spells out exactly what to write for
+that school — including the awkward ones, where the id is not simply the
+repository name with the dashes turned into slashes, and the four schools that
+need a second line naming the degree.
 
 ## Do not take the ZIP there
 
@@ -46,8 +47,8 @@ work on letx. The template needed adapting to build on their system, and what
 they adapted is the project behind that one link. A ZIP you upload yourself
 will not compile.
 
-So that link is the way in, and the copy behind it is theirs to keep current:
-it can sit behind the latest release. If you need something that landed in the
+So that link is the way in, and the copy behind it is theirs: they update it
+with each release, so now and then it is a version behind — but not for long. If you need something that landed in the
 template last week, build locally or take your school's repository to one of
 the other services.
 

@@ -138,8 +138,8 @@ GROUPS = [
 
 REPOS = [
  dict(group='nova', repo='nova-fct', label='NOVA FCT — Faculdade de Ciências e Tecnologia', school='nova/fct', cover='nova-fct-phd-en-lua'),
- dict(group='nova', repo='nova-fct-cbbi', label='NOVA FCT — CBBI', school='nova/fct/cbbi', cover='nova-fct-cbbi-msc-en-lua'),
- dict(group='nova', repo='nova-fct-di-adc', label='NOVA FCT — DI-ADC', school='nova/fct/di-adc', cover='nova-fct-di-adc-bsc-en-lua'),
+ dict(group='nova', repo='nova-fct-cbbi', label='NOVA FCT — CBBI', school='nova/fct/cbbi', degree='msc', cover='nova-fct-cbbi-msc-en-lua'),
+ dict(group='nova', repo='nova-fct-di-adc', label='NOVA FCT — DI-ADC', school='nova/fct/di-adc', degree='bsc', cover='nova-fct-di-adc-bsc-en-lua'),
  dict(group='nova', repo='nova-ensp', label='Escola Nacional de Saúde Pública (ENSP)', school='nova/ensp', cover='nova-ensp-phd-en-lua'),
  dict(group='nova', repo='nova-itqb', label='Instituto de Tecnologia Química e Biológica (ITQB)', school='nova/itqb', cover='nova-itqb-green-phd-en-lua'),
  dict(group='nova', repo='nova-fcsh', label='Faculdade de Ciências Sociais e Humanas (FCSH)', school='nova/fcsh', cover='nova-fcsh-phd-en-lua'),
@@ -150,14 +150,14 @@ REPOS = [
  dict(group='ul', repo='ulisboa-fmv', label='Faculdade de Medicina Veterinária (FMV)', school='ulisboa/fmv', cover='ulisboa-fmv-phd-en-lua'),
  dict(group='ul', repo='ulisboa-fful', label='Faculdade de Farmácia (FFUL)', school='ulisboa/fful', cover='ulisboa-fful-phd-en-lua'),
  dict(group='other', repo='uporto-fcup', label='Faculdade de Ciências, UPorto (FCUP)', school='uporto/fcup', cover='uporto-fcup-phd-en-lua'),
- dict(group='other', repo='uminho', label='Universidade do Minho', school='uminho', crop=True),
+ dict(group='other', repo='uminho', label='Universidade do Minho', school='uminho/eeng', crop=True),
  dict(group='other', repo='ulht-deisi', label='Universidade Lusófona — DEISI', school='ulht/deisi', cover='ulht-deisi-phd-en-lua'),
  dict(group='other', repo='ulht-mge', label='Universidade Lusófona — MGE', school='ulht/mge', cover='ulht-mge-phd-en-lua'),
  dict(group='other', repo='iscteiul-eta', label='ISCTE-IUL — ETA', school='iscteiul/eta', cover='iscteiul-eta-phd-en-lua'),
- dict(group='other', repo='upl-isel', label='Instituto Superior de Engenharia de Lisboa (ISEL)', school='upl/isel', cover='upl-isel-msc-en-lua'),
- dict(group='other', repo='ups-ests', label='Escola Superior de Tecnologia de Setúbal (ESTS)', school='ups/ests', cover='ups-ests-msc-en-lua'),
- dict(group='other', repo='other-esep', label='Escola Superior de Enfermagem do Porto (ESEP)', school='other/esep', cover='other-esep-msc-en-lua'),
- dict(group='other', repo='atlantica-cea', label='Atlântica Instituto Universitário (ATLANTICA)', school='atlantica/cea', cover='atlantica-cea-bsc-en-lua'),
+ dict(group='other', repo='upl-isel', label='Instituto Superior de Engenharia de Lisboa (ISEL)', school='upl/isel', degree='msc', cover='upl-isel-msc-en-lua'),
+ dict(group='other', repo='ups-ests', label='Escola Superior de Tecnologia de Setúbal (ESTS)', school='ups/ests', degree='msc', cover='ups-ests-msc-en-lua'),
+ dict(group='other', repo='other-esep', label='Escola Superior de Enfermagem do Porto (ESEP)', school='other/esep', degree='msc', cover='other-esep-msc-en-lua'),
+ dict(group='other', repo='atlantica-cea', label='Atlântica Instituto Universitário (ATLANTICA)', school='atlantica/cea', degree='bsc', cover='atlantica-cea-bsc-en-lua'),
  dict(group='other', repo='other-huberlin', label='Humboldt-Universität zu Berlin (HU Berlin)', school='other/huberlin', cover='other-huberlin-phd-de-lua'),
 ]
 

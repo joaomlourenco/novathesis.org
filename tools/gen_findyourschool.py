@@ -98,7 +98,8 @@ def row(r, c, lk, cont=False, last=False):
         f'<button class="tag tag-i tag-steps" type="button" data-manual="{svc}" '
         f'data-service="{html.escape(m["name"])}" data-site="{m["site"]}" '
         f'data-zip="{zip_url(r)}" data-school="{name}" '
-        f'data-ntschool="{html.escape(r.get("school") or "")}">'
+        f'data-ntschool="{html.escape(r.get("school") or "")}" '
+        f'data-ntdegree="{html.escape(r.get("degree") or "")}">'
         f'{icon("steps")}<span>{html.escape(m["name"])}</span></button>'
         for svc, m in MANUAL.items()
         if m['steps'] != 'preset' or r.get('school'))
@@ -135,6 +136,13 @@ STEPS = {
             'In <code>0-Config/1_novathesis.tex</code>, set '
             '<code>\\ntsetup{school=%I}</code>.',
             'Compile.'],
+     # the template starts every document as a PhD; a school that awards none
+     # stops with an error that names the degree but not the remedy, so the
+     # step has to carry both lines rather than leave the reader to find out
+     stepd='In <code>0-Config/1_novathesis.tex</code>, set '
+           '<code>\\ntsetup{school=%I}</code> and '
+           '<code>\\ntsetup{doctype=%d}</code> — the template assumes a PhD '
+           'unless told otherwise, and this one does not award one.',
      note='%s updates this copy with each release, so now and then it is a '
           'version behind — but not for long.')),
  'pt': dict(title='Abrir no', zip='Descarregar o ZIP', go='Abrir o %s', close='Fechar',
@@ -153,6 +161,10 @@ STEPS = {
             'No <code>0-Config/1_novathesis.tex</code>, define '
             '<code>\\ntsetup{school=%I}</code>.',
             'Compila.'],
+     stepd='No <code>0-Config/1_novathesis.tex</code>, define '
+           '<code>\\ntsetup{school=%I}</code> e '
+           '<code>\\ntsetup{doctype=%d}</code> — o template parte do '
+           'princípio de que é um doutoramento, e esta escola não o confere.',
      note='O %s actualiza esta cópia a cada nova versão, por isso por vezes '
           'está uma atrás — mas não por muito tempo.')),
 }
@@ -179,20 +191,23 @@ def dialog(lang):
       f'var K={kinds},C={copy},GO={s["go"]!r};'
       f'function fill(t,b){{return t.split("%s").join(b.dataset.service)'
       f'.split("%S").join(b.dataset.school)'
-      f'.split("%I").join(b.dataset.ntschool||"");}}'
+      f'.split("%I").join(b.dataset.ntschool||"")'
+      f'.split("%d").join(b.dataset.ntdegree||"");}}'
       f'document.addEventListener("click",function(e){{'
       f'var b=e.target.closest&&e.target.closest("[data-manual]");if(!b)return;'
       f'var svc=b.dataset.service,c=C[K[b.dataset.manual]];'
       f'd.querySelector(\'[data-f="service"]\').textContent=svc;'
       f'd.querySelector(".manual-lead").textContent=fill(c.lead,b);'
       # the steps carry <code>, so they are our own markup, not reader input
+      f'var st=c.steps.slice();'
+      f'if(c.stepd&&b.dataset.ntdegree)st[1]=c.stepd;'
       f'd.querySelector(".manual-steps").innerHTML='
-      f'c.steps.map(function(t){{return "<li>"+fill(t,b)+"</li>";}}).join("");'
+      f'st.map(function(t){{return "<li>"+fill(t,b)+"</li>";}}).join("");'
       f'var n=d.querySelector(".manual-note");n.hidden=!c.note;'
       f'if(c.note)n.querySelector(\'[data-f="note"]\').textContent=fill(c.note,b);'
       # a service that holds its own prepared project has no use for the ZIP,
       # and on letx that route is precisely the broken one
-      f'var z=d.querySelector(\'[data-f="zip"]\');z.hidden=!c.steps.some('
+      f'var z=d.querySelector(\'[data-f="zip"]\');z.hidden=!st.some('
       f'function(t){{return t.indexOf("ZIP")>=0;}});z.href=b.dataset.zip;'
       f'var g=d.querySelector(\'[data-f="site"]\');g.href=b.dataset.site;'
       f'g.textContent=GO.replace("%s",svc);'

@@ -50,6 +50,15 @@ GROUPS / REPOS
 # way: they provided the account, whatever their compiler is doing.
 INSCRIVE_ENABLED = True
 
+# The `\ntsetup{school=...}` id a repository's own 0-Config/1_novathesis.tex
+# sets, for the rows where it cannot be read off the file that names the
+# school. uminho-defaults.clo holds only what the twelve UMinho schools share,
+# so `school=uminho` is accepted by the class and then dies at
+# \begin{document} with a cascade about missing keys -- the repository itself
+# ships uminho/eeng, which is what its reader would have had. Without an entry
+# here gen_nt_schools.py stops rather than publish an id that cannot build.
+SCHOOL_ID = {'uminho': 'uminho/eeng'}
+
 INSTITUTIONS = [
     dict(key='manual', tag='novathesis', paths=[
         dict(path='other/novathesis', labels={

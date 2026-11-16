@@ -273,7 +273,35 @@ def school_id(repo):
         return None
     parent = f.parent.relative_to(SCHOOLS_DIR).as_posix()
     tail = repo[len(parent.replace('/', '-')):].lstrip('-')
-    return f'{parent}/{tail}' if tail else parent
+    derived = f'{parent}/{tail}' if tail else parent
+    return ov.SCHOOL_ID.get(repo, derived)
+
+
+def shared_defaults(sid):
+    """True when `sid` names a file holding only what the schools below it
+    share -- the university's name, its fonts -- and defining no school of its
+    own. The class accepts `\\ntsetup{school=uminho}` and the build then dies
+    at `\\begin{document}`, because nothing ever set a cover, a logo or a
+    school name; the twelve `uminho/*` ids build. A row that reaches this is a
+    row whose dialog would hand the reader an id that cannot work."""
+    d = SCHOOLS_DIR / sid
+    return d.is_dir() and any(any(p.glob('*-defaults.clo'))
+                              for p in d.iterdir() if p.is_dir())
+
+
+def degrees(sid):
+    """The degrees a school declares with \\AddValidDegree, in file order.
+    The class starts every document at `doctype=phd`, so a school that does
+    not accept one needs an explicit `\\ntsetup{doctype=...}` beside the
+    school line -- which is what every starter repository ships and what the
+    letx dialog has to repeat, since letx opens the general template instead.
+    An empty result means the school declares nothing and takes the default."""
+    f = next(SCHOOLS_DIR.rglob(f"{sid.replace('/', '-')}-defaults.clo"), None)
+    if f is None:
+        return ()
+    m = re.search(r'\\AddValidDegree\{' + re.escape(sid) + r'\}\{([^}]*)\}',
+                  f.read_text(encoding='utf-8', errors='replace'))
+    return tuple(d.strip() for d in m.group(1).split(',') if d.strip()) if m else ()
 
 
 def render_repos():
@@ -283,12 +311,23 @@ def render_repos():
     out.append(']')
     out.append('')
     out.append('REPOS = [')
-    missing = []
+    missing, unbuildable, ambiguous = [], [], []
     for r in ov.REPOS:
         parts = [f"group={r['group']!r}", f"repo={r['repo']!r}", f"label={r['label']!r}"]
         school = school_id(r['repo'])
         if school:
             parts.append(f'school={school!r}')
+            if shared_defaults(school):
+                unbuildable.append((r['repo'], school))
+            # only the schools that refuse the default degree need one written
+            # down; everywhere else the extra line would be noise the reader
+            # has to decide about
+            deg = degrees(school)
+            if deg and 'phd' not in deg:
+                if len(deg) > 1:
+                    ambiguous.append((r['repo'], school, deg))
+                else:
+                    parts.append(f'degree={deg[0]!r}')
         elif not r.get('org'):
             # a school of ours with no file to name it means the two repositories
             # have drifted apart, which must stop the build rather than silently
@@ -303,6 +342,21 @@ def render_repos():
                 parts.append(f"{field}={r[field]!r}")
         out.append(f" dict({', '.join(parts)}),")
     out.append(']')
+    if unbuildable:
+        print('gen_nt_schools: these ids name shared university defaults, not a '
+              'school, and do not build:', file=sys.stderr)
+        for repo, sid in unbuildable:
+            print(f'  - {repo}: school={sid}', file=sys.stderr)
+        print("Put the id that repository's own 0-Config/1_novathesis.tex sets "
+              'into SCHOOL_ID in nt_overrides.py.', file=sys.stderr)
+        sys.exit(1)
+    if ambiguous:
+        print('gen_nt_schools: these schools refuse the default phd and accept '
+              'more than one degree, so the dialog cannot pick one:', file=sys.stderr)
+        for repo, sid, deg in ambiguous:
+            print(f"  - {repo}: school={sid} accepts {', '.join(deg)}", file=sys.stderr)
+        print('Decide which one the dialog should name and say so here.', file=sys.stderr)
+        sys.exit(1)
     if missing:
         print(f'gen_nt_schools: no <repo>-defaults.clo under {SCHOOLS_DIR} for:',
               file=sys.stderr)
