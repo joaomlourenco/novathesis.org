@@ -135,8 +135,8 @@ STEPS = {
             'In <code>0-Config/1_novathesis.tex</code>, set '
             '<code>\\ntsetup{school=%I}</code>.',
             'Compile.'],
-     note='This copy is prepared and kept by %s, so it can sit behind the '
-          'current release.')),
+     note='%s updates this copy with each release, so now and then it is a '
+          'version behind — but not for long.')),
  'pt': dict(title='Abrir no', zip='Descarregar o ZIP', go='Abrir o %s', close='Fechar',
    upload=dict(
      lead='O %s não consegue importar um repositório a partir de um link, por '
@@ -153,8 +153,8 @@ STEPS = {
             'No <code>0-Config/1_novathesis.tex</code>, define '
             '<code>\\ntsetup{school=%I}</code>.',
             'Compila.'],
-     note='Esta cópia é preparada e mantida pelo %s, por isso pode estar atrás '
-          'da versão actual.')),
+     note='O %s actualiza esta cópia a cada nova versão, por isso por vezes '
+          'está uma atrás — mas não por muito tempo.')),
 }
 
 def dialog(lang):
