@@ -197,7 +197,7 @@ p{margin:0;text-wrap:pretty}
 .steps h3{font-size:19px;letter-spacing:-.01em}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 /* Six columns so both rows fill the width: the three free options -- local
-   build, letx, ScienHub -- span two columns each, the two that need a paid
+   build, LetX, ScienHub -- span two columns each, the two that need a paid
    plan span three. */
 .options{display:grid;grid-template-columns:repeat(6,1fr);gap:32px}
 .options>.box{grid-column:span 2}

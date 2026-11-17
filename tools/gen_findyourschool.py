@@ -17,11 +17,11 @@ from nt_schools import (SITE, GROUPS, REPOS, repo_url, zip_url, overleaf, inscri
 # Services that cannot be handed a school's ZIP through a URL, each with the
 # shape of the detour it needs. `upload` takes the ZIP in by hand; `preset`
 # opens a project the service already holds, which is why it needs the school
-# id instead of the ZIP -- on letx the ZIP route is the one that does not work,
+# id instead of the ZIP -- on LetX the ZIP route is the one that does not work,
 # so offering it would teach the single thing that fails.
 MANUAL = {
  'scienhub': dict(name='ScienHub', site='https://scienhub.com', steps='upload'),
- 'letx':     dict(name='letx', site='https://letx.app/open?template=novathesis',
+ 'letx':     dict(name='LetX', site='https://letx.app/open?template=novathesis',
                   steps='preset'),
 }
 
@@ -206,7 +206,7 @@ def dialog(lang):
       f'var n=d.querySelector(".manual-note");n.hidden=!c.note;'
       f'if(c.note)n.querySelector(\'[data-f="note"]\').textContent=fill(c.note,b);'
       # a service that holds its own prepared project has no use for the ZIP,
-      # and on letx that route is precisely the broken one
+      # and on LetX that route is precisely the broken one
       f'var z=d.querySelector(\'[data-f="zip"]\');z.hidden=!st.some('
       f'function(t){{return t.indexOf("ZIP")>=0;}});z.href=b.dataset.zip;'
       f'var g=d.querySelector(\'[data-f="site"]\');g.href=b.dataset.site;'

@@ -294,7 +294,7 @@ def degrees(sid):
     The class starts every document at `doctype=phd`, so a school that does
     not accept one needs an explicit `\\ntsetup{doctype=...}` beside the
     school line -- which is what every starter repository ships and what the
-    letx dialog has to repeat, since letx opens the general template instead.
+    LetX dialog has to repeat, since LetX opens the general template instead.
     An empty result means the school declares nothing and takes the default."""
     f = next(SCHOOLS_DIR.rglob(f"{sid.replace('/', '-')}-defaults.clo"), None)
     if f is None:
@@ -331,7 +331,7 @@ def render_repos():
         elif not r.get('org'):
             # a school of ours with no file to name it means the two repositories
             # have drifted apart, which must stop the build rather than silently
-            # drop the id the letx dialog needs
+            # drop the id the LetX dialog needs
             missing.append(r['repo'])
         if r.get('cover'):
             parts.append(f"cover={r['cover']!r}")
